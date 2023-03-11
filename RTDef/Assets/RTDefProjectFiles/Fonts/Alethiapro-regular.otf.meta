@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d935cf26743a0c84cb0a48e589e2066c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Alethia Pro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 86fd0fd10ef9e4440979bf79ac4f06c2, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
