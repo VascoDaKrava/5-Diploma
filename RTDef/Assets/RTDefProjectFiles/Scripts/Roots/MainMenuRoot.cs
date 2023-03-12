@@ -34,9 +34,10 @@ namespace RTDef.Menu
         {
             LoadAudioSettings();
 
-            new InfoPanelController(this, Titles);
+            var infoPanelController = new InfoPanelController(this, Titles);
             new StartPanelController(this);
             new OptionsPanelController(StartPanel, OptionsPanel, SoundResources);
+            new LoginPanelController(this, infoPanelController);
 
             new MenuSoundFXController(UIRootTransform, SoundResources, MenuAuidioSource);
             new MusicController(SoundResources, MusicAudioSource);

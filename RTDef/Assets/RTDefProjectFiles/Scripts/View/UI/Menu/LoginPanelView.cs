@@ -1,19 +1,25 @@
 using RTDef.Abstraction;
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class LoginPanelView : MonoLifeCallBacks
+
+namespace RTDef.Menu
 {
-    // Start is called before the first frame update
-    void Start()
+    public sealed class LoginPanelView : MonoLifeCallBacks
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        #region Properties
+
+        [field: SerializeField] public Toggle RegistrationToggle { get; private set; }
+        [field: SerializeField] public TMP_InputField LoginInputField { get; private set; }
+        [field: SerializeField] public TMP_InputField PasswordInputField { get; private set; }
+        [field: SerializeField] public TMP_InputField EmailInputField { get; private set; }
+        [field: SerializeField] public TMP_Text ActionButtonText { get; private set; }
+        [field: SerializeField] public Button ActionButton { get; private set; }
+        [field: SerializeField] public Button ExitButton { get; private set; }
+
+        #endregion
+
     }
 }

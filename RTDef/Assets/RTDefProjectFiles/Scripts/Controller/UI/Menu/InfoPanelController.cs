@@ -13,6 +13,8 @@ namespace RTDef.Menu
         private readonly IMainMenuPanels _panels;
         private readonly MainMenuTitles _titles;
 
+        private readonly InfoPanelView _info;
+
         #endregion
 
 
@@ -22,13 +24,14 @@ namespace RTDef.Menu
         {
             _panels = panels;
             _titles = titles;
+            _info = panels.InfoPanel;
 
             _panels.StartPanel.OnEnableEvent += StartPanelOnEnableHandler;
             _panels.LoginPanel.OnEnableEvent += LoginPanelOnEnableHandler;
             _panels.MultiplayerPanel.OnEnableEvent += MultiplayerPanelOnEnableHandler;
             _panels.OptionsPanel.OnEnableEvent += OptionsPanelOnEnableHandler;
         }
-                
+
         public void Dispose()
         {
             _panels.StartPanel.OnEnableEvent -= StartPanelOnEnableHandler;
@@ -42,24 +45,42 @@ namespace RTDef.Menu
 
         #region Methods
 
+        public void ShowError(string message)
+        {
+            _info.InfoTextField.color = _titles.ErrorColor;
+            _info.InfoTextField.text = message;
+        }
+
+        public void ShowMessage(string message)
+        {
+            _info.InfoTextField.color = _titles.NormalColor;
+            _info.InfoTextField.text = message;
+        }
+
+        public void ShowSuccess(string message)
+        {
+            _info.InfoTextField.color = _titles.SuccessColor;
+            _info.InfoTextField.text = message;
+        }
+
         private void OptionsPanelOnEnableHandler()
         {
-            _panels.InfoPanel.InfoTextField.text = _titles.OptionsPanelTitle;
+            ShowMessage(_titles.OptionsPanelTitle);
         }
 
         private void MultiplayerPanelOnEnableHandler()
         {
-            throw new NotImplementedException();
+            ShowMessage(_titles.MultiplayerPanelTitle);
         }
 
         private void LoginPanelOnEnableHandler()
         {
-            throw new NotImplementedException();
+            ShowMessage(_titles.LoginPanelTitle);
         }
 
         private void StartPanelOnEnableHandler()
         {
-            _panels.InfoPanel.InfoTextField.text = _titles.StartPanelNoLoginTitle;
+            ShowMessage(_titles.StartPanelNoLoginTitle);
         }
 
         #endregion
