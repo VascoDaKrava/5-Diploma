@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f4399c069b5cc148836b5890383cdda, type: 3}
+  m_Name: AudioResorces
+  m_EditorClassIdentifier: 
+  <MusicVolume>k__BackingField: -10
+  <SFXVolume>k__BackingField: -5
+  <MenuVolume>k__BackingField: -20
+  <Mixer>k__BackingField: {fileID: 24100000, guid: 5e96d3c141b89c746b972923b2ae2389, type: 2}
+  <MasterAudioMixerGroupName>k__BackingField: VolumeMaster
+  <MusicAudioMixerGroupName>k__BackingField: VolumeMusic
+  <SFXAudioMixerGroupName>k__BackingField: VolumeSFX
+  <MenuAudioMixerGroupName>k__BackingField: VolumeMenu
+  <MenuMusic>k__BackingField: {fileID: 8300000, guid: 18455a02a4cc8554bbf3fafe938a0ac1, type: 3}
+  <BackgroundMusic>k__BackingField:
+  - {fileID: 8300000, guid: 63a1ebfe977938c44baf882e68875675, type: 3}
+  - {fileID: 8300000, guid: f777fd220d0179347b950c4d137b7cb7, type: 3}
+  - {fileID: 8300000, guid: 8751a3a8f8ccee24bb66875d2369e2a3, type: 3}
+  - {fileID: 8300000, guid: f22bf5e6cf3274e4b89e773f4e820b5d, type: 3}
+  <ButtonSelectClip>k__BackingField: {fileID: 8300000, guid: 0b49cb9b1450b0b4f8bd6dc1b2c53f70, type: 3}
+  <ButtonClickClip>k__BackingField: {fileID: 8300000, guid: 3f292cf441c4c5047bcc3f9c141de6c5, type: 3}

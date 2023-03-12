@@ -1,10 +1,11 @@
+using RTDef.Abstraction;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 namespace RTDef.Menu
 {
-    public sealed class StartPanelView : MonoBehaviour
+    public sealed class StartPanelView : MonoLifeCallBacks
     {
 
         #region Properties
