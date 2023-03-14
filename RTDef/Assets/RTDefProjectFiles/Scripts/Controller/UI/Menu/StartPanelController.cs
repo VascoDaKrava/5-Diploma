@@ -13,15 +13,17 @@ namespace RTDef.Menu
                 
         private readonly StartPanelView _startPanelView;
         private readonly IMainMenuPanels _panels;
+        private readonly IGameState _gameState;
 
         #endregion
 
 
         #region CodeLife
 
-        public StartPanelController(IMainMenuPanels panels)
+        public StartPanelController(IMainMenuPanels panels, IGameState gameState)
         {
             _panels = panels;
+            _gameState = gameState;
 
             _startPanelView = _panels.StartPanel;
             _startPanelView.StartSingleGameButton.onClick.AddListener(OnStartSingleClickHandler);
@@ -29,6 +31,7 @@ namespace RTDef.Menu
             _startPanelView.OptionsButton.onClick.AddListener(OnOptionsClickHandler);
             _startPanelView.LoginButton.onClick.AddListener(OnLoginClickHandler);
             _startPanelView.ExitGameButton.onClick.AddListener(OnExitClickHandler);
+            _startPanelView.OnEnableEvent += OnStartPanelViewEnableHandler;
 
             _startPanelView.gameObject.SetActive(true);
         }
@@ -40,12 +43,18 @@ namespace RTDef.Menu
             _startPanelView.OptionsButton.onClick.RemoveListener(OnOptionsClickHandler);
             _startPanelView.LoginButton.onClick.RemoveListener(OnLoginClickHandler);
             _startPanelView.ExitGameButton.onClick.RemoveListener(OnExitClickHandler);
+            _startPanelView.OnEnableEvent -= OnStartPanelViewEnableHandler;
         }
 
         #endregion
 
 
         #region Methods
+
+        private void OnStartPanelViewEnableHandler()
+        {
+            _startPanelView.StartMultiplayerButton.gameObject.SetActive(_gameState.IsClientLoggedIn);
+        }
 
         private void OnStartSingleClickHandler()
         {

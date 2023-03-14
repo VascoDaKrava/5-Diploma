@@ -12,7 +12,7 @@ namespace RTDef.Menu
 
         private readonly IMainMenuPanels _panels;
         private readonly MainMenuTitles _titles;
-
+        private readonly IGameState _gameState;
         private readonly InfoPanelView _info;
 
         #endregion
@@ -20,10 +20,11 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public InfoPanelController(IMainMenuPanels panels, MainMenuTitles titles)
+        public InfoPanelController(IMainMenuPanels panels, MainMenuTitles titles, IGameState gameState)
         {
             _panels = panels;
             _titles = titles;
+            _gameState = gameState;
             _info = panels.InfoPanel;
 
             _panels.StartPanel.OnEnableEvent += StartPanelOnEnableHandler;
@@ -75,12 +76,14 @@ namespace RTDef.Menu
 
         private void LoginPanelOnEnableHandler()
         {
-            ShowMessage(_titles.LoginPanelTitle);
+            var message = _gameState.IsClientLoggedIn ? _titles.LoginPanelTitleLoggedIn : _titles.LoginPanelTitleNotLoggedIn;
+            ShowMessage(message);
         }
 
         private void StartPanelOnEnableHandler()
         {
-            ShowMessage(_titles.StartPanelNoLoginTitle);
+            var message = _gameState.IsClientLoggedIn ? $"Hello, {_gameState.ClientUserName}! {_titles.StartPanelLoggedInTitle}" : _titles.StartPanelNotLoggedInTitle;
+            ShowMessage(message);
         }
 
         #endregion

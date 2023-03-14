@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: kravchuk.wesley@gmail.com
-  DevAccountToken: ksedarf19zwi9sj7n9s8zd3ahyrcxs3cwcitidbox76tdz5gg9rihdfhdjf8ytqquzwhgfcgmntefgwr31t4xsns3ksdm9om6bcbtkqcwg1tfsxocmo4bred6tq9rmz9p8gfd89njmq8qnkmgemt7b3pysynf9dsh6anadfm8mmuip7nixzahdpn4t1d7t7hk5ofnpjq
+  DevAccountToken: rwhcub3e1bjyh7k35zr1h1spfngn7ahbmh5sf8f3ji97qmutbw6tth5o6x7p7ixcaoc9p6o7kzykzokzgjdpdxwp9yp7z78nf34baqk5ctjza3n6tf38oe7mqw1fch3k8r5fzxc37eq6m8byp3ys7bru5xjrxu7m7incye58cjsd3sfkdaaak855kipdf5nnu78s6c6k
   AadAuthorization: 
   SelectedStudio: VascoGameStudio
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 4
-  curSubMenuIdx: 0
+  curMainMenuIdx: 2
+  curSubMenuIdx: 1

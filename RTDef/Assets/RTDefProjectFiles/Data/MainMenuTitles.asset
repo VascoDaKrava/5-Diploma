@@ -15,8 +15,10 @@ MonoBehaviour:
   <NormalColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ErrorColor>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
   <SuccessColor>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
-  <StartPanelNoLoginTitle>k__BackingField: Please login for use multiplayer and save
-    your progress
+  <StartPanelNotLoggedInTitle>k__BackingField: Please login for use multiplayer and
+    save your progress
+  <StartPanelLoggedInTitle>k__BackingField: Let's play
   <OptionsPanelTitle>k__BackingField: OPTIONS
   <MultiplayerPanelTitle>k__BackingField: MULTIPLAYER
-  <LoginPanelTitle>k__BackingField: Please login or register
+  <LoginPanelTitleLoggedIn>k__BackingField: You are logged in
+  <LoginPanelTitleNotLoggedIn>k__BackingField: Please login or register

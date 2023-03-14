@@ -7,8 +7,15 @@ using UnityEngine;
 
 namespace RTDef.Menu
 {
-    public sealed class MainMenuRoot : MonoBehaviour, IMainMenuPanels
+    public sealed class MainMenuRoot : MonoBehaviour, IMainMenuPanels, IGameState
     {
+
+        #region Fields
+
+        private LoginPanelController _loginPanelController;
+
+        #endregion
+
 
         #region Properties
 
@@ -25,6 +32,9 @@ namespace RTDef.Menu
         [field: SerializeField] private SoundResources SoundResources { get; set; }
         [field: SerializeField] private MainMenuTitles Titles { get; set; }
 
+        public bool IsClientLoggedIn => _loginPanelController.IsClientLoggedIn;
+        public string ClientUserName => _loginPanelController.ClientUserName;
+
         #endregion
 
 
@@ -34,11 +44,12 @@ namespace RTDef.Menu
         {
             LoadAudioSettings();
 
-            var infoPanelController = new InfoPanelController(this, Titles);
-            new StartPanelController(this);
-            new OptionsPanelController(StartPanel, OptionsPanel, SoundResources);
-            new LoginPanelController(this, infoPanelController);
+            var infoPanelController = new InfoPanelController(this, Titles, this);
+            _loginPanelController = new LoginPanelController(this, infoPanelController);
 
+            new StartPanelController(this, this);
+            new OptionsPanelController(StartPanel, OptionsPanel, SoundResources);
+            
             new MenuSoundFXController(UIRootTransform, SoundResources, MenuAuidioSource);
             new MusicController(SoundResources, MusicAudioSource);
         }
