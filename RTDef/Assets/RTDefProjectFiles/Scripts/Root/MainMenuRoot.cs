@@ -49,6 +49,7 @@ namespace RTDef.Menu
 
             new StartPanelController(this, this);
             new OptionsPanelController(StartPanel, OptionsPanel, SoundResources);
+            new MultiplayerPanelController(this, this, infoPanelController);
             
             new MenuSoundFXController(UIRootTransform, SoundResources, MenuAuidioSource);
             new MusicController(SoundResources, MusicAudioSource);

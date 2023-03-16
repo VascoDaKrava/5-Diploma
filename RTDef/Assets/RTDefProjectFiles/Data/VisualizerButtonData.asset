@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4460042af648374caf235263f8b9839, type: 3}
+  m_Name: VisualizerButtonData
+  m_EditorClassIdentifier: 
+  <TextNormalColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <TextDisabledColor>k__BackingField: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+  <NormalColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
+  <HighlightedColor>k__BackingField: {r: 1, g: 0.6862745, b: 0.05882353, a: 1}
+  <PressedColor>k__BackingField: {r: 1, g: 0.6862745, b: 0.05882353, a: 0.7058824}
+  <DisabledColor>k__BackingField: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}

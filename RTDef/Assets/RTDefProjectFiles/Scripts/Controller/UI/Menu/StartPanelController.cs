@@ -53,7 +53,7 @@ namespace RTDef.Menu
 
         private void OnStartPanelViewEnableHandler()
         {
-            _startPanelView.StartMultiplayerButton.gameObject.SetActive(_gameState.IsClientLoggedIn);
+            _startPanelView.StartMultiplayerButton.interactable = _gameState.IsClientLoggedIn;
         }
 
         private void OnStartSingleClickHandler()
