@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1832478989579224714}
   - component: {fileID: 3547278885055782941}
   - component: {fileID: 8760113140997859102}
+  - component: {fileID: 3353761032337145906}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -91,6 +92,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92fd61c8fe62bb45afb50f9355ec687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectable: {fileID: 3353761032337145906}
+--- !u!114 &8760113140997859102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832478989579224719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5ddb04d0a90af4cb19bfcaf2895b26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 3547278885055782941}
+  _buttonImage: {fileID: 1832478989579224714}
+  _buttonLabel: {fileID: 1832478989587009045}
+  _visualizerUIdata: {fileID: 11400000, guid: 781a65203c2853045a17db0cedaecba5, type: 2}
+--- !u!114 &3353761032337145906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832478989579224719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
@@ -120,22 +150,9 @@ MonoBehaviour:
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 1832478989579224714}
---- !u!114 &8760113140997859102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1832478989579224719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5ddb04d0a90af4cb19bfcaf2895b26, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _button: {fileID: 3547278885055782941}
-  _buttonImage: {fileID: 1832478989579224714}
-  _buttonLable: {fileID: 1832478989587009045}
-  _visualizerUIdata: {fileID: 11400000, guid: 781a65203c2853045a17db0cedaecba5, type: 2}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1832478989587009051
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LABLE
+  m_text: Label
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c32a87e34a3357443818ee89a7cfb4d5, type: 2}
   m_sharedMaterial: {fileID: 8174216474682789839, guid: c32a87e34a3357443818ee89a7cfb4d5, type: 2}

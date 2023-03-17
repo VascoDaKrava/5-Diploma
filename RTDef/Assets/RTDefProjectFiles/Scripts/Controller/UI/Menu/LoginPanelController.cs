@@ -45,9 +45,9 @@ namespace RTDef.Menu
             _dataServer = new DataServerConnector(_infoPanel);
 
             _loginPanel.OnEnableEvent += LoginPanelOnEnableHandler;
-            _loginPanel.ExitButton.onClick.AddListener(OnExitClickHandler);
+            _loginPanel.ExitButton.OnPointerClickEvent += OnExitClickHandler;
             _loginPanel.RegistrationToggle.onValueChanged.AddListener(OnRegistrationToggleValueChangedHandler);
-            _loginPanel.ActionButton.onClick.AddListener(OnActionButtonClickHandler);
+            _loginPanel.ActionButton.OnPointerClickEvent += OnActionButtonClickHandler;
 
             _dataServer.OnLoginSuccess += OnDataServerLoginSuccessHandler;
         }
@@ -55,9 +55,9 @@ namespace RTDef.Menu
         public void Dispose()
         {
             _loginPanel.OnEnableEvent -= LoginPanelOnEnableHandler;
-            _loginPanel.ExitButton.onClick.RemoveListener(OnExitClickHandler);
+            _loginPanel.ExitButton.OnPointerClickEvent -= OnExitClickHandler;
             _loginPanel.RegistrationToggle.onValueChanged.RemoveListener(OnRegistrationToggleValueChangedHandler);
-            _loginPanel.ActionButton.onClick.RemoveListener(OnActionButtonClickHandler);
+            _loginPanel.ActionButton.OnPointerClickEvent -= OnActionButtonClickHandler;
 
             _dataServer.OnLoginSuccess -= OnDataServerLoginSuccessHandler;
         }

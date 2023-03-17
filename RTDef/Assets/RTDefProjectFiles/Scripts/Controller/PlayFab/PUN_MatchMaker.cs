@@ -14,7 +14,7 @@ namespace RTDef.Photon
         #region Fields
 
         private const int ROOM_NUMBER_MIN = 1000;
-        private const int ROOM_NUMBER_MAX = 10000;
+        private const int ROOM_NUMBER_MAX = 9999;
         private const int PLAYER_TTL = 10000;
 
         #endregion
@@ -41,10 +41,10 @@ namespace RTDef.Photon
 
         #region Mono
 
-        private void Start()
-        {
-            Connect();
-        }
+        //private void Start()
+        //{
+        //    Connect();
+        //}
 
         #endregion
 
@@ -125,32 +125,26 @@ namespace RTDef.Photon
 
         #region Methods
 
-        public void JoinRoom()
+        public void JoinRoom(string roomName)
         {
-
+            PhotonNetwork.JoinRoom(roomName);// next --> OnJoinedRoom
         }
 
         public void CreateRoom(byte maxPlayers)
         {
             ConfigureRoom(out var roomName, out var roomOptions, maxPlayers);
-            PhotonNetwork.CreateRoom(roomName, roomOptions);
+            PhotonNetwork.CreateRoom(roomName, roomOptions);// next --> OnJoinedRoom
         }
 
         public void LeaveRoom()
         {
             if (PhotonNetwork.InRoom)
             {
-                PhotonNetwork.LeaveRoom();
+                PhotonNetwork.LeaveRoom();// next --> OnConnectedToMaster
             }
         }
 
-        private void ConfigureRoom(out string roomName, out RoomOptions roomOptions, byte maxPlayers)
-        {
-            roomName = $"Room {Random.Range(ROOM_NUMBER_MIN, ROOM_NUMBER_MAX)}";
-            roomOptions = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = PLAYER_TTL };
-        }
-
-        private void Connect()
+        public void Connect()
         {
             if (PhotonNetwork.IsConnected)
             {
@@ -160,6 +154,12 @@ namespace RTDef.Photon
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.GameVersion = PhotonNetwork.AppVersion;
             PhotonNetwork.ConnectUsingSettings();// next --> OnConnectedToMaster
+        }
+
+        private void ConfigureRoom(out string roomName, out RoomOptions roomOptions, byte maxPlayers)
+        {
+            roomName = $"Room {Random.Range(ROOM_NUMBER_MIN, ROOM_NUMBER_MAX)}";
+            roomOptions = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = PLAYER_TTL };
         }
 
         #endregion

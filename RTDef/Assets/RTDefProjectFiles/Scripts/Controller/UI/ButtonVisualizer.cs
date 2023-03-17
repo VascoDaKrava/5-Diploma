@@ -11,9 +11,9 @@ namespace RTDef.UI
 
         #region Fields
 
-        [SerializeField] private PointerEvents _button;
+        [SerializeField] private CustomPointerEvent _button;
         [SerializeField] private Image _buttonImage;
-        [SerializeField] private TMP_Text _buttonLable;
+        [SerializeField] private TMP_Text _buttonLabel;
         [SerializeField] private VisualizerUIdata _visualizerUIdata;
 
         #endregion
@@ -21,7 +21,7 @@ namespace RTDef.UI
 
         #region Mono
 
-        private void OnEnable()
+        private void Awake()
         {
             _button.OnPointerDownEvent += OnPointerDownEventHandler;
             _button.OnPointerUpEvent += OnPointerUpEventHandler;
@@ -30,7 +30,7 @@ namespace RTDef.UI
             _button.OnInteractableSetEvent += OnInteractableSetEventHandler;
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             _button.OnPointerDownEvent -= OnPointerDownEventHandler;
             _button.OnPointerUpEvent -= OnPointerUpEventHandler;
@@ -47,7 +47,7 @@ namespace RTDef.UI
         private void OnInteractableSetEventHandler(bool state)
         {
             _buttonImage.color = state ? _visualizerUIdata.NormalColor : _visualizerUIdata.DisabledColor;
-            _buttonLable.color = state ? _visualizerUIdata.TextNormalColor : _visualizerUIdata.TextDisabledColor;
+            _buttonLabel.color = state ? _visualizerUIdata.TextNormalColor : _visualizerUIdata.TextDisabledColor;
         }
 
         private void OnPointerExitEventHandler()

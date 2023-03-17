@@ -42,6 +42,7 @@ namespace RTDef.Menu
 
         void Start()
         {
+            HideAllPanels();
             LoadAudioSettings();
 
             var infoPanelController = new InfoPanelController(this, Titles, this);
@@ -59,6 +60,14 @@ namespace RTDef.Menu
 
 
         #region Methods
+
+        private void HideAllPanels()
+        {
+            StartPanel.gameObject.SetActive(false);
+            MultiplayerPanel.gameObject.SetActive(false);
+            OptionsPanel.gameObject.SetActive(false);
+            LoginPanel.gameObject.SetActive(false);
+        }
 
         private void LoadAudioSettings()
         {

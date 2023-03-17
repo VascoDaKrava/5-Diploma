@@ -25,7 +25,7 @@ namespace RTDef.Menu
             _soundResources = soundResources;
 
             _optionsPanel.OnEnableEvent += OptionsPanelOnEnableHandler;
-            _optionsPanel.ExitButton.onClick.AddListener(OnExitClickHandler);
+            _optionsPanel.ExitButton.OnPointerClickEvent += OnExitClickHandler;
             _optionsPanel.MenuVolumeSlider.onValueChanged.AddListener(OnMenuVolumeChangeHandler);
             _optionsPanel.SFXVolumeSlider.onValueChanged.AddListener(OnSFXVolumeSliderChangeHandler);
             _optionsPanel.MusicVolumeSlider.onValueChanged.AddListener(OnMusicVolumeSliderChangeHandler);
@@ -34,7 +34,7 @@ namespace RTDef.Menu
         public void Dispose()
         {
             _optionsPanel.OnEnableEvent -= OptionsPanelOnEnableHandler;
-            _optionsPanel.ExitButton.onClick.RemoveListener(OnExitClickHandler);
+            _optionsPanel.ExitButton.OnPointerClickEvent -= OnExitClickHandler;
             _optionsPanel.MenuVolumeSlider.onValueChanged.RemoveListener(OnMenuVolumeChangeHandler);
             _optionsPanel.SFXVolumeSlider.onValueChanged.RemoveListener(OnSFXVolumeSliderChangeHandler);
             _optionsPanel.MusicVolumeSlider.onValueChanged.RemoveListener(OnMusicVolumeSliderChangeHandler);

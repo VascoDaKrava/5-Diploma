@@ -1,12 +1,15 @@
 using System;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
 namespace RTDef.UI
 {
-    public sealed class PointerEvents : Selectable, IPointerClickHandler
+    public class CustomPointerEvent : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
     {
+
+        [SerializeField] private Selectable _selectable;
 
         #region Events
 
@@ -22,13 +25,13 @@ namespace RTDef.UI
 
         #region Properties
 
-        public new bool interactable
+        public bool Interactable
         {
-            get => base.interactable;
+            get => _selectable.interactable;
             set
             {
                 OnInteractableSetEvent?.Invoke(value);
-                base.interactable = value;
+                _selectable.interactable = value;
             }
         }
 
@@ -39,47 +42,39 @@ namespace RTDef.UI
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (interactable)
+            if (Interactable)
             {
                 OnPointerClickEvent?.Invoke();
             }
         }
 
-        public override void OnPointerEnter(PointerEventData eventData)
+        public void OnPointerEnter(PointerEventData eventData)
         {
-            base.OnPointerEnter(eventData);
-
-            if (interactable)
+            if (Interactable)
             {
                 OnPointerEnterEvent?.Invoke();
             }
         }
 
-        public override void OnPointerExit(PointerEventData eventData)
+        public void OnPointerExit(PointerEventData eventData)
         {
-            base.OnPointerExit(eventData);
-
-            if (interactable)
+            if (Interactable)
             {
                 OnPointerExitEvent?.Invoke();
             }
         }
 
-        public override void OnPointerUp(PointerEventData eventData)
+        public void OnPointerUp(PointerEventData eventData)
         {
-            base.OnPointerUp(eventData);
-
-            if (interactable)
+            if (Interactable)
             {
                 OnPointerUpEvent?.Invoke();
             }
         }
 
-        public override void OnPointerDown(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            base.OnPointerDown(eventData);
-
-            if (interactable)
+            if (Interactable)
             {
                 OnPointerDownEvent?.Invoke();
             }

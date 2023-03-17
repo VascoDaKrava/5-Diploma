@@ -1,4 +1,5 @@
 using RTDef.Abstraction;
+using RTDef.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,8 +17,8 @@ namespace RTDef.Menu
         [field: SerializeField] public TMP_InputField PasswordInputField { get; private set; }
         [field: SerializeField] public TMP_InputField EmailInputField { get; private set; }
         [field: SerializeField] public TMP_Text ActionButtonText { get; private set; }
-        [field: SerializeField] public Button ActionButton { get; private set; }
-        [field: SerializeField] public Button ExitButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent ActionButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent ExitButton { get; private set; }
 
         #endregion
 

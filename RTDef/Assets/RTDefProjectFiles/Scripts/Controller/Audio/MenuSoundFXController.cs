@@ -12,7 +12,7 @@ namespace RTDef.Audio
 
         #region Fields
 
-        private List<PointerEvents> _buttons = new List<PointerEvents>();
+        private List<CustomPointerEvent> _buttons = new List<CustomPointerEvent>();
         private readonly SoundResources _soundResources;
         private readonly AudioSource _mainSource;
 
@@ -23,7 +23,7 @@ namespace RTDef.Audio
 
         public MenuSoundFXController(Transform root, SoundResources soundResources, AudioSource mainSource)
         {
-            _buttons.AddRange(root.gameObject.GetComponentsInChildren<PointerEvents>(true));
+            _buttons.AddRange(root.gameObject.GetComponentsInChildren<CustomPointerEvent>(true));
 
             foreach (var button in _buttons)
             {

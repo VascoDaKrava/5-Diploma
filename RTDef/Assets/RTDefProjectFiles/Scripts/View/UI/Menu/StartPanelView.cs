@@ -1,6 +1,6 @@
 using RTDef.Abstraction;
+using RTDef.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 namespace RTDef.Menu
@@ -10,11 +10,11 @@ namespace RTDef.Menu
 
         #region Properties
 
-        [field: SerializeField] public Button StartSingleGameButton { get; private set; }
-        [field: SerializeField] public Button StartMultiplayerButton { get; private set; }
-        [field: SerializeField] public Button OptionsButton { get; private set; }
-        [field: SerializeField] public Button LoginButton { get; private set; }
-        [field: SerializeField] public Button ExitGameButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent StartSingleGameButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent StartMultiplayerButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent OptionsButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent LoginButton { get; private set; }
+        [field: SerializeField] public CustomPointerEvent ExitGameButton { get; private set; }
 
         #endregion
 

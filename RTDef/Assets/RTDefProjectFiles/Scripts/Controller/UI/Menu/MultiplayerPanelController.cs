@@ -22,6 +22,13 @@ namespace RTDef.Menu
 
         private PUN_MatchMaker _matchMaker;
 
+        private bool _createRoomButtonState;
+        private bool _leaveRoomButtonState;
+        private bool _startGameButtonState;
+
+        private bool _roomListPanelState;
+        private bool _roomInfoPanelState;
+
         #endregion
 
 
@@ -41,6 +48,8 @@ namespace RTDef.Menu
             _multiplayerPanel.ExitButton.OnPointerClickEvent += OnExitClickHandler;
             _multiplayerPanel.CreateRoomButton.OnPointerClickEvent += OnCreateRoomButtonClickHandler;
             _multiplayerPanel.StartGameButton.OnPointerClickEvent += OnStartGameButtonClickHandler;
+            _multiplayerPanel.OnRoomSelected += OnMultiplayerPanelRoomSelectedHandler;
+            _multiplayerPanel.LeaveRoomButton.OnPointerClickEvent += OnLeaveRoomButtonPointerClickEventHandler;
 
             _matchMaker.OnCurrentRoomChangeData += OnMatchMakerCurrentRoomChangeDataHandler;
             _matchMaker.OnError += OnMatchMakerErrorHandler;
@@ -48,6 +57,8 @@ namespace RTDef.Menu
             _matchMaker.OnRoomListChanged += OnMatchMakerRoomListChangedHandler;
             _matchMaker.OnReadyToStart += OnMatchMakerReadyToStartHandler;
             _matchMaker.OnLeftMyRoom += OnMatchMakerLeftRoom;
+
+            
         }
 
         public void Dispose()
@@ -56,6 +67,8 @@ namespace RTDef.Menu
             _multiplayerPanel.ExitButton.OnPointerClickEvent -= OnExitClickHandler;
             _multiplayerPanel.CreateRoomButton.OnPointerClickEvent -= OnCreateRoomButtonClickHandler;
             _multiplayerPanel.StartGameButton.OnPointerClickEvent -= OnStartGameButtonClickHandler;
+            _multiplayerPanel.OnRoomSelected -= OnMultiplayerPanelRoomSelectedHandler;
+            _multiplayerPanel.LeaveRoomButton.OnPointerClickEvent -= OnLeaveRoomButtonPointerClickEventHandler;
 
             _matchMaker.OnCurrentRoomChangeData -= OnMatchMakerCurrentRoomChangeDataHandler;
             _matchMaker.OnError -= OnMatchMakerErrorHandler;
@@ -74,21 +87,43 @@ namespace RTDef.Menu
 
         private void OnMatchMakerLeftRoom()
         {
-            _multiplayerPanel.StartGameButton.interactable = false;
+            Debug.Log("OnMatchMakerLeftRoom");
+            _multiplayerPanel.StartGameButton.Interactable = false;
+            _startGameButtonState = false;
+
+            _multiplayerPanel.LeaveRoomButton.Interactable = false;
+            _leaveRoomButtonState = false;
+
+            _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(false);
+            _roomInfoPanelState = false;
         }
 
         private void OnReadyForConfigureRoomHandler()
         {
-            _multiplayerPanel.CreateRoomButton.interactable = true;
+            Debug.Log("OnReadyForConfigureRoomHandler");
+            _multiplayerPanel.CreateRoomButton.Interactable = true;
+            _createRoomButtonState = true;
         }
 
         private void OnMatchMakerReadyToStartHandler()
         {
-            _multiplayerPanel.StartGameButton.interactable = true;
+            Debug.Log("OnMatchMakerReadyToStartHandler");
+            _multiplayerPanel.StartGameButton.Interactable = true;
+            _startGameButtonState = true;
         }
 
         private void OnMatchMakerRoomListChangedHandler(List<RoomInfo> roomsList)
         {
+            Debug.Log("OnMatchMakerRoomListChangedHandler");
+            if (roomsList.Count == 0)
+            {
+                _multiplayerPanel.RoomsListPanel.gameObject.SetActive(false);
+                _roomListPanelState = false;
+                return;
+            }
+
+            _multiplayerPanel.RoomsListPanel.gameObject.SetActive(true);
+            _roomListPanelState = true;
             _multiplayerPanel.FillRoomsList(roomsList);
         }
 
@@ -99,16 +134,32 @@ namespace RTDef.Menu
 
         private void OnMatchMakerCurrentRoomChangeDataHandler(Room room, int playersCount)
         {
-            _multiplayerPanel.ChangeCurrentRoomData(room, playersCount);
+            Debug.Log("OnMatchMakerCurrentRoomChangeDataHandler");
+            _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(true);
+            _roomInfoPanelState = true;
+            _multiplayerPanel.ChangeCurrentRoomData(room);
         }
 
         #endregion
 
         #region MultiplayerPanelButtons
 
+        private void OnLeaveRoomButtonPointerClickEventHandler()
+        {
+            _matchMaker.LeaveRoom();
+        }
+
+        private void OnMultiplayerPanelRoomSelectedHandler(string roomName)
+        {
+            Debug.Log("OnMultiplayerPanelRoomSelectedHandler");
+            _matchMaker.JoinRoom(roomName);
+        }
+
         private void OnCreateRoomButtonClickHandler()
         {
-            _multiplayerPanel.LeaveRoomButton.interactable = true;
+            Debug.Log("OnCreateRoomButtonClickHandler");
+            _multiplayerPanel.LeaveRoomButton.Interactable = true;
+            _leaveRoomButtonState = true;
             _matchMaker.CreateRoom(MAX_PLAYERS);
         }
 
@@ -128,18 +179,25 @@ namespace RTDef.Menu
 
         private void OnExitClickHandler()
         {
+            Debug.Log("OnExitClickHandler");
             _matchMaker.LeaveRoom();
             _multiplayerPanel.gameObject.SetActive(false);
             _startPanel.gameObject.SetActive(true);
         }
 
         #endregion
-        
+
         private void OnPanelEnableHandler()
         {
-            _multiplayerPanel.CreateRoomButton.interactable = false;
-            _multiplayerPanel.StartGameButton.interactable = false;
-            _multiplayerPanel.LeaveRoomButton.interactable = false;
+            Debug.Log("OnPanelEnableHandler");
+            _multiplayerPanel.CreateRoomButton.Interactable = _createRoomButtonState;
+            _multiplayerPanel.StartGameButton.Interactable = _startGameButtonState;
+            _multiplayerPanel.LeaveRoomButton.Interactable = _leaveRoomButtonState;
+
+            _multiplayerPanel.RoomsListPanel.gameObject.SetActive(_roomListPanelState);
+            _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(_roomInfoPanelState);
+
+            _matchMaker.Connect();
         }
 
         #endregion

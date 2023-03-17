@@ -26,11 +26,11 @@ namespace RTDef.Menu
             _gameState = gameState;
 
             _startPanelView = _panels.StartPanel;
-            _startPanelView.StartSingleGameButton.onClick.AddListener(OnStartSingleClickHandler);
-            _startPanelView.StartMultiplayerButton.onClick.AddListener(OnStartMultiplayerClickHandler);
-            _startPanelView.OptionsButton.onClick.AddListener(OnOptionsClickHandler);
-            _startPanelView.LoginButton.onClick.AddListener(OnLoginClickHandler);
-            _startPanelView.ExitGameButton.onClick.AddListener(OnExitClickHandler);
+            _startPanelView.StartSingleGameButton.OnPointerClickEvent += OnStartSingleClickHandler;
+            _startPanelView.StartMultiplayerButton.OnPointerClickEvent += OnStartMultiplayerClickHandler;
+            _startPanelView.OptionsButton.OnPointerClickEvent += OnOptionsClickHandler;
+            _startPanelView.LoginButton.OnPointerClickEvent += OnLoginClickHandler;
+            _startPanelView.ExitGameButton.OnPointerClickEvent += OnExitClickHandler;
             _startPanelView.OnEnableEvent += OnStartPanelViewEnableHandler;
 
             _startPanelView.gameObject.SetActive(true);
@@ -38,11 +38,11 @@ namespace RTDef.Menu
 
         public void Dispose()
         {
-            _startPanelView.StartSingleGameButton.onClick.RemoveListener(OnStartSingleClickHandler);
-            _startPanelView.StartMultiplayerButton.onClick.RemoveListener(OnStartMultiplayerClickHandler);
-            _startPanelView.OptionsButton.onClick.RemoveListener(OnOptionsClickHandler);
-            _startPanelView.LoginButton.onClick.RemoveListener(OnLoginClickHandler);
-            _startPanelView.ExitGameButton.onClick.RemoveListener(OnExitClickHandler);
+            _startPanelView.StartSingleGameButton.OnPointerClickEvent -= OnStartSingleClickHandler;
+            _startPanelView.StartMultiplayerButton.OnPointerClickEvent -= OnStartMultiplayerClickHandler;
+            _startPanelView.OptionsButton.OnPointerClickEvent -= OnOptionsClickHandler;
+            _startPanelView.LoginButton.OnPointerClickEvent -= OnLoginClickHandler;
+            _startPanelView.ExitGameButton.OnPointerClickEvent -= OnExitClickHandler;
             _startPanelView.OnEnableEvent -= OnStartPanelViewEnableHandler;
         }
 
@@ -53,7 +53,7 @@ namespace RTDef.Menu
 
         private void OnStartPanelViewEnableHandler()
         {
-            _startPanelView.StartMultiplayerButton.interactable = _gameState.IsClientLoggedIn;
+            _startPanelView.StartMultiplayerButton.Interactable = _gameState.IsClientLoggedIn;
         }
 
         private void OnStartSingleClickHandler()
