@@ -39,16 +39,6 @@ namespace RTDef.Photon
         #endregion
 
 
-        #region Mono
-
-        //private void Start()
-        //{
-        //    Connect();
-        //}
-
-        #endregion
-
-
         #region PUN Callbacks
 
         public override void OnConnectedToMaster()
@@ -101,11 +91,11 @@ namespace RTDef.Photon
             OnError?.Invoke(message);
         }
 
-        public override void OnCreatedRoom()
-        {
-            base.OnCreatedRoom();
-            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
-        }
+        //public override void OnCreatedRoom()
+        //{
+        //    base.OnCreatedRoom();
+        //    OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
+        //}
 
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
@@ -116,7 +106,7 @@ namespace RTDef.Photon
         public override void OnLeftRoom()
         {
             base.OnLeftRoom();
-            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
+            //OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
             OnLeftMyRoom?.Invoke();
         }
 
@@ -127,11 +117,13 @@ namespace RTDef.Photon
 
         public void JoinRoom(string roomName)
         {
+            //PhotonNetwork.LocalPlayer.NickName = UserName;
             PhotonNetwork.JoinRoom(roomName);// next --> OnJoinedRoom
         }
 
         public void CreateRoom(byte maxPlayers)
         {
+            //PhotonNetwork.LocalPlayer.NickName = UserName;
             ConfigureRoom(out var roomName, out var roomOptions, maxPlayers);
             PhotonNetwork.CreateRoom(roomName, roomOptions);// next --> OnJoinedRoom
         }
@@ -148,6 +140,7 @@ namespace RTDef.Photon
         {
             if (PhotonNetwork.IsConnected)
             {
+                OnReadyForConfigureRoom?.Invoke();
                 return;
             }
 
@@ -159,7 +152,11 @@ namespace RTDef.Photon
         private void ConfigureRoom(out string roomName, out RoomOptions roomOptions, byte maxPlayers)
         {
             roomName = $"Room {Random.Range(ROOM_NUMBER_MIN, ROOM_NUMBER_MAX)}";
-            roomOptions = new RoomOptions { MaxPlayers = maxPlayers, PlayerTtl = PLAYER_TTL };
+            roomOptions = new RoomOptions {
+                MaxPlayers = maxPlayers,
+                PlayerTtl = PLAYER_TTL,
+                
+            };
         }
 
         #endregion

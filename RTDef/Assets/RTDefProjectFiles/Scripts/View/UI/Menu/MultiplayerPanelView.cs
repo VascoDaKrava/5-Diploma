@@ -62,7 +62,7 @@ namespace RTDef.Menu
             foreach (var room in _roomsList)
             {
                 room.OnRoomClick -= OnRoomClickHandler;
-                Destroy(room.transform);
+                Destroy(room.gameObject);
             }
 
             _roomsList.Clear();
