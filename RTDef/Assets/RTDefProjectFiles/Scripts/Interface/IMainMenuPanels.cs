@@ -1,3 +1,4 @@
+using RTDef.Data.Text;
 using RTDef.Menu;
 
 
@@ -10,5 +11,6 @@ namespace RTDef.Abstraction
         OptionsPanelView OptionsPanel { get; }
         LoginPanelView LoginPanel { get; }
         MultiplayerPanelView MultiplayerPanel { get; }
+        MainMenuTitles Titles { get; }
     }
 }

@@ -15,10 +15,17 @@ MonoBehaviour:
   <NormalColor>k__BackingField: {r: 1, g: 1, b: 1, a: 1}
   <ErrorColor>k__BackingField: {r: 1, g: 0, b: 0, a: 1}
   <SuccessColor>k__BackingField: {r: 0, g: 1, b: 0, a: 1}
-  <StartPanelNotLoggedInTitle>k__BackingField: Please login for use multiplayer and
-    save your progress
-  <StartPanelLoggedInTitle>k__BackingField: Let's play
+  <StartPanelTitle>k__BackingField: Welcome to RealTime Defence!
+  <StartPanelNotLoggedInMessage>k__BackingField: Please login for use multiplayer
+    and save your progress
+  <StartPanelLoggedInMessage>k__BackingField: Let's play
   <OptionsPanelTitle>k__BackingField: OPTIONS
   <MultiplayerPanelTitle>k__BackingField: MULTIPLAYER
-  <LoginPanelTitleLoggedIn>k__BackingField: You are logged in
-  <LoginPanelTitleNotLoggedIn>k__BackingField: Please login or register
+  <MultiplayerPanelConnecting>k__BackingField: Connecting to Photon-server
+  <MultiplayerPanelCreateRoom>k__BackingField: Create new room for playing
+  <MultiplayerPanelJoin>k__BackingField: Join exist room or create new
+  <MultiplayerPanelOtherStart>k__BackingField: Wait for Master-player starts
+  <MultiplayerPanelStart>k__BackingField: You can start now
+  <LoginPanelTitle>k__BackingField: PROFILE
+  <LoginPanelLoggedInMessage>k__BackingField: You are logged in
+  <LoginPanelNotLoggedInMessage>k__BackingField: Please login or register

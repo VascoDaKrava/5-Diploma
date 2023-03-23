@@ -9,7 +9,8 @@ namespace RTDef.Menu
 
         #region Properties
 
-        [field: SerializeField] public TextMeshProUGUI InfoTextField { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI Title { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI Message { get; private set; }
 
         #endregion
 

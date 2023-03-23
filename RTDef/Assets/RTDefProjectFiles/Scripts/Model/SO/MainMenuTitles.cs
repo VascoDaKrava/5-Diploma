@@ -10,11 +10,21 @@ namespace RTDef.Data.Text
         [field: SerializeField] public Color ErrorColor { get; private set; }
         [field: SerializeField] public Color SuccessColor { get; private set; }
 
-        [field: SerializeField] public string StartPanelNotLoggedInTitle { get; private set; }
-        [field: SerializeField] public string StartPanelLoggedInTitle { get; private set; }
+        [field: SerializeField] public string StartPanelTitle { get; private set; }
+        [field: SerializeField] public string StartPanelNotLoggedInMessage { get; private set; }
+        [field: SerializeField] public string StartPanelLoggedInMessage { get; private set; }
+        
         [field: SerializeField] public string OptionsPanelTitle { get; private set; }
+        
         [field: SerializeField] public string MultiplayerPanelTitle { get; private set; }
-        [field: SerializeField] public string LoginPanelTitleLoggedIn { get; private set; }
-        [field: SerializeField] public string LoginPanelTitleNotLoggedIn { get; private set; }
+        [field: SerializeField] public string MultiplayerPanelConnecting { get; private set; }
+        [field: SerializeField] public string MultiplayerPanelCreateRoom { get; private set; }
+        [field: SerializeField] public string MultiplayerPanelJoin { get; private set; }
+        [field: SerializeField] public string MultiplayerPanelOtherStart { get; private set; }
+        [field: SerializeField] public string MultiplayerPanelStart { get; private set; }
+
+        [field: SerializeField] public string LoginPanelTitle { get; private set; }
+        [field: SerializeField] public string LoginPanelLoggedInMessage { get; private set; }
+        [field: SerializeField] public string LoginPanelNotLoggedInMessage { get; private set; }
     }
 }

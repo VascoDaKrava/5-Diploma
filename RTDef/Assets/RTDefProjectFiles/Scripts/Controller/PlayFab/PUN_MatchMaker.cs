@@ -76,7 +76,11 @@ namespace RTDef.Photon
             base.OnJoinedRoom();
             PhotonNetwork.LocalPlayer.NickName = UserName;
             OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
-            OnReadyToStart?.Invoke();
+
+            if (PhotonNetwork.LocalPlayer.IsMasterClient)
+            {
+                OnReadyToStart?.Invoke();
+            }
         }
 
         public override void OnJoinRandomFailed(short returnCode, string message)
@@ -91,12 +95,6 @@ namespace RTDef.Photon
             OnError?.Invoke(message);
         }
 
-        //public override void OnCreatedRoom()
-        //{
-        //    base.OnCreatedRoom();
-        //    OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
-        //}
-
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             base.OnPlayerLeftRoom(otherPlayer);
@@ -106,7 +104,6 @@ namespace RTDef.Photon
         public override void OnLeftRoom()
         {
             base.OnLeftRoom();
-            //OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
             OnLeftMyRoom?.Invoke();
         }
 
@@ -117,13 +114,11 @@ namespace RTDef.Photon
 
         public void JoinRoom(string roomName)
         {
-            //PhotonNetwork.LocalPlayer.NickName = UserName;
             PhotonNetwork.JoinRoom(roomName);// next --> OnJoinedRoom
         }
 
         public void CreateRoom(byte maxPlayers)
         {
-            //PhotonNetwork.LocalPlayer.NickName = UserName;
             ConfigureRoom(out var roomName, out var roomOptions, maxPlayers);
             PhotonNetwork.CreateRoom(roomName, roomOptions);// next --> OnJoinedRoom
         }
@@ -152,10 +147,11 @@ namespace RTDef.Photon
         private void ConfigureRoom(out string roomName, out RoomOptions roomOptions, byte maxPlayers)
         {
             roomName = $"Room {Random.Range(ROOM_NUMBER_MIN, ROOM_NUMBER_MAX)}";
-            roomOptions = new RoomOptions {
+            roomOptions = new RoomOptions
+            {
                 MaxPlayers = maxPlayers,
                 PlayerTtl = PLAYER_TTL,
-                
+
             };
         }
 

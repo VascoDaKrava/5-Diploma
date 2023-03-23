@@ -1,6 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
 using RTDef.Abstraction;
+using RTDef.Data.Text;
 using RTDef.Photon;
 using System;
 using System.Collections.Generic;
@@ -12,23 +13,32 @@ namespace RTDef.Menu
     public sealed class MultiplayerPanelController : IDisposable
     {
 
+        #region Enums
+
+        private enum MenuState
+        {
+            None = 0,
+            InactiveAll = 1,
+            ReadyToCreateNewRoom = 2,
+            ShowRoomList = 3,
+            ShowRoomInfo = 4,
+            ReadyToStart = 5,
+        }
+
+        #endregion
+
+
         #region Fields
 
         private const byte MAX_PLAYERS = 4;
 
         private readonly MultiplayerPanelView _multiplayerPanel;
         private readonly StartPanelView _startPanel;
+        private readonly MainMenuTitles _titles;
         private readonly IGameState _gameState;
         private readonly InfoPanelController _infoPanel;
 
         private PUN_MatchMaker _matchMaker;
-
-        //private bool _createRoomButtonState;
-        //private bool _leaveRoomButtonState;
-        //private bool _startGameButtonState;
-
-        //private bool _roomListPanelState;
-        //private bool _roomInfoPanelState;
 
         private MenuState _currentMenuState = MenuState.None;
 
@@ -44,6 +54,8 @@ namespace RTDef.Menu
 
             _multiplayerPanel = panels.MultiplayerPanel;
             _startPanel = panels.StartPanel;
+
+            _titles = panels.Titles;
 
             _matchMaker = _multiplayerPanel.MatchMaker;
 
@@ -88,32 +100,17 @@ namespace RTDef.Menu
 
         private void OnMatchMakerLeftRoom()
         {
-            Debug.Log("OnMatchMakerLeftRoom");
-            //_multiplayerPanel.StartGameButton.Interactable = false;
-            //_startGameButtonState = false;
-
-            //_multiplayerPanel.LeaveRoomButton.Interactable = false;
-            //_leaveRoomButtonState = false;
-
-            //_multiplayerPanel.RoomInfoPanel.gameObject.SetActive(false);
-            //_roomInfoPanelState = false;
             ChangeMenuState(MenuState.ReadyToCreateNewRoom);
         }
 
         private void OnReadyForConfigureRoomHandler()
         {
-            //Debug.Log("OnReadyForConfigureRoomHandler");
-            //_multiplayerPanel.CreateRoomButton.Interactable = true;
-            //_createRoomButtonState = true;
             _matchMaker.UserName = _gameState.ClientUserName;
             ChangeMenuState(MenuState.ReadyToCreateNewRoom);
         }
 
         private void OnMatchMakerReadyToStartHandler()
         {
-            //Debug.Log("OnMatchMakerReadyToStartHandler");
-            //_multiplayerPanel.StartGameButton.Interactable = true;
-            //_startGameButtonState = true;
             ChangeMenuState(MenuState.ReadyToStart);
         }
 
@@ -133,24 +130,12 @@ namespace RTDef.Menu
             else
             {
                 _multiplayerPanel.FillRoomsList(roomsList);
-                
+
                 if (roomsList.Count > 0)
                 {
                     ChangeMenuState(MenuState.ShowRoomList);
                 }
             }
-
-            //Debug.Log("OnMatchMakerRoomListChangedHandler");
-            //if (roomsList.Count == 0)
-            //{
-            //    _multiplayerPanel.RoomsListPanel.gameObject.SetActive(false);
-            //    _roomListPanelState = false;
-            //    return;
-            //}
-
-            //_multiplayerPanel.RoomsListPanel.gameObject.SetActive(true);
-            //_roomListPanelState = true;
-            //_multiplayerPanel.FillRoomsList(roomsList);
         }
 
         private void OnMatchMakerErrorHandler(string message)
@@ -160,9 +145,6 @@ namespace RTDef.Menu
 
         private void OnMatchMakerCurrentRoomChangeDataHandler(Room room, int playersCount)
         {
-            //Debug.Log("OnMatchMakerCurrentRoomChangeDataHandler");
-            //_multiplayerPanel.RoomInfoPanel.gameObject.SetActive(true);
-            //_roomInfoPanelState = true;
             ChangeMenuState(MenuState.ShowRoomInfo);
             _multiplayerPanel.ChangeCurrentRoomData(room);
         }
@@ -178,16 +160,11 @@ namespace RTDef.Menu
 
         private void OnMultiplayerPanelRoomSelectedHandler(string roomName)
         {
-            //Debug.Log("OnMultiplayerPanelRoomSelectedHandler");
             _matchMaker.JoinRoom(roomName);
-            //_leaveRoomButtonState = true;
         }
 
         private void OnCreateRoomButtonClickHandler()
         {
-            //Debug.Log("OnCreateRoomButtonClickHandler");
-            //_multiplayerPanel.LeaveRoomButton.Interactable = true;
-            //_leaveRoomButtonState = true;
             _matchMaker.CreateRoom(MAX_PLAYERS);
         }
 
@@ -207,7 +184,6 @@ namespace RTDef.Menu
 
         private void OnExitClickHandler()
         {
-            //Debug.Log("OnExitClickHandler");
             ChangeMenuState(MenuState.None);
             _matchMaker.LeaveRoom();
             _multiplayerPanel.gameObject.SetActive(false);
@@ -218,15 +194,7 @@ namespace RTDef.Menu
 
         private void OnPanelEnableHandler()
         {
-            //Debug.Log("OnPanelEnableHandler");
             ChangeMenuState(MenuState.InactiveAll);
-            //_multiplayerPanel.CreateRoomButton.Interactable = _createRoomButtonState;
-            //_multiplayerPanel.StartGameButton.Interactable = _startGameButtonState;
-            //_multiplayerPanel.LeaveRoomButton.Interactable = _leaveRoomButtonState;
-
-            //_multiplayerPanel.RoomsListPanel.gameObject.SetActive(_roomListPanelState);
-            //_multiplayerPanel.RoomInfoPanel.gameObject.SetActive(_roomInfoPanelState);
-
             _matchMaker.Connect();
         }
 
@@ -247,6 +215,7 @@ namespace RTDef.Menu
                     _multiplayerPanel.LeaveRoomButton.Interactable = false;
                     _multiplayerPanel.RoomsListPanel.gameObject.SetActive(true);
                     _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(false);
+                    _infoPanel.ShowMessage(_titles.MultiplayerPanelJoin);
                     break;
                 case MenuState.ShowRoomInfo:
                     _multiplayerPanel.CreateRoomButton.Interactable = false;
@@ -254,6 +223,7 @@ namespace RTDef.Menu
                     _multiplayerPanel.LeaveRoomButton.Interactable = true;
                     _multiplayerPanel.RoomsListPanel.gameObject.SetActive(false);
                     _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(true);
+                    _infoPanel.ShowMessage(_titles.MultiplayerPanelOtherStart);
                     break;
                 case MenuState.ReadyToCreateNewRoom:
                     _multiplayerPanel.CreateRoomButton.Interactable = true;
@@ -261,6 +231,7 @@ namespace RTDef.Menu
                     _multiplayerPanel.LeaveRoomButton.Interactable = false;
                     _multiplayerPanel.RoomsListPanel.gameObject.SetActive(false);
                     _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(false);
+                    _infoPanel.ShowMessage(_titles.MultiplayerPanelCreateRoom);
                     break;
                 case MenuState.ReadyToStart:
                     _multiplayerPanel.CreateRoomButton.Interactable = false;
@@ -268,6 +239,7 @@ namespace RTDef.Menu
                     _multiplayerPanel.LeaveRoomButton.Interactable = true;
                     _multiplayerPanel.RoomsListPanel.gameObject.SetActive(false);
                     _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(true);
+                    _infoPanel.ShowMessage(_titles.MultiplayerPanelStart);
                     break;
                 case MenuState.None:
                     break;
@@ -277,20 +249,11 @@ namespace RTDef.Menu
                     _multiplayerPanel.LeaveRoomButton.Interactable = false;
                     _multiplayerPanel.RoomsListPanel.gameObject.SetActive(false);
                     _multiplayerPanel.RoomInfoPanel.gameObject.SetActive(false);
+                    _infoPanel.ShowMessage(_titles.MultiplayerPanelConnecting);
                     break;
                 default:
                     break;
             }
-        }
-
-        private enum MenuState
-        {
-            None = 0,
-            InactiveAll = 1,
-            ReadyToCreateNewRoom = 2,
-            ShowRoomList = 3,
-            ShowRoomInfo = 4,
-            ReadyToStart = 5,
         }
 
         #endregion

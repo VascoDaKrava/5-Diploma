@@ -1,3 +1,4 @@
+using PlayFab.AuthenticationModels;
 using RTDef.Abstraction;
 using RTDef.Data.Text;
 using System;
@@ -10,8 +11,8 @@ namespace RTDef.Menu
 
         #region Fields
 
-        private readonly IMainMenuPanels _panels;
         private readonly MainMenuTitles _titles;
+        private readonly IMainMenuPanels _panels;
         private readonly IGameState _gameState;
         private readonly InfoPanelView _info;
 
@@ -20,10 +21,10 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public InfoPanelController(IMainMenuPanels panels, MainMenuTitles titles, IGameState gameState)
+        public InfoPanelController(IMainMenuPanels panels, IGameState gameState)
         {
             _panels = panels;
-            _titles = titles;
+            _titles = panels.Titles;
             _gameState = gameState;
             _info = panels.InfoPanel;
 
@@ -48,41 +49,45 @@ namespace RTDef.Menu
 
         public void ShowError(string message)
         {
-            _info.InfoTextField.color = _titles.ErrorColor;
-            _info.InfoTextField.text = message;
+            _info.Message.color = _titles.ErrorColor;
+            _info.Message.text = message;
         }
 
         public void ShowMessage(string message)
         {
-            _info.InfoTextField.color = _titles.NormalColor;
-            _info.InfoTextField.text = message;
+            _info.Message.color = _titles.NormalColor;
+            _info.Message.text = message;
         }
 
         public void ShowSuccess(string message)
         {
-            _info.InfoTextField.color = _titles.SuccessColor;
-            _info.InfoTextField.text = message;
+            _info.Message.color = _titles.SuccessColor;
+            _info.Message.text = message;
         }
 
         private void OptionsPanelOnEnableHandler()
         {
-            ShowMessage(_titles.OptionsPanelTitle);
+            _info.Title.text = _titles.OptionsPanelTitle;
+            ShowMessage("");
         }
 
         private void MultiplayerPanelOnEnableHandler()
         {
-            ShowMessage(_titles.MultiplayerPanelTitle);
+            _info.Title.text = _titles.MultiplayerPanelTitle;
+            ShowMessage("");
         }
 
         private void LoginPanelOnEnableHandler()
         {
-            var message = _gameState.IsClientLoggedIn ? _titles.LoginPanelTitleLoggedIn : _titles.LoginPanelTitleNotLoggedIn;
+            _info.Title.text = _titles.LoginPanelTitle;
+            var message = _gameState.IsClientLoggedIn ? _titles.LoginPanelLoggedInMessage : _titles.LoginPanelNotLoggedInMessage;
             ShowMessage(message);
         }
 
         private void StartPanelOnEnableHandler()
         {
-            var message = _gameState.IsClientLoggedIn ? $"Hello, {_gameState.ClientUserName}! {_titles.StartPanelLoggedInTitle}" : _titles.StartPanelNotLoggedInTitle;
+            _info.Title.text = _titles.StartPanelTitle;
+            var message = _gameState.IsClientLoggedIn ? $"Hello, {_gameState.ClientUserName}! {_titles.StartPanelLoggedInMessage}" : _titles.StartPanelNotLoggedInMessage;
             ShowMessage(message);
         }
 

@@ -28,9 +28,9 @@ namespace RTDef.Menu
         [field: SerializeField] public OptionsPanelView OptionsPanel { get; private set; }
         [field: SerializeField] public LoginPanelView LoginPanel { get; private set; }
         [field: SerializeField] public MultiplayerPanelView MultiplayerPanel { get; private set; }
+        [field: SerializeField] public MainMenuTitles Titles { get; private set; }
 
         [field: SerializeField] private SoundResources SoundResources { get; set; }
-        [field: SerializeField] private MainMenuTitles Titles { get; set; }
 
         public bool IsClientLoggedIn => _loginPanelController.IsClientLoggedIn;
         public string ClientUserName => _loginPanelController.ClientUserName;
@@ -45,7 +45,7 @@ namespace RTDef.Menu
             HideAllPanels();
             LoadAudioSettings();
 
-            var infoPanelController = new InfoPanelController(this, Titles, this);
+            var infoPanelController = new InfoPanelController(this, this);
             _loginPanelController = new LoginPanelController(this, infoPanelController);
 
             new StartPanelController(this, this);

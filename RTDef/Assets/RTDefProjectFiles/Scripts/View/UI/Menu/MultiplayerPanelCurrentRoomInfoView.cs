@@ -27,9 +27,9 @@ namespace RTDef.Menu
 
             string playersList = "";
 
-            foreach (var player in players)
+            for (int i = 0; i < players.Count; i++)
             {
-                playersList += $"{player.ActorNumber} {player.NickName} {(player.IsMasterClient ? "(Master)" : "")}\n";
+                playersList += $"{i+1}. {players[i].NickName} (ID {players[i].ActorNumber}) {(players[i].IsMasterClient ? "(Master)" : "")}\n";
             }
 
             _players.text = playersList;
