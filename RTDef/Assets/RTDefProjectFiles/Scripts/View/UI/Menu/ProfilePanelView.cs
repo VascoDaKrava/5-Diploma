@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace RTDef.Menu
 {
-    public sealed class LoginPanelView : MonoLifeCallBacks
+    public sealed class ProfilePanelView : MonoLifeCallBacks
     {
 
         #region Properties

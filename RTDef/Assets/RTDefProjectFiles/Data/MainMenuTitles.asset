@@ -26,6 +26,6 @@ MonoBehaviour:
   <MultiplayerPanelJoin>k__BackingField: Join exist room or create new
   <MultiplayerPanelOtherStart>k__BackingField: Wait for Master-player starts
   <MultiplayerPanelStart>k__BackingField: You can start now
-  <LoginPanelTitle>k__BackingField: PROFILE
-  <LoginPanelLoggedInMessage>k__BackingField: You are logged in
-  <LoginPanelNotLoggedInMessage>k__BackingField: Please login or register
+  <ProfilePanelTitle>k__BackingField: PROFILE
+  <ProfilePanelLoggedInMessage>k__BackingField: You are logged in
+  <ProfilePanelNotLoggedInMessage>k__BackingField: Please login or register

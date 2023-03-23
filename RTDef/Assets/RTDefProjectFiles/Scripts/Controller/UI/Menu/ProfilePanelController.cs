@@ -5,7 +5,7 @@ using System;
 
 namespace RTDef.Menu
 {
-    public sealed class LoginPanelController : IDisposable
+    public sealed class ProfilePanelController : IDisposable
     {
 
         #region Fields
@@ -19,7 +19,7 @@ namespace RTDef.Menu
         private const string EMAIL_INCORRECT = "Email incorrect!";
 
         private readonly StartPanelView _startPanel;
-        private readonly LoginPanelView _loginPanel;
+        private readonly ProfilePanelView _profilePanel;
         private readonly InfoPanelController _infoPanel;
         private readonly DataServerConnector _dataServer;
 
@@ -36,28 +36,28 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public LoginPanelController(IMainMenuPanels mainMenuPanels, InfoPanelController infoPanel)
+        public ProfilePanelController(IMainMenuPanels mainMenuPanels, InfoPanelController infoPanel)
         {
             _startPanel = mainMenuPanels.StartPanel;
-            _loginPanel = mainMenuPanels.LoginPanel;
+            _profilePanel = mainMenuPanels.ProfilePanel;
             _infoPanel = infoPanel;
 
             _dataServer = new DataServerConnector(_infoPanel);
 
-            _loginPanel.OnEnableEvent += LoginPanelOnEnableHandler;
-            _loginPanel.ExitButton.OnPointerClickEvent += OnExitClickHandler;
-            _loginPanel.RegistrationToggle.onValueChanged.AddListener(OnRegistrationToggleValueChangedHandler);
-            _loginPanel.ActionButton.OnPointerClickEvent += OnActionButtonClickHandler;
+            _profilePanel.OnEnableEvent += ProfilePanelOnEnableHandler;
+            _profilePanel.ExitButton.OnPointerClickEvent += OnExitClickHandler;
+            _profilePanel.RegistrationToggle.onValueChanged.AddListener(OnRegistrationToggleValueChangedHandler);
+            _profilePanel.ActionButton.OnPointerClickEvent += OnActionButtonClickHandler;
 
             _dataServer.OnLoginSuccess += OnDataServerLoginSuccessHandler;
         }
 
         public void Dispose()
         {
-            _loginPanel.OnEnableEvent -= LoginPanelOnEnableHandler;
-            _loginPanel.ExitButton.OnPointerClickEvent -= OnExitClickHandler;
-            _loginPanel.RegistrationToggle.onValueChanged.RemoveListener(OnRegistrationToggleValueChangedHandler);
-            _loginPanel.ActionButton.OnPointerClickEvent -= OnActionButtonClickHandler;
+            _profilePanel.OnEnableEvent -= ProfilePanelOnEnableHandler;
+            _profilePanel.ExitButton.OnPointerClickEvent -= OnExitClickHandler;
+            _profilePanel.RegistrationToggle.onValueChanged.RemoveListener(OnRegistrationToggleValueChangedHandler);
+            _profilePanel.ActionButton.OnPointerClickEvent -= OnActionButtonClickHandler;
 
             _dataServer.OnLoginSuccess -= OnDataServerLoginSuccessHandler;
         }
@@ -77,8 +77,8 @@ namespace RTDef.Menu
             if (IsClientLoggedIn)
             {
                 _dataServer.Logout();
-                _loginPanel.gameObject.SetActive(false);
-                _loginPanel.gameObject.SetActive(true);
+                _profilePanel.gameObject.SetActive(false);
+                _profilePanel.gameObject.SetActive(true);
                 return;
             }
 
@@ -87,30 +87,30 @@ namespace RTDef.Menu
                 return;
             }
 
-            if (_loginPanel.RegistrationToggle.isOn)
+            if (_profilePanel.RegistrationToggle.isOn)
             {
-                _dataServer.Register(_loginPanel.LoginInputField.text, _loginPanel.PasswordInputField.text, _loginPanel.EmailInputField.text);
+                _dataServer.Register(_profilePanel.LoginInputField.text, _profilePanel.PasswordInputField.text, _profilePanel.EmailInputField.text);
             }
             else
             {
-                _dataServer.Login(_loginPanel.LoginInputField.text, _loginPanel.PasswordInputField.text);
+                _dataServer.Login(_profilePanel.LoginInputField.text, _profilePanel.PasswordInputField.text);
             }
         }
 
         private void OnRegistrationToggleValueChangedHandler(bool state)
         {
-            _loginPanel.EmailInputField.gameObject.SetActive(state);
-            _loginPanel.ActionButtonText.text = state ? REGISTER_BTN_LABLE : LOGIN_BTN_LABLE;
+            _profilePanel.EmailInputField.gameObject.SetActive(state);
+            _profilePanel.ActionButtonText.text = state ? REGISTER_BTN_LABLE : LOGIN_BTN_LABLE;
         }
 
-        private void LoginPanelOnEnableHandler()
+        private void ProfilePanelOnEnableHandler()
         {
             SetInteractions(IsClientLoggedIn);
         }
 
         private void OnExitClickHandler()
         {
-            _loginPanel.gameObject.SetActive(false);
+            _profilePanel.gameObject.SetActive(false);
             _startPanel.gameObject.SetActive(true);
         }
 
@@ -120,19 +120,19 @@ namespace RTDef.Menu
         /// <returns>True if all is OK. False if something wrong</returns>
         private bool CheckInput()
         {
-            if (string.IsNullOrEmpty(_loginPanel.LoginInputField.text))
+            if (string.IsNullOrEmpty(_profilePanel.LoginInputField.text))
             {
                 _infoPanel.ShowError(LOGIN_INCORRECT);
                 return false;
             }
 
-            if (string.IsNullOrEmpty(_loginPanel.PasswordInputField.text))
+            if (string.IsNullOrEmpty(_profilePanel.PasswordInputField.text))
             {
                 _infoPanel.ShowError(PASSWORD_INCORRECT);
                 return false;
             }
 
-            if (string.IsNullOrEmpty(_loginPanel.EmailInputField.text) && _loginPanel.RegistrationToggle.isOn)
+            if (string.IsNullOrEmpty(_profilePanel.EmailInputField.text) && _profilePanel.RegistrationToggle.isOn)
             {
                 _infoPanel.ShowError(EMAIL_INCORRECT);
                 return false;
@@ -147,18 +147,18 @@ namespace RTDef.Menu
         /// <param name="isLoggedin">Is loggedin</param>
         private void SetInteractions(bool isLoggedin)
         {
-            _loginPanel.RegistrationToggle.interactable = !isLoggedin;
-            _loginPanel.LoginInputField.interactable = !isLoggedin;
-            _loginPanel.PasswordInputField.interactable = !isLoggedin;
-            _loginPanel.EmailInputField.interactable = !isLoggedin;
+            _profilePanel.RegistrationToggle.interactable = !isLoggedin;
+            _profilePanel.LoginInputField.interactable = !isLoggedin;
+            _profilePanel.PasswordInputField.interactable = !isLoggedin;
+            _profilePanel.EmailInputField.interactable = !isLoggedin;
 
             if (isLoggedin)
             {
-                _loginPanel.ActionButtonText.text = LOGOUT_BTN_LABLE;
+                _profilePanel.ActionButtonText.text = LOGOUT_BTN_LABLE;
             }
             else
             {
-                OnRegistrationToggleValueChangedHandler(_loginPanel.RegistrationToggle.isOn);
+                OnRegistrationToggleValueChangedHandler(_profilePanel.RegistrationToggle.isOn);
             }
         }
 

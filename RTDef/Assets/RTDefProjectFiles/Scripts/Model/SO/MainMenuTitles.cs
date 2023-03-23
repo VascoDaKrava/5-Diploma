@@ -23,8 +23,8 @@ namespace RTDef.Data.Text
         [field: SerializeField] public string MultiplayerPanelOtherStart { get; private set; }
         [field: SerializeField] public string MultiplayerPanelStart { get; private set; }
 
-        [field: SerializeField] public string LoginPanelTitle { get; private set; }
-        [field: SerializeField] public string LoginPanelLoggedInMessage { get; private set; }
-        [field: SerializeField] public string LoginPanelNotLoggedInMessage { get; private set; }
+        [field: SerializeField] public string ProfilePanelTitle { get; private set; }
+        [field: SerializeField] public string ProfilePanelLoggedInMessage { get; private set; }
+        [field: SerializeField] public string ProfilePanelNotLoggedInMessage { get; private set; }
     }
 }

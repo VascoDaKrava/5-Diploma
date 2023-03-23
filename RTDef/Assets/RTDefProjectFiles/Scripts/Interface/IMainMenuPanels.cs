@@ -9,7 +9,7 @@ namespace RTDef.Abstraction
         InfoPanelView InfoPanel { get; }
         StartPanelView StartPanel { get; }
         OptionsPanelView OptionsPanel { get; }
-        LoginPanelView LoginPanel { get; }
+        ProfilePanelView ProfilePanel { get; }
         MultiplayerPanelView MultiplayerPanel { get; }
         MainMenuTitles Titles { get; }
     }

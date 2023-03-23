@@ -29,7 +29,7 @@ namespace RTDef.Menu
             _startPanelView.StartSingleGameButton.OnPointerClickEvent += OnStartSingleClickHandler;
             _startPanelView.StartMultiplayerButton.OnPointerClickEvent += OnStartMultiplayerClickHandler;
             _startPanelView.OptionsButton.OnPointerClickEvent += OnOptionsClickHandler;
-            _startPanelView.LoginButton.OnPointerClickEvent += OnLoginClickHandler;
+            _startPanelView.ProfileButton.OnPointerClickEvent += OnLoginClickHandler;
             _startPanelView.ExitGameButton.OnPointerClickEvent += OnExitClickHandler;
             _startPanelView.OnEnableEvent += OnStartPanelViewEnableHandler;
 
@@ -41,7 +41,7 @@ namespace RTDef.Menu
             _startPanelView.StartSingleGameButton.OnPointerClickEvent -= OnStartSingleClickHandler;
             _startPanelView.StartMultiplayerButton.OnPointerClickEvent -= OnStartMultiplayerClickHandler;
             _startPanelView.OptionsButton.OnPointerClickEvent -= OnOptionsClickHandler;
-            _startPanelView.LoginButton.OnPointerClickEvent -= OnLoginClickHandler;
+            _startPanelView.ProfileButton.OnPointerClickEvent -= OnLoginClickHandler;
             _startPanelView.ExitGameButton.OnPointerClickEvent -= OnExitClickHandler;
             _startPanelView.OnEnableEvent -= OnStartPanelViewEnableHandler;
         }
@@ -78,7 +78,7 @@ namespace RTDef.Menu
         private void OnLoginClickHandler()
         {
             _startPanelView.gameObject.SetActive(false);
-            _panels.LoginPanel.gameObject.SetActive(true);
+            _panels.ProfilePanel.gameObject.SetActive(true);
         }
 
         private void OnExitClickHandler()

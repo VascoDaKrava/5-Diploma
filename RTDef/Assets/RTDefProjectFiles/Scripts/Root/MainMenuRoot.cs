@@ -12,7 +12,7 @@ namespace RTDef.Menu
 
         #region Fields
 
-        private LoginPanelController _loginPanelController;
+        private ProfilePanelController _profilePanelController;
 
         #endregion
 
@@ -26,14 +26,14 @@ namespace RTDef.Menu
         [field: SerializeField] public InfoPanelView InfoPanel { get; private set; }
         [field: SerializeField] public StartPanelView StartPanel { get; private set; }
         [field: SerializeField] public OptionsPanelView OptionsPanel { get; private set; }
-        [field: SerializeField] public LoginPanelView LoginPanel { get; private set; }
+        [field: SerializeField] public ProfilePanelView ProfilePanel { get; private set; }
         [field: SerializeField] public MultiplayerPanelView MultiplayerPanel { get; private set; }
         [field: SerializeField] public MainMenuTitles Titles { get; private set; }
 
         [field: SerializeField] private SoundResources SoundResources { get; set; }
 
-        public bool IsClientLoggedIn => _loginPanelController.IsClientLoggedIn;
-        public string ClientUserName => _loginPanelController.ClientUserName;
+        public bool IsClientLoggedIn => _profilePanelController.IsClientLoggedIn;
+        public string ClientUserName => _profilePanelController.ClientUserName;
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace RTDef.Menu
             LoadAudioSettings();
 
             var infoPanelController = new InfoPanelController(this, this);
-            _loginPanelController = new LoginPanelController(this, infoPanelController);
+            _profilePanelController = new ProfilePanelController(this, infoPanelController);
 
             new StartPanelController(this, this);
             new OptionsPanelController(StartPanel, OptionsPanel, SoundResources);
@@ -66,7 +66,7 @@ namespace RTDef.Menu
             StartPanel.gameObject.SetActive(false);
             MultiplayerPanel.gameObject.SetActive(false);
             OptionsPanel.gameObject.SetActive(false);
-            LoginPanel.gameObject.SetActive(false);
+            ProfilePanel.gameObject.SetActive(false);
         }
 
         private void LoadAudioSettings()

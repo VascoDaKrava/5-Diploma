@@ -29,7 +29,7 @@ namespace RTDef.Menu
             _info = panels.InfoPanel;
 
             _panels.StartPanel.OnEnableEvent += StartPanelOnEnableHandler;
-            _panels.LoginPanel.OnEnableEvent += LoginPanelOnEnableHandler;
+            _panels.ProfilePanel.OnEnableEvent += ProfilePanelOnEnableHandler;
             _panels.MultiplayerPanel.OnEnableEvent += MultiplayerPanelOnEnableHandler;
             _panels.OptionsPanel.OnEnableEvent += OptionsPanelOnEnableHandler;
         }
@@ -37,7 +37,7 @@ namespace RTDef.Menu
         public void Dispose()
         {
             _panels.StartPanel.OnEnableEvent -= StartPanelOnEnableHandler;
-            _panels.LoginPanel.OnEnableEvent -= LoginPanelOnEnableHandler;
+            _panels.ProfilePanel.OnEnableEvent -= ProfilePanelOnEnableHandler;
             _panels.MultiplayerPanel.OnEnableEvent -= MultiplayerPanelOnEnableHandler;
             _panels.OptionsPanel.OnEnableEvent -= OptionsPanelOnEnableHandler;
         }
@@ -77,10 +77,10 @@ namespace RTDef.Menu
             ShowMessage("");
         }
 
-        private void LoginPanelOnEnableHandler()
+        private void ProfilePanelOnEnableHandler()
         {
-            _info.Title.text = _titles.LoginPanelTitle;
-            var message = _gameState.IsClientLoggedIn ? _titles.LoginPanelLoggedInMessage : _titles.LoginPanelNotLoggedInMessage;
+            _info.Title.text = _titles.ProfilePanelTitle;
+            var message = _gameState.IsClientLoggedIn ? _titles.ProfilePanelLoggedInMessage : _titles.ProfilePanelNotLoggedInMessage;
             ShowMessage(message);
         }
 

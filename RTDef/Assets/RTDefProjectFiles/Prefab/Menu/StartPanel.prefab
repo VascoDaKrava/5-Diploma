@@ -93,7 +93,7 @@ MonoBehaviour:
   <StartSingleGameButton>k__BackingField: {fileID: 5308351934680105691}
   <StartMultiplayerButton>k__BackingField: {fileID: 4817861110522389457}
   <OptionsButton>k__BackingField: {fileID: 2425327346873605150}
-  <LoginButton>k__BackingField: {fileID: 5400781125587401984}
+  <ProfileButton>k__BackingField: {fileID: 5400781125587401984}
   <ExitGameButton>k__BackingField: {fileID: 241935666558242136}
 --- !u!1001 &1194026769235016707
 PrefabInstance:
@@ -656,11 +656,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1832478989579224719, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
       propertyPath: m_Name
-      value: LoginRegisterBTN
+      value: ProfileBTN
       objectReference: {fileID: 0}
     - target: {fileID: 1832478989587009045, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
       propertyPath: m_text
-      value: Login
+      value: Profile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
