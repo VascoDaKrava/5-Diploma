@@ -135,6 +135,7 @@ namespace RTDef.Photon
         {
             if (PhotonNetwork.IsConnected)
             {
+                //PhotonNetwork.
                 OnReadyForConfigureRoom?.Invoke();
                 return;
             }
