@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace RTDef.Menu
 {
-    public sealed class MainMenuRoot : MonoBehaviour, IGame//, IGameState, IGameMainMenuPanels, IGameResources
+    public sealed class MainMenuRoot : MonoBehaviour, IGame, IGameState, IGameMainMenuPanels, IGameResources
     {
 
         #region Fields

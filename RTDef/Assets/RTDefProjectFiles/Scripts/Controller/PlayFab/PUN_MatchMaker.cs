@@ -24,7 +24,7 @@ namespace RTDef.Photon
 
         public event Action OnReadyForConfigureRoom;
         public event Action<List<RoomInfo>> OnRoomListChanged;
-        public event Action<Room, int> OnCurrentRoomChangeData;
+        public event Action<Room> OnCurrentRoomChangeData;
         public event Action<string> OnError;
         public event Action OnReadyToStart;
         public event Action OnLeftMyRoom;
@@ -70,14 +70,14 @@ namespace RTDef.Photon
         public override void OnPlayerEnteredRoom(Player otherPlayer)
         {
             base.OnPlayerEnteredRoom(otherPlayer);
-            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
+            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom);
         }
 
         public override void OnJoinedRoom()
         {
             base.OnJoinedRoom();
             PhotonNetwork.LocalPlayer.NickName = UserName;
-            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
+            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom);
 
             if (PhotonNetwork.LocalPlayer.IsMasterClient)
             {
@@ -100,7 +100,7 @@ namespace RTDef.Photon
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             base.OnPlayerLeftRoom(otherPlayer);
-            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
+            OnCurrentRoomChangeData?.Invoke(PhotonNetwork.CurrentRoom);
         }
 
         public override void OnLeftRoom()

@@ -768,7 +768,7 @@ MonoBehaviour:
   <SoundResources>k__BackingField: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
   <MenuAuidioSource>k__BackingField: {fileID: 360390408}
   <MusicAudioSource>k__BackingField: {fileID: 535853773}
-  <AllScenes>k__BackingField: {fileID: 0}
+  <AllScenes>k__BackingField: {fileID: 11400000, guid: abc4ec87267dc394c9986e47235d1545, type: 2}
   <InfoPanel>k__BackingField: {fileID: 715292770}
   <StartPanel>k__BackingField: {fileID: 7585456518329087164}
   <OptionsPanel>k__BackingField: {fileID: 793414578}

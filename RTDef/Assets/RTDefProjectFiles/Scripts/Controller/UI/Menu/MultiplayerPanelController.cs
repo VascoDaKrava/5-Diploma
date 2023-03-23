@@ -148,9 +148,13 @@ namespace RTDef.Menu
             _infoPanel.ShowError(message);
         }
 
-        private void OnMatchMakerCurrentRoomChangeDataHandler(Room room, int playersCount)
+        private void OnMatchMakerCurrentRoomChangeDataHandler(Room room)
         {
-            ChangeMenuState(MenuState.ShowRoomInfo);
+            if (_currentMenuState != MenuState.ReadyToStart)
+            {
+                ChangeMenuState(MenuState.ShowRoomInfo);
+            }
+
             _multiplayerPanel.ChangeCurrentRoomData(room);
         }
 
