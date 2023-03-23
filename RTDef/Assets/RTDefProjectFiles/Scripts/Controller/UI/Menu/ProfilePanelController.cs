@@ -36,11 +36,12 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public ProfilePanelController(IMainMenuPanels mainMenuPanels, InfoPanelController infoPanel)
+        public ProfilePanelController(IGame game)
         {
-            _startPanel = mainMenuPanels.StartPanel;
-            _profilePanel = mainMenuPanels.ProfilePanel;
-            _infoPanel = infoPanel;
+            var panels = game as IGameMainMenuPanels;
+            _startPanel = panels.StartPanel;
+            _profilePanel = panels.ProfilePanel;
+            _infoPanel = panels.InfoPanelController;
 
             _dataServer = new DataServerConnector(_infoPanel);
 

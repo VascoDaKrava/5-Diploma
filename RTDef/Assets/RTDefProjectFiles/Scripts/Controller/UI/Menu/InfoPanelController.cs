@@ -1,4 +1,3 @@
-using PlayFab.AuthenticationModels;
 using RTDef.Abstraction;
 using RTDef.Data.Text;
 using System;
@@ -12,7 +11,7 @@ namespace RTDef.Menu
         #region Fields
 
         private readonly MainMenuTitles _titles;
-        private readonly IMainMenuPanels _panels;
+        private readonly IGameMainMenuPanels _panels;
         private readonly IGameState _gameState;
         private readonly InfoPanelView _info;
 
@@ -21,12 +20,12 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public InfoPanelController(IMainMenuPanels panels, IGameState gameState)
+        public InfoPanelController(IGame game)
         {
-            _panels = panels;
-            _titles = panels.Titles;
-            _gameState = gameState;
-            _info = panels.InfoPanel;
+            _panels = game as IGameMainMenuPanels;
+            _titles = _panels.Titles;
+            _gameState = game as IGameState;
+            _info = _panels.InfoPanel;
 
             _panels.StartPanel.OnEnableEvent += StartPanelOnEnableHandler;
             _panels.ProfilePanel.OnEnableEvent += ProfilePanelOnEnableHandler;

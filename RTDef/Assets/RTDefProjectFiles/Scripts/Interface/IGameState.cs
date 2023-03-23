@@ -1,6 +1,6 @@
 namespace RTDef.Abstraction
 {
-    public interface IGameState
+    public interface IGameState : IGame
     {
         bool IsClientLoggedIn { get; }
         string ClientUserName { get; }

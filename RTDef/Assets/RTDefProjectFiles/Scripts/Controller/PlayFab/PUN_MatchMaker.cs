@@ -28,6 +28,7 @@ namespace RTDef.Photon
         public event Action<string> OnError;
         public event Action OnReadyToStart;
         public event Action OnLeftMyRoom;
+        public event Action OnStartGame;
 
         #endregion
 
@@ -35,6 +36,7 @@ namespace RTDef.Photon
         #region Properties
 
         public string UserName { get; set; }
+        public float LoadingProgress => PhotonNetwork.LevelLoadingProgress;
 
         #endregion
 
@@ -111,6 +113,22 @@ namespace RTDef.Photon
 
 
         #region Methods
+
+        public void StartGame(string scene)
+        {
+            if (PhotonNetwork.CurrentRoom.PlayerCount < 2)
+            {
+                OnError?.Invoke("Too few players");
+                return;
+            }
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                PhotonNetwork.CurrentRoom.IsOpen = false;
+                PhotonNetwork.LoadLevel(scene);
+                OnStartGame?.Invoke();
+            }
+        }
 
         public void JoinRoom(string roomName)
         {

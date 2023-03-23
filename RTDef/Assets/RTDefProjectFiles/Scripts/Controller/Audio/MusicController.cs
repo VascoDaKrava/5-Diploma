@@ -1,3 +1,4 @@
+using RTDef.Abstraction;
 using RTDef.Data.Audio;
 using UnityEngine;
 
@@ -17,10 +18,12 @@ namespace RTDef.Audio
 
         #region CodeLife
 
-        public MusicController(SoundResources soundResources, AudioSource musicAudioSource)
+        public MusicController(IGame game)
         {
-            _soundResources = soundResources;
-            _musicAudioSource = musicAudioSource;
+            var soundResources = game as IGameResources;
+
+            _soundResources = soundResources.SoundResources;
+            _musicAudioSource = soundResources.MusicAudioSource;
 
             Play();
         }

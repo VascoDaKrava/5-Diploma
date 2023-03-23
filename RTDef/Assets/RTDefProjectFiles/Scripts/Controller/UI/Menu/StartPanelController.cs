@@ -2,6 +2,7 @@ using RTDef.Abstraction;
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 namespace RTDef.Menu
@@ -12,18 +13,20 @@ namespace RTDef.Menu
         #region Filds
                 
         private readonly StartPanelView _startPanelView;
-        private readonly IMainMenuPanels _panels;
+        private readonly IGameMainMenuPanels _panels;
         private readonly IGameState _gameState;
+        private readonly string _singleGameScene;
 
         #endregion
 
 
         #region CodeLife
 
-        public StartPanelController(IMainMenuPanels panels, IGameState gameState)
+        public StartPanelController(IGame game)
         {
-            _panels = panels;
-            _gameState = gameState;
+            _panels = game as IGameMainMenuPanels;
+            _gameState = game as IGameState;
+            _singleGameScene = (game as IGameResources).AllScenes.SingleGameScene.name;
 
             _startPanelView = _panels.StartPanel;
             _startPanelView.StartSingleGameButton.OnPointerClickEvent += OnStartSingleClickHandler;
@@ -60,7 +63,8 @@ namespace RTDef.Menu
         {
             //_startPanelView.gameObject.SetActive(false);
             //_panels.InfoPanel.gameObject.SetActive(false);
-            Debug.Log("OnStartSingle");
+            SceneManager.LoadScene(_singleGameScene);
+            Debug.LogFormat("<color=yellow>Call : {0} {1}</color>", "START", _singleGameScene);
         }
 
         private void OnStartMultiplayerClickHandler()

@@ -1387,7 +1387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5150621470857050966}
   - component: {fileID: 5150621470857050971}
-  - component: {fileID: 3904980267607389162}
+  - component: {fileID: 6910203337225974845}
   m_Layer: 5
   m_Name: ProfilePanel
   m_TagString: Untagged
@@ -1425,7 +1425,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5150621470857050967}
   m_CullTransparentMesh: 1
---- !u!114 &3904980267607389162
+--- !u!114 &6910203337225974845
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1434,7 +1434,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5150621470857050967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d08abcea83815c341b9d6603f7e7841a, type: 3}
+  m_Script: {fileID: 11500000, guid: cb571399b8b650c498e1121adf3152b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <RegistrationToggle>k__BackingField: {fileID: 157632669514843916}

@@ -1,5 +1,6 @@
 using RTDef.Abstraction;
 using RTDef.Audio;
+using RTDef.Data;
 using RTDef.Data.Audio;
 using RTDef.Data.Text;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine;
 
 namespace RTDef.Menu
 {
-    public sealed class MainMenuRoot : MonoBehaviour, IMainMenuPanels, IGameState
+    public sealed class MainMenuRoot : MonoBehaviour, IGame//, IGameState, IGameMainMenuPanels, IGameResources
     {
 
         #region Fields
@@ -19,18 +20,21 @@ namespace RTDef.Menu
 
         #region Properties
 
-        [field: SerializeField] private AudioSource MenuAuidioSource { get; set; }
-        [field: SerializeField] private AudioSource MusicAudioSource { get; set; }
         [field: SerializeField] private Transform UIRootTransform { get; set; }
 
+        [field: SerializeField] public SoundResources SoundResources { get; private set; }
+        [field: SerializeField] public AudioSource MenuAuidioSource { get; private set; }
+        [field: SerializeField] public AudioSource MusicAudioSource { get; private set; }
+
+        [field: SerializeField] public AllScenes AllScenes { get; private set; }
+
+        public InfoPanelController InfoPanelController { get; private set; }
         [field: SerializeField] public InfoPanelView InfoPanel { get; private set; }
         [field: SerializeField] public StartPanelView StartPanel { get; private set; }
         [field: SerializeField] public OptionsPanelView OptionsPanel { get; private set; }
         [field: SerializeField] public ProfilePanelView ProfilePanel { get; private set; }
         [field: SerializeField] public MultiplayerPanelView MultiplayerPanel { get; private set; }
         [field: SerializeField] public MainMenuTitles Titles { get; private set; }
-
-        [field: SerializeField] private SoundResources SoundResources { get; set; }
 
         public bool IsClientLoggedIn => _profilePanelController.IsClientLoggedIn;
         public string ClientUserName => _profilePanelController.ClientUserName;
@@ -45,15 +49,15 @@ namespace RTDef.Menu
             HideAllPanels();
             LoadAudioSettings();
 
-            var infoPanelController = new InfoPanelController(this, this);
-            _profilePanelController = new ProfilePanelController(this, infoPanelController);
+            InfoPanelController = new InfoPanelController(this);
+            _profilePanelController = new ProfilePanelController(this);
 
-            new StartPanelController(this, this);
-            new OptionsPanelController(StartPanel, OptionsPanel, SoundResources);
-            new MultiplayerPanelController(this, this, infoPanelController);
-            
-            new MenuSoundFXController(UIRootTransform, SoundResources, MenuAuidioSource);
-            new MusicController(SoundResources, MusicAudioSource);
+            new StartPanelController(this);
+            new OptionsPanelController(this);
+            new MultiplayerPanelController(this);
+
+            new MenuSoundFXController(UIRootTransform, this);
+            new MusicController(this);
         }
 
         #endregion

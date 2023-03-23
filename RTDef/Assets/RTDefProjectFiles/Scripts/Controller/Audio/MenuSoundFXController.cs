@@ -1,3 +1,4 @@
+using RTDef.Abstraction;
 using RTDef.Data.Audio;
 using RTDef.UI;
 using System;
@@ -21,8 +22,13 @@ namespace RTDef.Audio
 
         #region CodeLife
 
-        public MenuSoundFXController(Transform root, SoundResources soundResources, AudioSource mainSource)
+        public MenuSoundFXController(Transform root, IGame game)
         {
+            var soundResources = game as IGameResources;
+
+            _soundResources = soundResources.SoundResources;
+            _mainSource = soundResources.MenuAuidioSource;
+
             _buttons.AddRange(root.gameObject.GetComponentsInChildren<CustomPointerEvent>(true));
 
             foreach (var button in _buttons)
@@ -30,9 +36,6 @@ namespace RTDef.Audio
                 button.OnPointerEnterEvent += OnPointerEnter;
                 button.OnPointerClickEvent += OnClick;
             }
-
-            _soundResources = soundResources;
-            _mainSource = mainSource;
         }
 
         public void Dispose()

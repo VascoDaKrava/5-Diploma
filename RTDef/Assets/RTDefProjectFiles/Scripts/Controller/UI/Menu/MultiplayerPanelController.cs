@@ -37,6 +37,7 @@ namespace RTDef.Menu
         private readonly MainMenuTitles _titles;
         private readonly IGameState _gameState;
         private readonly InfoPanelController _infoPanel;
+        private readonly string _multiplayerScene;
 
         private PUN_MatchMaker _matchMaker;
 
@@ -47,10 +48,14 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public MultiplayerPanelController(IMainMenuPanels panels, IGameState gameState, InfoPanelController infoPanel)
+        public MultiplayerPanelController(IGame game)
         {
-            _gameState = gameState;
-            _infoPanel = infoPanel;
+            _multiplayerScene = (game as IGameResources).AllScenes.MultiplayerScene.name;
+
+            var panels = game as IGameMainMenuPanels;
+
+            _gameState = game as IGameState;
+            _infoPanel = panels.InfoPanelController;
 
             _multiplayerPanel = panels.MultiplayerPanel;
             _startPanel = panels.StartPanel;
@@ -170,16 +175,8 @@ namespace RTDef.Menu
 
         private void OnStartGameButtonClickHandler()
         {
-            Debug.Log("OnStartGameButtonClickHandler");
-
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            //_ui.UpdateCurrentRoomInfo(PhotonNetwork.CurrentRoom, PhotonNetwork.CurrentRoom.PlayerCount);
-            Debug.LogFormat("<color=yellow>Call : {0}</color>", "START GAME");
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-                //PhotonNetwork.LoadLevel(SCENE_GAME_NAME);
-            }
+            _matchMaker.StartGame(_multiplayerScene);
+            Debug.LogFormat("<color=yellow>Call : {0} {1}</color>", "START", _multiplayerScene);
         }
 
         private void OnExitClickHandler()

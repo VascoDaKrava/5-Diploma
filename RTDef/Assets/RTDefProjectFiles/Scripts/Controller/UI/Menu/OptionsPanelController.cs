@@ -1,3 +1,4 @@
+using RTDef.Abstraction;
 using RTDef.Data.Audio;
 using System;
 
@@ -18,11 +19,13 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public OptionsPanelController(StartPanelView startPanel, OptionsPanelView optionsPanel, SoundResources soundResources)
+        public OptionsPanelController(IGame game)
         {
-            _startPanel = startPanel;
-            _optionsPanel = optionsPanel;
-            _soundResources = soundResources;
+            var panels = game as IGameMainMenuPanels;
+
+            _startPanel = panels.StartPanel;
+            _optionsPanel = panels.OptionsPanel;
+            _soundResources = (game as IGameResources).SoundResources;
 
             _optionsPanel.OnEnableEvent += OptionsPanelOnEnableHandler;
             _optionsPanel.ExitButton.OnPointerClickEvent += OnExitClickHandler;
