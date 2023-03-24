@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MainMenuScene>k__BackingField: {fileID: 102900000, guid: 9fc0d4010bbf28b4594072e72b8655ab, type: 3}
   <SingleGameScene>k__BackingField: {fileID: 102900000, guid: 8a6ed4966890afc4495c7507a3974756, type: 3}
-  <MultiplayerScene>k__BackingField: {fileID: 102900000, guid: 193a3ba90f932b247aef654dbfdde95f, type: 3}
+  <MultiplayerScene>k__BackingField: {fileID: 102900000, guid: 0229629c8ff130241843c37f2884f1ab, type: 3}
