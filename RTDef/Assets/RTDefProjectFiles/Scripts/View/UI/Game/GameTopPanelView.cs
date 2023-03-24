@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTDef.Game.UI
 {
-    public sealed class TopPanelView : MonoBehaviour
+    public sealed class GameTopPanelView : MonoBehaviour
     {
 
         #region Fields
@@ -15,7 +15,7 @@ namespace RTDef.Game.UI
         #endregion
 
 
-        #region Metods
+        #region Methods
 
         public void SetResourcesQuantity(int food, int wood)
         {
