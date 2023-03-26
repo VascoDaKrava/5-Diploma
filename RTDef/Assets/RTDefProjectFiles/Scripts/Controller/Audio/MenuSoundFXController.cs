@@ -22,10 +22,8 @@ namespace RTDef.Audio
 
         #region CodeLife
 
-        public MenuSoundFXController(Transform root, IGame game)
+        public MenuSoundFXController(Transform root, IGameResources soundResources)
         {
-            var soundResources = game as IGameResources;
-
             _soundResources = soundResources.SoundResources;
             _mainSource = soundResources.MenuAuidioSource;
 

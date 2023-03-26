@@ -18,10 +18,8 @@ namespace RTDef.Audio
 
         #region CodeLife
 
-        public MusicController(IGame game)
+        public MusicController(IGameResources soundResources)
         {
-            var soundResources = game as IGameResources;
-
             _soundResources = soundResources.SoundResources;
             _musicAudioSource = soundResources.MusicAudioSource;
 

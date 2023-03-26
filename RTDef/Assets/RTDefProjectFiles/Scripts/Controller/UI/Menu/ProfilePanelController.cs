@@ -36,9 +36,8 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public ProfilePanelController(IGame game)
+        public ProfilePanelController(IGameMainMenuPanels panels)
         {
-            var panels = game as IGameMainMenuPanels;
             _startPanel = panels.StartPanel;
             _profilePanel = panels.ProfilePanel;
             _infoPanel = panels.InfoPanelController;

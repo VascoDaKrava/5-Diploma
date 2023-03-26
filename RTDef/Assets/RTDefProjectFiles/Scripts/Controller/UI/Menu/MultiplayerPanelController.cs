@@ -48,7 +48,7 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public MultiplayerPanelController(IGame game)
+        public MultiplayerPanelController(IGameData game)
         {
             _multiplayerScene = (game as IGameResources).AllScenes.MultiplayerScene.name;
 

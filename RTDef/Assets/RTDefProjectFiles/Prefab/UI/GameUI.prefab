@@ -725,6 +725,7 @@ GameObject:
   m_Component:
   - component: {fileID: 691757947699837194}
   - component: {fileID: 2918580525008285585}
+  - component: {fileID: 2226893387407236265}
   m_Layer: 5
   m_Name: CommandContainer
   m_TagString: Untagged
@@ -777,6 +778,18 @@ MonoBehaviour:
   m_Spacing: {x: 2, y: 2}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &2226893387407236265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917520949131600919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca1f176d0a32b044afbaa2015485884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4569827691751282261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,6 +1305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _foodText: {fileID: 5498836578473268727}
   _woodText: {fileID: 7026042286869287717}
+  <MenuButton>k__BackingField: {fileID: 1392393279810715425}
 --- !u!1 &5498836578349862643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1303,6 +1317,7 @@ GameObject:
   - component: {fileID: 5498836578349862640}
   - component: {fileID: 5498836578349862542}
   - component: {fileID: 5498836578349862641}
+  - component: {fileID: 3867034801238527846}
   m_Layer: 5
   m_Name: GameBottomPanel
   m_TagString: Untagged
@@ -1370,6 +1385,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 1
   m_PixelsPerUnitMultiplier: 12
+--- !u!114 &3867034801238527846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498836578349862643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e493a395d5172940a84fe535a2124c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <InfoView>k__BackingField: {fileID: 5442102304162621091}
+  <CommandsView>k__BackingField: {fileID: 2226893387407236265}
 --- !u!1 &7049139384421538693
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,7 +2179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1832478989579224719, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
       propertyPath: m_Name
-      value: Button
+      value: MenuButton
       objectReference: {fileID: 0}
     - target: {fileID: 1832478989587009045, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
       propertyPath: m_text
@@ -2174,6 +2203,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
+--- !u!114 &1392393279810715425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3547278885055782941, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}
+  m_PrefabInstance: {fileID: 2479426300905545532}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f92fd61c8fe62bb45afb50f9355ec687, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4253356257643125172 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1832478989579224712, guid: caf0793174bac5d4facb1ffba48d590c, type: 3}

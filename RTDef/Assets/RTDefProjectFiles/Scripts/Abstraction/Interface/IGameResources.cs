@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTDef.Abstraction
 {
-    public interface IGameResources : IGame
+    public interface IGameResources : IGameData
     {
         AllScenes AllScenes { get; }
         SoundResources SoundResources { get; }

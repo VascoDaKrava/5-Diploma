@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
 
 namespace RTDef.Game.UI
 {
     public sealed class GameBottomPanelView : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
+        #region Properties
 
-        // Update is called once per frame
-        void Update()
-        {
+        [field: SerializeField] public GameBottomInfoView InfoView { get; private set; }
+        [field: SerializeField] public GameBottomCommandView CommandsView { get; private set; }
 
-        }
+        #endregion
+
     }
 }

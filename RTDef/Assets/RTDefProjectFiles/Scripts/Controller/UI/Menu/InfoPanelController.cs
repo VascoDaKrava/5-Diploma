@@ -20,7 +20,7 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public InfoPanelController(IGame game)
+        public InfoPanelController(IGameData game)
         {
             _panels = game as IGameMainMenuPanels;
             _titles = _panels.Titles;

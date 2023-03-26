@@ -4,7 +4,7 @@ using RTDef.Menu;
 
 namespace RTDef.Abstraction
 {
-    public interface IGameMainMenuPanels : IGame
+    public interface IGameMainMenuPanels : IGameData
     {
         InfoPanelController InfoPanelController { get; }
         InfoPanelView InfoPanel { get; }

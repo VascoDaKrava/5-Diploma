@@ -22,7 +22,7 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public StartPanelController(IGame game)
+        public StartPanelController(IGameData game)
         {
             _panels = game as IGameMainMenuPanels;
             _gameState = game as IGameState;

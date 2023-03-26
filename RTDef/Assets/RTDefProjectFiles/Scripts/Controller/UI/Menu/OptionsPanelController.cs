@@ -19,7 +19,7 @@ namespace RTDef.Menu
 
         #region CodeLife
 
-        public OptionsPanelController(IGame game)
+        public OptionsPanelController(IGameData game)
         {
             var panels = game as IGameMainMenuPanels;
 
