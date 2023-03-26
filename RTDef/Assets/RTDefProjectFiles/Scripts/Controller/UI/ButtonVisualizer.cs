@@ -16,6 +16,9 @@ namespace RTDef.UI
         [SerializeField] private TMP_Text _buttonLabel;
         [SerializeField] private VisualizerUIdata _visualizerUIdata;
 
+        private bool _hasImage;
+        private bool _hasText;
+
         #endregion
 
 
@@ -23,6 +26,9 @@ namespace RTDef.UI
 
         private void Awake()
         {
+            _hasText = _buttonLabel;
+            _hasImage = _buttonImage;
+
             _button.OnPointerDownEvent += OnPointerDownEventHandler;
             _button.OnPointerUpEvent += OnPointerUpEventHandler;
             _button.OnPointerEnterEvent += OnPointerEnterEventHandler;
@@ -46,28 +52,32 @@ namespace RTDef.UI
 
         private void OnInteractableSetEventHandler(bool state)
         {
-            _buttonImage.color = state ? _visualizerUIdata.NormalColor : _visualizerUIdata.DisabledColor;
-            _buttonLabel.color = state ? _visualizerUIdata.TextNormalColor : _visualizerUIdata.TextDisabledColor;
+            TrySetImageColor(state ? _visualizerUIdata.NormalColor : _visualizerUIdata.DisabledColor);
+            TrySetTextColor(state ? _visualizerUIdata.TextNormalColor : _visualizerUIdata.TextDisabledColor);
         }
 
-        private void OnPointerExitEventHandler()
+        private void OnPointerExitEventHandler() => TrySetImageColor(_visualizerUIdata.NormalColor);
+
+        private void OnPointerEnterEventHandler() => TrySetImageColor(_visualizerUIdata.HighlightedColor);
+
+        private void OnPointerUpEventHandler() => TrySetImageColor(_visualizerUIdata.NormalColor);
+
+        private void OnPointerDownEventHandler() => TrySetImageColor(_visualizerUIdata.PressedColor);
+
+        private void TrySetImageColor(Color color)
         {
-            _buttonImage.color = _visualizerUIdata.NormalColor;
+            if (_hasImage)
+            {
+                _buttonImage.color = color;
+            }
         }
 
-        private void OnPointerEnterEventHandler()
+        private void TrySetTextColor(Color color)
         {
-            _buttonImage.color = _visualizerUIdata.HighlightedColor;
-        }
-
-        private void OnPointerUpEventHandler()
-        {
-            _buttonImage.color = _visualizerUIdata.NormalColor;
-        }
-
-        private void OnPointerDownEventHandler()
-        {
-            _buttonImage.color = _visualizerUIdata.PressedColor;
+            if (_hasText)
+            {
+                _buttonLabel.color = color;
+            }
         }
 
         #endregion
