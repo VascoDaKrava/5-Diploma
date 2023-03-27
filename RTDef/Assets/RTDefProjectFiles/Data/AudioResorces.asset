@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4399c069b5cc148836b5890383cdda, type: 3}
   m_Name: AudioResorces
   m_EditorClassIdentifier: 
-  <MusicVolume>k__BackingField: -10
-  <SFXVolume>k__BackingField: -5
-  <MenuVolume>k__BackingField: -20
   <Mixer>k__BackingField: {fileID: 24100000, guid: 5e96d3c141b89c746b972923b2ae2389, type: 2}
+  <MusicVolume>k__BackingField: -80
+  <SFXVolume>k__BackingField: -5
+  <MenuVolume>k__BackingField: -5
   <MasterAudioMixerGroupName>k__BackingField: VolumeMaster
   <MusicAudioMixerGroupName>k__BackingField: VolumeMusic
   <SFXAudioMixerGroupName>k__BackingField: VolumeSFX

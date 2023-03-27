@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RTDef.Gathering
 {
-    public class GatheringView : MonoBehaviour, IClickableRight
+    public class GatheringView : MonoBehaviour, IClickableRight, IClickableLeft
     {
         
     }

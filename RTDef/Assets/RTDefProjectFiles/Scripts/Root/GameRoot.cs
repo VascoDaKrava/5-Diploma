@@ -48,16 +48,18 @@ namespace RTDef.Game
 
             new MenuSoundFXController(UIRootTransform, this);
             new MusicController(this);
+
+            SoundResources.ApllySettings();
         }
-
-        #endregion
-
 
         private void OnEnable()
         {
+
             _interactionEvents.OnLeftDown += (obj) => Debug.Log("L -> " + obj);
             _interactionEvents.OnRightDown += (obj) => Debug.Log("R -> " + obj);
         }
+
+        #endregion
 
     }
 }

@@ -24,6 +24,8 @@ namespace RTDef.Game.UI
         [SerializeField] private Sprite _rangeAttackSprite;
         [SerializeField] private Image _attackImage;
 
+        [SerializeField] private RectTransform _attackGroup;
+        [SerializeField] private RectTransform _defenceGroup;
         [SerializeField] private RectTransform _rangeGroup;
 
         #endregion
@@ -37,6 +39,10 @@ namespace RTDef.Game.UI
             _titleText.text = title;
 
             SetLife(currentLife, maxLife);
+
+            _attackGroup.gameObject.SetActive(false);
+            _defenceGroup.gameObject.SetActive(false);
+            _rangeGroup.gameObject.SetActive(false);
         }
 
         public void SetLife(int currentLife, int maxLife)
@@ -47,23 +53,17 @@ namespace RTDef.Game.UI
             _lifeText.text = $"{currentLife}/{maxLife}";
         }
 
-        public void SetCharacteristics(int attack, int defence)
-        {
-            _attackImage.sprite = _melleeAttackSprite;
-            _attackText.text = $"{attack}";
-            _defenceText.text = $"{defence}";
-
-            _rangeGroup.gameObject.SetActive(false);
-        }
-
         public void SetCharacteristics(int attack, int defence, int range)
         {
-            SetCharacteristics(attack, defence);
-            _attackImage.sprite = _rangeAttackSprite;
-
+            _attackText.text = $"{attack}";
+            _defenceText.text = $"{defence}";
             _rangeText.text = $"{range}";
 
-            _rangeGroup.gameObject.SetActive(true);
+            _attackImage.sprite = range > 0 ? _rangeAttackSprite : _melleeAttackSprite;
+
+            _attackGroup.gameObject.SetActive(attack > 0);
+            _defenceGroup.gameObject.SetActive(defence > 0);
+            _rangeGroup.gameObject.SetActive(range > 0);
         }
 
         #endregion

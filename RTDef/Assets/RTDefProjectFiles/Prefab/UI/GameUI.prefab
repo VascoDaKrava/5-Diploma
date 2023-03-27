@@ -312,6 +312,8 @@ MonoBehaviour:
   _melleeAttackSprite: {fileID: 21300000, guid: a90ead723dd72f84286f743551ce5f6e, type: 3}
   _rangeAttackSprite: {fileID: 21300000, guid: baa3c0e76ea80334d92bd80b6f2d31d5, type: 3}
   _attackImage: {fileID: 7759860463773186116}
+  _attackGroup: {fileID: 1597822471763275605}
+  _defenceGroup: {fileID: 9140395793814223948}
   _rangeGroup: {fileID: 2420861343412181888}
 --- !u!1 &2395757220775406683
 GameObject:
@@ -1397,8 +1399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e493a395d5172940a84fe535a2124c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InfoView>k__BackingField: {fileID: 5442102304162621091}
-  <CommandsView>k__BackingField: {fileID: 2226893387407236265}
+  _infoView: {fileID: 5442102304162621091}
+  _commandsView: {fileID: 2226893387407236265}
 --- !u!1 &7049139384421538693
 GameObject:
   m_ObjectHideFlags: 0
@@ -1978,7 +1980,7 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 5
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0

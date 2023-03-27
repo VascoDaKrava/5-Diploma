@@ -44,7 +44,7 @@ namespace RTDef.Menu
 
         #region Mono
 
-        void Start()
+        private void Start()
         {
             HideAllPanels();
             LoadAudioSettings();
@@ -58,6 +58,8 @@ namespace RTDef.Menu
 
             new MenuSoundFXController(UIRootTransform, this);
             new MusicController(this);
+
+            SoundResources.ApllySettings();
         }
 
         #endregion

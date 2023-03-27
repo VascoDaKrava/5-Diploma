@@ -233,6 +233,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 21300000, guid: d92f2c7f08f50de4b9451b008e7e2ee6, type: 3}
+  <Name>k__BackingField: Some worker
+  <Health>k__BackingField: 3
+  <HealthMax>k__BackingField: 50
+  <Attack>k__BackingField: 0
+  <Defence>k__BackingField: 0
+  <Range>k__BackingField: 0
 --- !u!1 &94686874
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +645,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 21300000, guid: baa3c0e76ea80334d92bd80b6f2d31d5, type: 3}
+  <Name>k__BackingField: Some Archer
+  <Health>k__BackingField: 75
+  <HealthMax>k__BackingField: 100
+  <Attack>k__BackingField: 5
+  <Defence>k__BackingField: 3
+  <Range>k__BackingField: 15
 --- !u!1 &375388637
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +856,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 21300000, guid: a90ead723dd72f84286f743551ce5f6e, type: 3}
+  <Name>k__BackingField: Some warrior
+  <Health>k__BackingField: 150
+  <HealthMax>k__BackingField: 150
+  <Attack>k__BackingField: 15
+  <Defence>k__BackingField: 15
+  <Range>k__BackingField: 0
 --- !u!1 &719134963
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,39 +1362,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -25
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9330127
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.25000006
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.25000006
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.06698733
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1394058068048913122, guid: ca8d337d22a267740867eeec7ead616f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
