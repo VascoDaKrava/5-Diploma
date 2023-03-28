@@ -19,16 +19,26 @@ namespace RTDef.Game.UI
 
         public void ShowContent(IDataForPanel content)
         {
-            if (content == null)
+            if (content is IInfoForPanel info)
+            {
+                _infoView.SetTitle(info.Image, info.Name, info.Health, info.HealthMax);
+                _infoView.SetCharacteristics(info.Attack, info.Defence, info.Range);
+                _infoView.gameObject.SetActive(true);
+            }
+            else
             {
                 _infoView.gameObject.SetActive(false);
-                _commandsView.gameObject.SetActive(false);
-                return;
             }
 
-            _infoView.SetTitle(content.Image, content.Name, content.Health, content.HealthMax);
-            _infoView.SetCharacteristics(content.Attack, content.Defence, content.Range);
-            _infoView.gameObject.SetActive(true);
+            if (content is ICommandHolder commandHolder)
+            {
+                _commandsView.ShowCommands(commandHolder.AwailableCommands);
+                _commandsView.gameObject.SetActive(true);
+            }
+            else
+            {
+                _commandsView.gameObject.SetActive(false);
+            }
         }
 
         #endregion

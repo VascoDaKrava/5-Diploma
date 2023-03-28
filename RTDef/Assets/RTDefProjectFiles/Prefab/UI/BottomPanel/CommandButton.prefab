@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 3633778873372940759}
   - component: {fileID: 8846650245717712596}
   - component: {fileID: 3304870373199723000}
+  - component: {fileID: 3025608507732212212}
   m_Layer: 5
-  m_Name: CommandTemplate
+  m_Name: CommandButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,3 +153,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3025608507732212212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889809891258040133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6922c66446b79f5469077c76ddef2139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 3633778873372940759}
+  <Command>k__BackingField: 0

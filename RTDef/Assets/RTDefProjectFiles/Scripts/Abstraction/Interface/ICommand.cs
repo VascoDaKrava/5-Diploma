@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using RTDef.Enum;
 
-public class ICommand : MonoBehaviour
+
+namespace RTDef.Abstraction
 {
-    // Start is called before the first frame update
-    void Start()
+    public interface ICommand
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        CommandName Command { get; }
     }
 }

@@ -1,17 +1,12 @@
 using RTDef.Abstraction;
 using RTDef.Abstraction.InputSystem;
-using UnityEngine;
+using System.Collections.Generic;
 
 
 namespace RTDef.Units
 {
-    public sealed class UnitView : SelectableObjectBase, IClickableLeft
+    public sealed class UnitView : SelectableObjectBase, IClickableLeft, ICommandHolder
     {
-        
-        private void Test()
-        {
-            Debug.Log(Image);
-        }
-
+        public List<ICommand> AwailableCommands => throw new System.NotImplementedException();
     }
 }

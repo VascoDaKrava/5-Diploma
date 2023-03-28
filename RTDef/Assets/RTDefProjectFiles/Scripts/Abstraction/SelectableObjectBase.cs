@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTDef.Abstraction
 {
-    public abstract class SelectableObjectBase : MonoBehaviour, IDataForPanel
+    public abstract class SelectableObjectBase : MonoBehaviour, IInfoForPanel
     {
 
         #region Properties
