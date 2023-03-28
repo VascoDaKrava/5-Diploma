@@ -1,3 +1,4 @@
+using RTDef.Enum;
 using System.Collections.Generic;
 
 
@@ -5,6 +6,6 @@ namespace RTDef.Abstraction
 {
     public interface ICommandHolder : IDataForPanel
     {
-        List<ICommand> AwailableCommands { get; }
+        SortedSet<CommandName> AwailableCommands { get; }
     }
 }

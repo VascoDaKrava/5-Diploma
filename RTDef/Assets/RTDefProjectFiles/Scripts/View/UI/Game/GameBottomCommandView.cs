@@ -52,13 +52,13 @@ namespace RTDef.Game.UI
 
         #region Methods
 
-        public void ShowCommands(List<ICommand> commands)
+        public void ShowCommands(SortedSet<CommandName> commands)
         {
             HideAll();
 
             foreach (var command in commands)
             {
-                _commandButtons[command.Command].gameObject.SetActive(true);
+                _commandButtons[command].gameObject.SetActive(true);
             }
         }
 
