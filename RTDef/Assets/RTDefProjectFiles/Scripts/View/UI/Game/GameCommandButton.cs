@@ -19,6 +19,7 @@ namespace RTDef.UI
         #region Fields
 
         [SerializeField] private CustomPointerEvent _button;
+        [SerializeField] private ButtonVisualizer _buttonVisualizer;
 
         #endregion
 
@@ -26,6 +27,25 @@ namespace RTDef.UI
         #region Properties
 
         [field: SerializeField] public CommandName Command { get; private set; }
+
+        public bool Interactable
+        {
+            get => _button.Interactable;
+            set => _button.Interactable = value;
+        }
+
+        public bool Lock
+        {
+            set
+            {
+                _button.Interactable = !value;
+
+                if (value)
+                {
+                    _buttonVisualizer.SetHighlight();
+                }
+            }
+        }
 
         #endregion
 
@@ -35,6 +55,8 @@ namespace RTDef.UI
         private void OnEnable()
         {
             _button.OnPointerClickEvent += OnButtonClickHandler;
+            Interactable = true;
+            Lock = false;
         }
 
         private void OnDisable()

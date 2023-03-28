@@ -39,7 +39,7 @@ namespace RTDef.Game.UI
             }
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             foreach (var button in _commandButtons.Values)
             {
@@ -64,15 +64,36 @@ namespace RTDef.Game.UI
 
         private void HideAll()
         {
-            foreach (var command in _commandButtons.Values)
+            foreach (var button in _commandButtons.Values)
             {
-                command.gameObject.SetActive(false);
+                button.gameObject.SetActive(false);
             }
         }
 
         private void OnNeedExecuteCommandHandler(CommandName command)
         {
             OnNeedExecuteCommand?.Invoke(command);
+
+            if (command == CommandName.Stop)
+            {
+                return;
+            }
+
+            foreach (var button in _commandButtons)
+            {
+                if (button.Key == CommandName.Stop)
+                {
+                    continue;
+                }
+
+                if (button.Key == command)
+                {
+                    button.Value.Lock = true;
+                    continue;
+                }
+
+                button.Value.Interactable = false;
+            }
         }
 
         #endregion
