@@ -31,7 +31,12 @@ namespace RTDef.Inputsystem
 
             if (Input.GetMouseButtonDown(_inputSettings.MouseLeftButton))
             {
-                if (WeHit<IClickableLeft>(out var clicked))
+                if (_eventSystem.IsPointerOverGameObject())
+                {
+                    return;
+                }
+
+                if (TryHit<IClickableLeft>(out var clicked))
                 {
                     _interactionEvents.OnLeftDownSetAndInvoke = clicked;
                 }
@@ -43,7 +48,12 @@ namespace RTDef.Inputsystem
 
             if (Input.GetMouseButtonUp(_inputSettings.MouseLeftButton))
             {
-                if (WeHit<IClickableLeft>(out var clicked))
+                if (_eventSystem.IsPointerOverGameObject())
+                {
+                    return;
+                }
+
+                if (TryHit<IClickableLeft>(out var clicked))
                 {
                     _interactionEvents.OnLeftUpSetAndInvoke = clicked;
                 }
@@ -55,7 +65,12 @@ namespace RTDef.Inputsystem
 
             if (Input.GetMouseButtonDown(_inputSettings.MouseRightButton))
             {
-                if (WeHit<IClickableRight>(out var clicked))
+                if (_eventSystem.IsPointerOverGameObject())
+                {
+                    return;
+                }
+
+                if (TryHit<IClickableRight>(out var clicked))
                 {
                     _interactionEvents.OnRightDownSetAndInvoke = clicked;
                 }
@@ -67,7 +82,12 @@ namespace RTDef.Inputsystem
 
             if (Input.GetMouseButtonUp(_inputSettings.MouseRightButton))
             {
-                if (WeHit<IClickableRight>(out var clicked))
+                if (_eventSystem.IsPointerOverGameObject())
+                {
+                    return;
+                }
+
+                if (TryHit<IClickableRight>(out var clicked))
                 {
                     _interactionEvents.OnRightUpSetAndInvoke = clicked;
                 }
@@ -88,15 +108,10 @@ namespace RTDef.Inputsystem
 
         #region Methods
 
-        private bool WeHit<T>(out T result) where T : class
+        private bool TryHit<T>(out T result) where T : class
         {
             RaycastHit[] hits = default;
             result = default;
-
-            if (_eventSystem.IsPointerOverGameObject())
-            {
-                return false;
-            }
 
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
             hits = Physics.RaycastAll(ray);
