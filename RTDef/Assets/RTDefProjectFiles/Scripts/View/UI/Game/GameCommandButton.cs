@@ -39,11 +39,7 @@ namespace RTDef.UI
             set
             {
                 _button.Interactable = !value;
-
-                if (value)
-                {
-                    _buttonVisualizer.SetHighlight();
-                }
+                _buttonVisualizer.SetHighlight(value);
             }
         }
 

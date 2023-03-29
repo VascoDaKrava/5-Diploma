@@ -321,6 +321,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionEvents: {fileID: 11400000, guid: ee5dbdbf73a361649b228a301104ffd0, type: 2}
+  _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
+  _commandEvents: {fileID: 11400000, guid: 2630c8e698fce724399251198d21d685, type: 2}
   <UIRootTransform>k__BackingField: {fileID: 763764696}
   <SoundResources>k__BackingField: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
   <MenuAuidioSource>k__BackingField: {fileID: 1872981574}

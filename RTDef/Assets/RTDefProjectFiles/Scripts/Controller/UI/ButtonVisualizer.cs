@@ -50,9 +50,9 @@ namespace RTDef.UI
 
         #region Methods
 
-        public void SetHighlight()
+        public void SetHighlight(bool state)
         {
-            TrySetImageColor(_visualizerUIdata.HighlightedColor);
+            TrySetImageColor(state ? _visualizerUIdata.HighlightedColor : _visualizerUIdata.NormalColor);
         }
 
         private void OnInteractableSetEventHandler(bool state)

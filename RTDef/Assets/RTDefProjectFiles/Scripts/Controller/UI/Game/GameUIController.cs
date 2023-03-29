@@ -1,5 +1,6 @@
 using RTDef.Abstraction;
 using RTDef.Abstraction.InputSystem;
+using RTDef.Data;
 using RTDef.Game.UI;
 using System;
 
@@ -11,7 +12,7 @@ namespace RTDef.Game
 
         #region Fields
 
-        private readonly IInteractionsGet _interactionEvents;
+        private readonly SelectedObject _selectedObject;
         private readonly IGameGathering _gameGathering;
         private readonly GameTopPanelView _topPanel;
         private readonly GameBottomPanelView _bottomPanel;
@@ -21,16 +22,16 @@ namespace RTDef.Game
 
         #region CodeLife
 
-        public GameUIController(IInteractionsGet interactionEvents, IGameData gameData)
+        public GameUIController(SelectedObject selectedObject, IGameData gameData)
         {
-            _interactionEvents = interactionEvents;
-            var gamePanels = gameData as IInGamePanels;
+            _selectedObject = selectedObject;
             _gameGathering = gameData as IGameGathering;
+            var gamePanels = gameData as IInGamePanels;
 
             _topPanel = gamePanels.GameTopPanelView;
             _bottomPanel = gamePanels.GameBottomPanelView;
 
-            _interactionEvents.OnLeftDown += OnLeftDownHandler;
+            _selectedObject.OnSelectedChange += OnSelectObject;
 
             _topPanel.MenuButton.OnPointerClickEvent += TopPanelMenuButtonClickEventHandler;
 
@@ -39,7 +40,7 @@ namespace RTDef.Game
 
         public void Dispose()
         {
-            _interactionEvents.OnLeftDown += OnLeftDownHandler;
+            _selectedObject.OnSelectedChange -= OnSelectObject;
 
             _topPanel.MenuButton.OnPointerClickEvent -= TopPanelMenuButtonClickEventHandler;
         }
@@ -49,9 +50,9 @@ namespace RTDef.Game
 
         #region Methods
 
-        private void OnLeftDownHandler(IClickableLeft selectedObject)
+        private void OnSelectObject(SelectableObjectBase selectedObject)
         {
-            _bottomPanel.ShowContent(selectedObject as IDataForPanel);
+            _bottomPanel.ShowContent(selectedObject);
         }
 
         private void TopPanelMenuButtonClickEventHandler()

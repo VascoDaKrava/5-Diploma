@@ -1,4 +1,4 @@
-using RTDef.Abstraction;
+using RTDef.Data;
 using RTDef.Enum;
 using RTDef.UI;
 using System;
@@ -11,14 +11,9 @@ namespace RTDef.Game.UI
     public sealed class GameBottomCommandView : MonoBehaviour
     {
 
-        #region Events
-
-        public event Action<CommandName> OnNeedExecuteCommand;
-
-        #endregion
-
-
         #region Fields
+
+        [SerializeField] private CommandEvents _commandEvents;
 
         private Dictionary<CommandName, GameCommandButton> _commandButtons;
 
@@ -37,6 +32,9 @@ namespace RTDef.Game.UI
                 _commandButtons.Add(button.Command, button);
                 button.OnNeedExecute += OnNeedExecuteCommandHandler;
             }
+
+            _commandEvents.OnRecieveCancel += OnRecieveCommandResultHandler;
+            _commandEvents.OnStartExecute += OnRecieveCommandResultHandler;
         }
 
         private void OnDestroy()
@@ -45,6 +43,9 @@ namespace RTDef.Game.UI
             {
                 button.OnNeedExecute -= OnNeedExecuteCommandHandler;
             }
+
+            _commandEvents.OnRecieveCancel -= OnRecieveCommandResultHandler;
+            _commandEvents.OnStartExecute -= OnRecieveCommandResultHandler;
         }
 
         #endregion
@@ -72,10 +73,11 @@ namespace RTDef.Game.UI
 
         private void OnNeedExecuteCommandHandler(CommandName command)
         {
-            OnNeedExecuteCommand?.Invoke(command);
+            _commandEvents.ExecuteRequest(command);
 
             if (command == CommandName.Stop)
             {
+                OnRecieveCommandResultHandler(default);
                 return;
             }
 
@@ -93,6 +95,14 @@ namespace RTDef.Game.UI
                 }
 
                 button.Value.Interactable = false;
+            }
+        }
+
+        private void OnRecieveCommandResultHandler(CommandName _)
+        {
+            foreach (var button in _commandButtons)
+            {
+                button.Value.Lock = false;
             }
         }
 
