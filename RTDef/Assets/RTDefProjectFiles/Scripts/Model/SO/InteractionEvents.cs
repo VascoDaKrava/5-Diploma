@@ -8,7 +8,7 @@ namespace RTDef.Data
     [CreateAssetMenu(fileName = "InteractionEvents", menuName = "Data/InteractionEvents")]
     public sealed class InteractionEvents : ScriptableObject, IInteractionsGet, IInteractionsSet
     {
-        
+
         #region Events
 
         public event Action<IClickableLeft> OnLeftDown;
@@ -22,13 +22,6 @@ namespace RTDef.Data
         #endregion
 
 
-        #region Fields
-
-        private Vector3 _cursorPosition;
-
-        #endregion
-
-
         #region Properties
 
         public IClickableLeft OnLeftDownSetAndInvoke { set => OnLeftDown?.Invoke(value); }
@@ -36,11 +29,19 @@ namespace RTDef.Data
         public IClickableRight OnRightDownSetAndInvoke { set => OnRightDown?.Invoke(value); }
         public IClickableRight OnRightUpSetAndInvoke { set => OnRightUp?.Invoke(value); }
         public float OnWheelScrollingSetAndInvoke { set => OnWheelScrolling?.Invoke(value); }
-        public Vector3 GetCursorPosition => _cursorPosition;
-        public Vector3 SetCursorPosition { set => _cursorPosition = value; }
+        public Vector3 CursorPosition { get; private set; }
+        public Vector3 HitPoint { get; private set; }
 
         public float OnHorizontalSetAndInvoke { set => OnHorizontal(value); }
         public float OnVerticalSetAndInvoke { set => OnVertical(value); }
+
+        #endregion
+
+
+        #region Methods
+
+        public void SetCursorPosition(Vector3 value) { CursorPosition = value; }
+        public void SetHitPoint(Vector3 value) { HitPoint = value; }
 
         #endregion
 

@@ -2,7 +2,6 @@ using RTDef.Abstraction.InputSystem;
 using RTDef.Data;
 using RTDef.Data.InputSystem;
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -27,7 +26,7 @@ namespace RTDef.Inputsystem
 
         private void Update()
         {
-            _interactionEvents.SetCursorPosition = Input.mousePosition;
+            _interactionEvents.SetCursorPosition(Input.mousePosition);
 
             if (Input.GetMouseButtonDown(_inputSettings.MouseLeftButton))
             {
@@ -36,13 +35,15 @@ namespace RTDef.Inputsystem
                     return;
                 }
 
-                if (TryHit<IClickableLeft>(out var clicked))
+                if (TryHit<IClickableLeft>(out var clicked, out var hitPoint))
                 {
                     _interactionEvents.OnLeftDownSetAndInvoke = clicked;
+                    _interactionEvents.SetHitPoint(hitPoint);
                 }
                 else
                 {
                     _interactionEvents.OnLeftDownSetAndInvoke = null;
+                    _interactionEvents.SetHitPoint(default);
                 }
             }
 
@@ -53,13 +54,15 @@ namespace RTDef.Inputsystem
                     return;
                 }
 
-                if (TryHit<IClickableLeft>(out var clicked))
+                if (TryHit<IClickableLeft>(out var clicked, out var hitPoint))
                 {
                     _interactionEvents.OnLeftUpSetAndInvoke = clicked;
+                    _interactionEvents.SetHitPoint(hitPoint);
                 }
                 else
                 {
                     _interactionEvents.OnLeftUpSetAndInvoke = null;
+                    _interactionEvents.SetHitPoint(default);
                 }
             }
 
@@ -70,13 +73,15 @@ namespace RTDef.Inputsystem
                     return;
                 }
 
-                if (TryHit<IClickableRight>(out var clicked))
+                if (TryHit<IClickableRight>(out var clicked, out var hitPoint))
                 {
                     _interactionEvents.OnRightDownSetAndInvoke = clicked;
+                    _interactionEvents.SetHitPoint(hitPoint);
                 }
                 else
                 {
                     _interactionEvents.OnRightDownSetAndInvoke = null;
+                    _interactionEvents.SetHitPoint(default);
                 }
             }
 
@@ -87,13 +92,15 @@ namespace RTDef.Inputsystem
                     return;
                 }
 
-                if (TryHit<IClickableRight>(out var clicked))
+                if (TryHit<IClickableRight>(out var clicked, out var hitPoint))
                 {
                     _interactionEvents.OnRightUpSetAndInvoke = clicked;
+                    _interactionEvents.SetHitPoint(hitPoint);
                 }
                 else
                 {
                     _interactionEvents.OnRightUpSetAndInvoke = null;
+                    _interactionEvents.SetHitPoint(default);
                 }
             }
 
@@ -108,10 +115,11 @@ namespace RTDef.Inputsystem
 
         #region Methods
 
-        private bool TryHit<T>(out T result) where T : class
+        private bool TryHit<T>(out T result, out Vector3 hitPoint) where T : class
         {
             RaycastHit[] hits = default;
             result = default;
+            hitPoint = default;
 
             var ray = _camera.ScreenPointToRay(Input.mousePosition);
             hits = Physics.RaycastAll(ray);
@@ -121,9 +129,15 @@ namespace RTDef.Inputsystem
                 return false;
             }
 
-            result = hits
-                .Select(hit => hit.collider.GetComponentInParent<T>())
-                .FirstOrDefault(c => c != null);
+            foreach (var hit in hits)
+            {
+                if (hit.collider.TryGetComponent(out T target))
+                {
+                    result = target;
+                    hitPoint = hit.point;
+                    break;
+                }
+            }
 
             return result != default;
         }

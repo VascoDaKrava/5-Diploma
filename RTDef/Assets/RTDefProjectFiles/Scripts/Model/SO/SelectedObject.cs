@@ -27,13 +27,13 @@ namespace RTDef.Data
 
         public void SelectedChange(SelectableObjectBase selectableObject)
         {
-            if (selectableObject == CurrentSelected)
+            if (selectableObject?.GetHashCode() == CurrentSelected?.GetHashCode())
             {
                 return;
             }
 
-            CurrentSelected = selectableObject;
             OnSelectedChange?.Invoke(selectableObject);
+            CurrentSelected = selectableObject;
         }
 
         #endregion

@@ -1,10 +1,4 @@
-using RTDef.Enum;
-
-
-namespace RTDef.Abstraction
+namespace RTDef.Abstraction.Commands
 {
-    public interface ICommand
-    {
-        CommandName Command { get; }
-    }
+    public interface ICommand { }
 }

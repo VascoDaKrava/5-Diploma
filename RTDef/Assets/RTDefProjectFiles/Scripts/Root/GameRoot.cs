@@ -2,8 +2,9 @@ using RTDef.Abstraction;
 using RTDef.Audio;
 using RTDef.Data;
 using RTDef.Data.Audio;
+using RTDef.Game.Commands;
 using RTDef.Game.UI;
-using RTDef.UserCommands;
+using TMPro;
 using UnityEngine;
 
 
@@ -45,6 +46,9 @@ namespace RTDef.Game
 
         private void Start()
         {
+            // Set default data
+            _selectedObject.SelectedChange(default);
+
             new GameUIController(_selectedObject, this);
 
             new MenuSoundFXController(UIRootTransform, this);
@@ -52,7 +56,7 @@ namespace RTDef.Game
 
             new ObjectSelector(_interactionEvents, _selectedObject);
 
-            new CommandExecutor(_interactionEvents, _selectedObject, _commandEvents);
+            new CommandExecutorController(_interactionEvents, _selectedObject, _commandEvents);
 
             SoundResources.ApllySettings();
         }

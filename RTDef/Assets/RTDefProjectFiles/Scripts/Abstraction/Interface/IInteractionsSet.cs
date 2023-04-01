@@ -13,9 +13,16 @@ namespace RTDef.Abstraction.InputSystem
         IClickableRight OnRightDownSetAndInvoke { set; }
         IClickableRight OnRightUpSetAndInvoke { set; }
         float OnWheelScrollingSetAndInvoke { set; }
-        Vector3 SetCursorPosition { set; }
         float OnHorizontalSetAndInvoke { set; }
         float OnVerticalSetAndInvoke { set; }
+
+        #endregion
+
+
+        #region Methods
+
+        void SetCursorPosition(Vector3 value);
+        void SetHitPoint(Vector3 value);
 
         #endregion
 

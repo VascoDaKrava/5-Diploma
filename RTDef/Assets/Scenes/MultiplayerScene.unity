@@ -240,7 +240,6 @@ MonoBehaviour:
   <Attack>k__BackingField: 0
   <Defence>k__BackingField: 0
   <Range>k__BackingField: 0
-  _availableCommands: 0100000002000000050000000500000004000000
 --- !u!1 &94686874
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +341,7 @@ GameObject:
   - component: {fileID: 98654360}
   - component: {fileID: 98654359}
   - component: {fileID: 98654358}
+  - component: {fileID: 98654361}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -428,6 +428,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98654356}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &98654361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98654356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e7ddf8ce847484e8af391fe25bcb31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &110351560
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +563,7 @@ GameObject:
   - component: {fileID: 328123416}
   - component: {fileID: 328123415}
   - component: {fileID: 328123418}
+  - component: {fileID: 328123419}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Untagged
@@ -655,7 +668,19 @@ MonoBehaviour:
   <Attack>k__BackingField: 5
   <Defence>k__BackingField: 3
   <Range>k__BackingField: 15
-  _availableCommands: 020000000300000001000000
+--- !u!114 &328123419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328123413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b8acfa50a0f6947bb6a7aa7fb1b09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CommandName>k__BackingField: 2
 --- !u!1 &375388637
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,7 +892,6 @@ MonoBehaviour:
   <Attack>k__BackingField: 15
   <Defence>k__BackingField: 15
   <Range>k__BackingField: 0
-  _availableCommands: 010000000200000003000000
 --- !u!1 &719134963
 GameObject:
   m_ObjectHideFlags: 0

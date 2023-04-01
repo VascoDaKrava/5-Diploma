@@ -22,7 +22,8 @@ namespace RTDef.Abstraction.InputSystem
 
         #region Properties
 
-        Vector3 GetCursorPosition { get; }
+        Vector3 CursorPosition { get; }
+        Vector3 HitPoint { get; }
 
         #endregion
 

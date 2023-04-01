@@ -1,4 +1,3 @@
-using RTDef.Abstraction;
 using RTDef.Enum;
 using System;
 using UnityEngine;
@@ -6,7 +5,7 @@ using UnityEngine;
 
 namespace RTDef.UI
 {
-    public sealed class GameCommandButton : MonoBehaviour, ICommand
+    public sealed class GameCommandButton : MonoBehaviour
     {
 
         #region Events

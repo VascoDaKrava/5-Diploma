@@ -1,7 +1,6 @@
 using RTDef.Data;
 using RTDef.Enum;
 using RTDef.UI;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -53,7 +52,7 @@ namespace RTDef.Game.UI
 
         #region Methods
 
-        public void ShowCommands(SortedSet<CommandName> commands)
+        public void ShowCommands(IReadOnlyList<CommandName> commands)
         {
             HideAll();
 
