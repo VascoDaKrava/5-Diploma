@@ -16,6 +16,8 @@ namespace RTDef.Game.Commands
         public event Action<ICommand> OnCommandReady;
 
         private bool _dataRecieved;
+        private bool _callCancel;
+        private CommandName _currentCommand;
 
         #endregion
 
@@ -32,7 +34,6 @@ namespace RTDef.Game.Commands
         public CommandConcretizator(IInteractionsGet interactionEvents)
         {
             _interactionEvents = interactionEvents;
-
         }
 
         public void Dispose()
@@ -45,76 +46,93 @@ namespace RTDef.Game.Commands
 
         #region Methods
 
+        public void CancelCommand()
+        {
+            _callCancel = true;
+        }
+
         public void StartGetCommand(CommandName command)
         {
-            _interactionEvents.OnRightDown += GetDestinationPosition;
+            _interactionEvents.OnRightDown += GetTarget;
             _dataRecieved = false;
+            _callCancel = false;
+            _currentCommand = command;
 
-            Debug.Log("Before Async");
             WaitForDataAsync();
-            Debug.Log("After Async");
-
-            #region MyRegion
-
-            //switch (command)
-            //{
-            //    case CommandName.None:
-            //        break;
-
-            //    case CommandName.Stop:
-            //        break;
-
-            //    case CommandName.Move:
-
-            //        break;
-
-            //    case CommandName.Attack:
-            //        break;
-
-            //    case CommandName.Gathering:
-            //        break;
-
-            //    case CommandName.Build:
-            //        break;
-
-            //    case CommandName.Produce:
-            //        break;
-
-            //    case CommandName.ProduceWorker:
-            //        break;
-
-            //    case CommandName.ProduceWarrior:
-            //        break;
-
-            //    case CommandName.ProduceArcher:
-            //        break;
-
-            //    case CommandName.BuildTower:
-            //        break;
-
-            //    case CommandName.Kill:
-            //        break;
-
-            //    default:
-            //        break;
-            //}
-
-            #endregion
-
         }
 
+        /// <summary>
+        /// Wait for data to be received and invoke event OnCommandReady
+        /// </summary>
         private async void WaitForDataAsync()
         {
-            await Task.Run(() => { while (!_dataRecieved) { }; });
-            OnCommandReady?.Invoke(new MoveCommand { Target = _interactionEvents.HitPoint });
+            await Task.Run(() => { while (!_dataRecieved && !_callCancel) { }; });
+
+            if (_callCancel)
+            {
+                return;
+            }
+
+            switch (_currentCommand)
+            {
+                case CommandName.Move:
+                    OnCommandReady?.Invoke(new MoveCommand { Target = _interactionEvents.HitPoint });
+                    break;
+
+                case CommandName.Attack:
+                    break;
+
+                case CommandName.Gathering:
+                    break;
+
+                case CommandName.Build:
+                    break;
+
+                case CommandName.Produce:
+                    break;
+
+                case CommandName.Kill:
+                    break;
+
+                default:
+                    throw new ArgumentException($"Unexpected command: {_currentCommand}");
+            }
         }
 
-        private void GetDestinationPosition(IClickableRight hit)
+        /// <summary>
+        /// Check conditions to take target for command
+        /// </summary>
+        /// <param name="hit">RMB returned Object</param>
+        private void GetTarget(IClickableRight hit)
         {
-            if (hit is GroundMarker)
+            switch (_currentCommand)
             {
-                _interactionEvents.OnRightDown -= GetDestinationPosition;
-                _dataRecieved = true;
+                case CommandName.Move:
+                    if (hit is GroundMarker)
+                    {
+                        _interactionEvents.OnRightDown -= GetTarget;
+                        _dataRecieved = true;
+                    }
+                    break;
+
+                case CommandName.Attack:
+
+                    break;
+
+                case CommandName.Gathering:
+                    break;
+
+                case CommandName.Build:
+                    break;
+
+                case CommandName.Produce:
+                    break;
+
+                case CommandName.Kill:
+                    break;
+
+                default:
+                    throw new ArgumentException($"Unexpected command: {_currentCommand}");
             }
         }
 

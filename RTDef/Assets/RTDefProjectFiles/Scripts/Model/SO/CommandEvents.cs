@@ -13,7 +13,7 @@ namespace RTDef.Data
 
         public event Action<CommandName> OnRequestExecute;
         public event Action<CommandName> OnStartExecute;
-        public event Action<CommandName> OnRecieveCancel;
+        public event Action<CommandName> OnRecieveStop;
 
         #endregion
 
@@ -42,7 +42,7 @@ namespace RTDef.Data
         /// </summary>
         public void Cancel()
         {
-            OnRecieveCancel?.Invoke(PendingCommand);
+            OnRecieveStop?.Invoke(PendingCommand);
             PendingCommand = CommandName.None;
         }
 

@@ -1,6 +1,10 @@
 * Game
 
 1. Заменить работу команд на Async/Await/Task+CT
+2. Что-то не так со сравнением типов. SelectedObject, void SelectedChange.
+Переделал на сравнение хэшей. Проблема, если кто-то null.
+Проверка на null выдаёт предупреждение/ошибку UNT0007.
+if (selectableObject?.GetHashCode() == CurrentSelected?.GetHashCode())
 
 ================================================================================
 

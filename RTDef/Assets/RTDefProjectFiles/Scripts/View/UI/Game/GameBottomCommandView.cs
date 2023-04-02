@@ -32,7 +32,7 @@ namespace RTDef.Game.UI
                 button.OnNeedExecute += OnNeedExecuteCommandHandler;
             }
 
-            _commandEvents.OnRecieveCancel += OnRecieveCommandResultHandler;
+            _commandEvents.OnRecieveStop += OnRecieveCommandResultHandler;
             _commandEvents.OnStartExecute += OnRecieveCommandResultHandler;
         }
 
@@ -43,7 +43,7 @@ namespace RTDef.Game.UI
                 button.OnNeedExecute -= OnNeedExecuteCommandHandler;
             }
 
-            _commandEvents.OnRecieveCancel -= OnRecieveCommandResultHandler;
+            _commandEvents.OnRecieveStop -= OnRecieveCommandResultHandler;
             _commandEvents.OnStartExecute -= OnRecieveCommandResultHandler;
         }
 
@@ -72,13 +72,14 @@ namespace RTDef.Game.UI
 
         private void OnNeedExecuteCommandHandler(CommandName command)
         {
-            _commandEvents.ExecuteRequest(command);
-
             if (command == CommandName.Stop)
             {
+                _commandEvents.Cancel();
                 OnRecieveCommandResultHandler(default);
                 return;
             }
+
+            _commandEvents.ExecuteRequest(command);
 
             foreach (var button in _commandButtons)
             {

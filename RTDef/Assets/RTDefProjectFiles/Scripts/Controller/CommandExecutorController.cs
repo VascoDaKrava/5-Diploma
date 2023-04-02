@@ -17,7 +17,7 @@ namespace RTDef.Game.Commands
         private readonly SelectedObject _selectedObject;
         private readonly CommandEvents _commandEvents;
         private readonly CommandConcretizator _commandConcretizator;
-        
+
         private CommandHolderBase _currentExecutor;
 
         #endregion
@@ -37,7 +37,7 @@ namespace RTDef.Game.Commands
             _commandConcretizator = new CommandConcretizator(interactionEvents);
 
             _commandEvents.OnRequestExecute += PrepareExecute;
-            _commandEvents.OnRecieveCancel += PrepareCancel;
+            _commandEvents.OnRecieveStop += PrepareCancel;
             _selectedObject.OnSelectedChange += PrepareCancel;
 
             _commandEvents.OnStartExecute += (cmd) => Debug.Log($"Start {cmd}");
@@ -46,7 +46,7 @@ namespace RTDef.Game.Commands
         public void Dispose()
         {
             _commandEvents.OnRequestExecute -= PrepareExecute;
-            _commandEvents.OnRecieveCancel -= PrepareCancel;
+            _commandEvents.OnRecieveStop -= PrepareCancel;
             _selectedObject.OnSelectedChange -= PrepareCancel;
         }
 
@@ -61,22 +61,25 @@ namespace RTDef.Game.Commands
         /// <param name="selectable"></param>
         private void PrepareCancel(SelectableObjectBase _)
         {
-
+            if (_commandEvents.PendingCommand != CommandName.None)
+            {
+                _commandConcretizator.OnCommandReady -= OnCommandReadyHandler;
+                _commandConcretizator.CancelCommand();
+            }
         }
 
         /// <summary>
-        /// When recieve Cancel-command from UI
+        /// When recieve Stop-command from UI
         /// </summary>
         /// <param name="command"></param>
         private void PrepareCancel(CommandName _)
         {
-
+            _commandConcretizator.OnCommandReady -= OnCommandReadyHandler;
+            _commandConcretizator.CancelCommand();
         }
 
         private void PrepareExecute(CommandName command)
         {
-            Debug.Log($"Call {command}");
-
             _currentExecutor = _selectedObject.CurrentSelected as CommandHolderBase;
             _commandConcretizator.StartGetCommand(command);
             _commandConcretizator.OnCommandReady += OnCommandReadyHandler;
@@ -86,6 +89,7 @@ namespace RTDef.Game.Commands
         {
             _commandConcretizator.OnCommandReady -= OnCommandReadyHandler;
             _currentExecutor.AwailableExecutors[_commandEvents.PendingCommand].TryExecuteCommand(command);
+            _commandEvents.InvokeCallback();
         }
 
         #endregion
