@@ -137,6 +137,10 @@ GameObject:
   - component: {fileID: 55144584}
   - component: {fileID: 55144587}
   - component: {fileID: 55144588}
+  - component: {fileID: 55144591}
+  - component: {fileID: 55144590}
+  - component: {fileID: 55144589}
+  - component: {fileID: 55144592}
   m_Layer: 0
   m_Name: Worker
   m_TagString: Untagged
@@ -254,6 +258,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <CommandName>k__BackingField: 4
+--- !u!114 &55144589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55144582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ef29cabc1e25845ba1f0de00fb5ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CommandName>k__BackingField: 5
+--- !u!114 &55144590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55144582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b8acfa50a0f6947bb6a7aa7fb1b09d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CommandName>k__BackingField: 2
+--- !u!114 &55144591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55144582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c715ddaa95db0241b41048f32eca205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CommandName>k__BackingField: 1
+--- !u!114 &55144592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55144582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2809e8fb9d7f6bd4db03d00536c6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CommandName>k__BackingField: 11
 --- !u!1 &94686874
 GameObject:
   m_ObjectHideFlags: 0

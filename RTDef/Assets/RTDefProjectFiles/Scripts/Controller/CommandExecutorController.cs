@@ -4,7 +4,6 @@ using RTDef.Abstraction.InputSystem;
 using RTDef.Data;
 using RTDef.Enum;
 using System;
-using UnityEngine;
 
 
 namespace RTDef.Game.Commands
@@ -72,8 +71,11 @@ namespace RTDef.Game.Commands
         /// <param name="command"></param>
         private void PrepareCancel(CommandName _)
         {
+            var currentExecutor = _selectedObject.CurrentSelected as CommandHolderBase;
+            
             _commandConcretizator.OnCommandReady -= OnCommandReadyHandler;
             _commandConcretizator.CancelCommand();
+            currentExecutor.AwailableExecutors[CommandName.Stop].TryExecuteCommand(new StopCommand { CommandToStop = _commandEvents.PendingCommand });
         }
 
         private void PrepareExecute(CommandName command)

@@ -1,5 +1,5 @@
 using RTDef.Abstraction.Commands;
-
+using UnityEngine;
 
 namespace RTDef.Game.Commands
 {
@@ -10,8 +10,10 @@ namespace RTDef.Game.Commands
         {
         }
 
-        public override void TryExecuteCommand(ICommand _)
+        public override void TryExecuteCommand(ICommand command)
         {
+            var stopCommand = (IStopCommand)command;
+            Debug.Log($"{this} recieve Stop {stopCommand.CommandToStop}");
         }
     }
 }
