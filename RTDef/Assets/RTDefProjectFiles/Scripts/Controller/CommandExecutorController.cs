@@ -39,8 +39,6 @@ namespace RTDef.Game.Commands
             _commandEvents.OnRequestExecute += PrepareExecute;
             _commandEvents.OnRecieveStop += PrepareCancel;
             _selectedObject.OnSelectedChange += PrepareCancel;
-
-            _commandEvents.OnStartExecute += (cmd) => Debug.Log($"Start {cmd}");
         }
 
         public void Dispose()

@@ -1,3 +1,4 @@
+using RTDef.Abstraction;
 using RTDef.Abstraction.Commands;
 using RTDef.Abstraction.InputSystem;
 using RTDef.Enum;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace RTDef.Game.Commands
 {
-    public sealed class CommandConcretizator : IDisposable
+    public sealed class CommandConcretizator
     {
 
         #region Events
@@ -18,6 +19,7 @@ namespace RTDef.Game.Commands
         private bool _dataRecieved;
         private bool _callCancel;
         private CommandName _currentCommand;
+        private Transform _target;
 
         #endregion
 
@@ -36,11 +38,6 @@ namespace RTDef.Game.Commands
             _interactionEvents = interactionEvents;
         }
 
-        public void Dispose()
-        {
-
-        }
-
         #endregion
 
 
@@ -56,6 +53,7 @@ namespace RTDef.Game.Commands
             _interactionEvents.OnRightDown += GetTarget;
             _dataRecieved = false;
             _callCancel = false;
+            _target = default;
             _currentCommand = command;
 
             WaitForDataAsync();
@@ -80,18 +78,11 @@ namespace RTDef.Game.Commands
                     break;
 
                 case CommandName.Attack:
+                    OnCommandReady?.Invoke(new AttackCommand { AttackTarget = _target });
                     break;
 
                 case CommandName.Gathering:
-                    break;
-
-                case CommandName.Build:
-                    break;
-
-                case CommandName.Produce:
-                    break;
-
-                case CommandName.Kill:
+                    OnCommandReady?.Invoke(new GatheringCommand { GatheringTarget = _target });
                     break;
 
                 default:
@@ -116,19 +107,21 @@ namespace RTDef.Game.Commands
                     break;
 
                 case CommandName.Attack:
-
+                    if (hit is IAttackable attackable)
+                    {
+                        _interactionEvents.OnRightDown -= GetTarget;
+                        _target = attackable.AttackTarget;
+                        _dataRecieved = true;
+                    }
                     break;
 
                 case CommandName.Gathering:
-                    break;
-
-                case CommandName.Build:
-                    break;
-
-                case CommandName.Produce:
-                    break;
-
-                case CommandName.Kill:
+                    if (hit is IGatheringable gatheringable)
+                    {
+                        _interactionEvents.OnRightDown -= GetTarget;
+                        _target = gatheringable.GatheringTarget;
+                        _dataRecieved = true;
+                    }
                     break;
 
                 default:

@@ -5,6 +5,6 @@ namespace RTDef.Abstraction.Commands
 {
     public interface IGatheringCommand : ICommand
     {
-        Vector3 Target { get; set; }
+        Transform GatheringTarget { get; set; }
     }
 }
