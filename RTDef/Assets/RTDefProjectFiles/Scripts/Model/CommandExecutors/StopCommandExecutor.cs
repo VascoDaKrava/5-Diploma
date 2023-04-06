@@ -8,6 +8,7 @@ namespace RTDef.Game.Commands
 
         public override void Stop()
         {
+            //Vector3.forward
         }
 
         public override void TryExecuteCommand(ICommand command)
