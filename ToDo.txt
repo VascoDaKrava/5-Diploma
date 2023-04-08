@@ -36,3 +36,9 @@ if (selectableObject?.GetHashCode() == CurrentSelected?.GetHashCode())
 * Game. SceneLoader
 
 1. Создать SceneLoader с прогресс-баром.
+
+================================================================================
+
+* Game. Art
+
+1. Выравнивание флага по ветру.
