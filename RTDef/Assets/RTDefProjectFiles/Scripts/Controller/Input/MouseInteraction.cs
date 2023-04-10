@@ -131,9 +131,10 @@ namespace RTDef.Inputsystem
 
             foreach (var hit in hits)
             {
-                if (hit.collider.TryGetComponent(out T target))
+                result = hit.collider.GetComponentInParent<T>();
+
+                if (result != null)
                 {
-                    result = target;
                     hitPoint = hit.point;
                     break;
                 }

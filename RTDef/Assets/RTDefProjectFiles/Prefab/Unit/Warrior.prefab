@@ -3128,6 +3128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6899421593741888187}
   - component: {fileID: 6165685981945170829}
+  - component: {fileID: 6373060875761974753}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -3164,6 +3165,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!208 &6373060875761974753
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247395792023339638}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8379848991970114718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,7 +3330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a165b5149959b114b80611589435210e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 3
 --- !u!114 &1936012116017353431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3326,7 +3342,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2809e8fb9d7f6bd4db03d00536c6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 11
 --- !u!114 &4962810680645934701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3339,7 +3354,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b8acfa50a0f6947bb6a7aa7fb1b09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 2
 --- !u!114 &8149340233323734685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3352,7 +3366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c715ddaa95db0241b41048f32eca205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 1
 --- !u!114 &3774871040753005382
 MonoBehaviour:
   m_ObjectHideFlags: 0

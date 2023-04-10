@@ -4,6 +4,7 @@ using RTDef.Abstraction.InputSystem;
 using RTDef.Data;
 using RTDef.Enum;
 using System;
+using UnityEngine.UIElements;
 
 
 namespace RTDef.Game.Commands
@@ -17,7 +18,7 @@ namespace RTDef.Game.Commands
         private readonly CommandEvents _commandEvents;
         private readonly CommandConcretizator _commandConcretizator;
 
-        private CommandHolderBase _currentExecutor;
+        private ICommandHolder _currentExecutor;
 
         #endregion
 
@@ -71,16 +72,18 @@ namespace RTDef.Game.Commands
         /// <param name="command"></param>
         private void PrepareCancel(CommandName _)
         {
-            var currentExecutor = _selectedObject.CurrentSelected as CommandHolderBase;
-            
+            var currentExecutor = _selectedObject.CurrentSelected as ICommandHolder;
+
             _commandConcretizator.OnCommandReady -= OnCommandReadyHandler;
             _commandConcretizator.CancelCommand();
-            currentExecutor.AwailableExecutors[CommandName.Stop].TryExecuteCommand(new StopCommand { CommandToStop = _commandEvents.PendingCommand });
+            var stopCommand = new StopCommand();
+            stopCommand.CommandToStop = _commandEvents.PendingCommand != CommandName.None ? _commandEvents.PendingCommand : currentExecutor.CurrentCommand;
+            currentExecutor.AwailableExecutors[CommandName.Stop].TryExecuteCommand(stopCommand);
         }
 
         private void PrepareExecute(CommandName command)
         {
-            _currentExecutor = _selectedObject.CurrentSelected as CommandHolderBase;
+            _currentExecutor = _selectedObject.CurrentSelected as ICommandHolder;
             _commandConcretizator.StartGetCommand(command);
             _commandConcretizator.OnCommandReady += OnCommandReadyHandler;
         }

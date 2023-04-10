@@ -1,5 +1,6 @@
 using RTDef.Abstraction.Commands;
-using UnityEngine;
+using RTDef.Enum;
+using UnityEngine.AI;
 
 
 namespace RTDef.Game.Commands
@@ -7,16 +8,42 @@ namespace RTDef.Game.Commands
     public sealed class MoveCommandExecutor : CommandExecutorBase
     {
 
-        public override void Stop()
+        #region Properties
+
+        private NavMeshAgent NavMeshAgent { get; set; }
+
+        public override CommandName ExecutorCommandName => CommandName.Move;
+
+        #endregion
+
+
+        #region Mono
+
+        public override void Awake()
         {
-            throw new System.NotImplementedException();
+            base.Awake();
+            NavMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        #endregion
+
+
+        #region Methods
+
+        public override void StopExecuteCommand()
+        {
+            NavMeshAgent.ResetPath();
         }
 
         public override void TryExecuteCommand(ICommand baseCommand)
         {
             var command = (IMoveCommand)baseCommand;
 
-            Debug.Log($"Move to {command.Target}");
+            NavMeshAgent.SetDestination(command.Target);
+            CommandHolder.CurrentCommand = CommandName.Move;
         }
+
+        #endregion
+
     }
 }

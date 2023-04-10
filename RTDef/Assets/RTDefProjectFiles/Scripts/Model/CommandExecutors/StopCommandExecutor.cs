@@ -1,20 +1,40 @@
 using RTDef.Abstraction.Commands;
-using UnityEngine;
+using RTDef.Enum;
+using System;
+
 
 namespace RTDef.Game.Commands
 {
     public sealed class StopCommandExecutor : CommandExecutorBase
     {
 
-        public override void Stop()
+        #region Properties
+
+        public override CommandName ExecutorCommandName => CommandName.Stop;
+
+        #endregion
+
+
+        #region Methods
+
+        public override void StopExecuteCommand()
         {
-            //Vector3.forward
+            throw new MissingMethodException("StopExecuteCommand in StopCommandExecutor!");
         }
 
         public override void TryExecuteCommand(ICommand command)
         {
             var stopCommand = (IStopCommand)command;
-            Debug.Log($"{this} recieve Stop {stopCommand.CommandToStop}");
+
+            if (stopCommand.CommandToStop == CommandName.None)
+            {
+                return;
+            }
+
+            CommandHolder.AwailableExecutors[stopCommand.CommandToStop].StopExecuteCommand();
         }
+
+        #endregion
+
     }
 }

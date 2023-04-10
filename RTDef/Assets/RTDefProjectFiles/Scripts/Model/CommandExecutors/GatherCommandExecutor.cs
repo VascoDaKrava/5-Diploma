@@ -1,4 +1,5 @@
 using RTDef.Abstraction.Commands;
+using RTDef.Enum;
 using UnityEngine;
 
 
@@ -6,8 +7,9 @@ namespace RTDef.Game.Commands
 {
     public sealed class GatherCommandExecutor : CommandExecutorBase
     {
+        public override CommandName ExecutorCommandName => CommandName.Gathering;
 
-        public override void Stop()
+        public override void StopExecuteCommand()
         {
             throw new System.NotImplementedException();
         }

@@ -18,7 +18,18 @@ namespace RTDef.Abstraction.Commands
 
         #region Properties
 
-        [field: SerializeField] public CommandName CommandName { get; private set; }
+        public abstract CommandName ExecutorCommandName { get; }
+        private protected ICommandHolder CommandHolder { get; set; }
+
+        #endregion
+
+
+        #region Mono
+
+        public virtual void Awake()
+        {
+            CommandHolder = GetComponent<ICommandHolder>();
+        }
 
         #endregion
 
@@ -26,7 +37,7 @@ namespace RTDef.Abstraction.Commands
         #region Methods
 
         public abstract void TryExecuteCommand(ICommand command);
-        public abstract void Stop();
+        public abstract void StopExecuteCommand();
 
         #endregion
 

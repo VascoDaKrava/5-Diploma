@@ -292,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8927630725382851887}
   - component: {fileID: 3988328671688269400}
+  - component: {fileID: 6885285955054915351}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -328,6 +329,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!208 &6885285955054915351
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231688287605264954}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1346065248424783699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,6 +2686,7 @@ GameObject:
   - component: {fileID: 3138335048409294603}
   - component: {fileID: 2639613303108805264}
   - component: {fileID: 7553833199480447311}
+  - component: {fileID: 7920182711663919102}
   m_Layer: 0
   m_Name: Worker
   m_TagString: Untagged
@@ -2705,7 +2723,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1ef29cabc1e25845ba1f0de00fb5ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 5
 --- !u!114 &5708103240109234157
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2718,7 +2735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55a92e75732b464da02e26bd68950ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 4
 --- !u!114 &2912405784757364150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2731,7 +2747,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2809e8fb9d7f6bd4db03d00536c6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 11
 --- !u!114 &544416724273172419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2744,7 +2759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0b8acfa50a0f6947bb6a7aa7fb1b09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 2
 --- !u!114 &3138335048409294603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2757,7 +2771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c715ddaa95db0241b41048f32eca205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <CommandName>k__BackingField: 1
 --- !u!114 &2639613303108805264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2798,6 +2811,28 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &7920182711663919102
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965419200954883406}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &9195027107237453495
 GameObject:
   m_ObjectHideFlags: 0

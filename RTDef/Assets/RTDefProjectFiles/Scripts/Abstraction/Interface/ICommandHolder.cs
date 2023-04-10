@@ -16,5 +16,7 @@ namespace RTDef.Abstraction
         SortedDictionary<CommandName, CommandExecutorBase> AwailableExecutors { get; }
 
         IReadOnlyList<CommandName> AwailableCommands { get; }
+
+        CommandName CurrentCommand { get; set; }
     }
 }
