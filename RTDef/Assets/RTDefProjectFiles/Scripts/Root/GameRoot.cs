@@ -64,7 +64,7 @@ namespace RTDef.Game
         {
             _interactionEvents.OnLeftDown += (obj) => Debug.Log("L -> " + obj);
             _interactionEvents.OnRightDown += (obj) => Debug.Log("R -> " + obj);
-            _commandEvents.OnStartExecute += (cmd) => Debug.Log($"Start {cmd}");
+            
         }
 
         #endregion

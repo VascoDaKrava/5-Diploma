@@ -16,10 +16,35 @@ namespace RTDef.Abstraction.Commands
         #endregion
 
 
+        #region Fields
+
+        private bool _isCommandRunning = false;
+
+        #endregion
+
+
         #region Properties
 
         public abstract CommandName ExecutorCommandName { get; }
         private protected ICommandHolder CommandHolder { get; set; }
+        private protected bool IsCommandRunning
+        {
+            get => _isCommandRunning;
+
+            set
+            {
+                _isCommandRunning = value;
+
+                if (value)
+                {
+                    OnStartExecute?.Invoke();
+                }
+                else
+                {
+                    OnStopExecute?.Invoke();
+                }
+            }
+        }
 
         #endregion
 
