@@ -3362,8 +3362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: a90ead723dd72f84286f743551ce5f6e, type: 3}
-  <Name>k__BackingField: Some warrior
+  <Image>k__BackingField: {fileID: 21300000, guid: 0e5d5c8ccb585e84b9003212d559e733, type: 3}
+  <Name>k__BackingField: Swordsman
   <Health>k__BackingField: 150
   <HealthMax>k__BackingField: 150
   <Attack>k__BackingField: 15

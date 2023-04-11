@@ -2766,8 +2766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: d92f2c7f08f50de4b9451b008e7e2ee6, type: 3}
-  <Name>k__BackingField: Some worker
+  <Image>k__BackingField: {fileID: 21300000, guid: 4bf62f22ef66e4b4cbe2c66ef2642b46, type: 3}
+  <Name>k__BackingField: Worker
   <Health>k__BackingField: 45
   <HealthMax>k__BackingField: 45
   <Attack>k__BackingField: 0
