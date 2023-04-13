@@ -2670,6 +2670,7 @@ GameObject:
   - component: {fileID: 2639613303108805264}
   - component: {fileID: 7553833199480447311}
   - component: {fileID: 7920182711663919102}
+  - component: {fileID: 6554785591133800293}
   m_Layer: 0
   m_Name: Worker
   m_TagString: Untagged
@@ -2804,8 +2805,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
-  m_Acceleration: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -2816,6 +2817,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6554785591133800293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965419200954883406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e235156bd82b0964f80b892bd1f55365, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 7920182711663919102}
+  _animator: {fileID: 7553833199480447311}
 --- !u!1 &9195027107237453495
 GameObject:
   m_ObjectHideFlags: 0
