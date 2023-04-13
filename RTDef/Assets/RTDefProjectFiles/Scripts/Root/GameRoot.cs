@@ -2,9 +2,10 @@ using RTDef.Abstraction;
 using RTDef.Audio;
 using RTDef.Data;
 using RTDef.Data.Audio;
+using RTDef.Data.Camera;
 using RTDef.Game.Commands;
+using RTDef.Game.Controllers;
 using RTDef.Game.UI;
-using TMPro;
 using UnityEngine;
 
 
@@ -18,6 +19,10 @@ namespace RTDef.Game
         [SerializeField, Space, Header("Data")] private InteractionEvents _interactionEvents;
         [SerializeField] private SelectedObject _selectedObject;
         [SerializeField] private CommandEvents _commandEvents;
+
+        [SerializeField, Space, Header("Camera")] private Transform _cameraContainer;
+        [SerializeField] private Transform _cameraObjective;
+        [SerializeField] private CameraRestrictions _cameraRestrictions;
 
         public int Food => 0;
         public int Wood => 12345;
@@ -56,6 +61,8 @@ namespace RTDef.Game
             new ObjectSelector(_interactionEvents, _selectedObject);
 
             new CommandExecutorController(_interactionEvents, _selectedObject, _commandEvents);
+
+            new CameraController(_cameraContainer, _cameraObjective, _cameraRestrictions, _interactionEvents);
 
             SoundResources.ApllySettings();
         }
