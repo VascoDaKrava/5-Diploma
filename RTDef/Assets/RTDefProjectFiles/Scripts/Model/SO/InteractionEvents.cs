@@ -32,8 +32,8 @@ namespace RTDef.Data
         public Vector3 CursorPosition { get; private set; }
         public Vector3 HitPoint { get; private set; }
 
-        public float OnHorizontalSetAndInvoke { set => OnHorizontal(value); }
-        public float OnVerticalSetAndInvoke { set => OnVertical(value); }
+        public float OnHorizontalSetAndInvoke { set => OnHorizontal?.Invoke(value); }
+        public float OnVerticalSetAndInvoke { set => OnVertical?.Invoke(value); }
 
         #endregion
 
