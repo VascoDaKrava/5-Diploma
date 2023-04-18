@@ -51,7 +51,7 @@ namespace RTDef.Game
 
         private void Start()
         {
-            SetDefaultsForSO();
+            //SetDefaultsForSO();
 
             new GameUIController(_selectedObject, this);
 
@@ -71,7 +71,11 @@ namespace RTDef.Game
         {
             _interactionEvents.OnLeftDown += (obj) => Debug.Log("L -> " + obj);
             _interactionEvents.OnRightDown += (obj) => Debug.Log("R -> " + obj);
-            
+        }
+
+        private void OnDisable()
+        {
+            SetDefaultsForSO();
         }
 
         #endregion
@@ -82,7 +86,11 @@ namespace RTDef.Game
         private void SetDefaultsForSO()
         {
             _selectedObject.SelectedChange(default);
-            _commandEvents.Cancel();
+
+            if (_commandEvents.PendingCommand != Enum.CommandName.None)
+            {
+                _commandEvents.Cancel();
+            }
         }
 
         #endregion

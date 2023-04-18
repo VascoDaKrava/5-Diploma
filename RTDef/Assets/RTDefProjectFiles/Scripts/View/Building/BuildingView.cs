@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTDef.Buildings
 {
-    public class BuildingView : MonoBehaviour, IClickableLeft, IClickableRight, IAttackable
+    public class BuildingView : SelectableObjectBase, IClickableLeft, IClickableRight, IAttackable
     {
 
         public Transform AttackTarget => transform;

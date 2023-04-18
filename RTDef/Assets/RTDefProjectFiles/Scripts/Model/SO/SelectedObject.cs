@@ -1,4 +1,5 @@
 using RTDef.Abstraction;
+using RTDef.Model;
 using System;
 using UnityEngine;
 
@@ -30,6 +31,22 @@ namespace RTDef.Data
             if (selectableObject?.GetHashCode() == CurrentSelected?.GetHashCode())
             {
                 return;
+            }
+
+            if (selectableObject != null)
+            {
+                if (selectableObject.TryGetComponent<Highlighter>(out var newSelection))
+                {
+                    newSelection.Highlight = true;
+                }
+            }
+
+            if (CurrentSelected != null)
+            {
+                if (CurrentSelected.TryGetComponent<Highlighter>(out var oldSelection))
+                {
+                    oldSelection.Highlight = false;
+                }
             }
 
             OnSelectedChange?.Invoke(selectableObject);
