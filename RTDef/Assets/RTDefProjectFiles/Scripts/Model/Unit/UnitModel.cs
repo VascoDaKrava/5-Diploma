@@ -7,8 +7,6 @@ namespace RTDef.Game.Model
 {
     public sealed class UnitModel
     {
-        
-
 
     }
 }

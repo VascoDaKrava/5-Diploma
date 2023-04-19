@@ -5,18 +5,8 @@ using UnityEngine;
 
 namespace RTDef.Game.Model
 {
-    public class BuildingModel : MonoBehaviour
+    public class BuildingModel
     {
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }

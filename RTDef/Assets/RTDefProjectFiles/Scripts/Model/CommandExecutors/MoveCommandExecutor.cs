@@ -13,13 +13,12 @@ namespace RTDef.Game.Commands
         #region Fields
 
         private bool _isOnDistance;
+        private NavMeshAgent _navMeshAgent;
 
         #endregion
 
 
         #region Properties
-
-        private NavMeshAgent NavMeshAgent { get; set; }
 
         public override CommandName ExecutorCommandName => CommandName.Move;
 
@@ -31,7 +30,7 @@ namespace RTDef.Game.Commands
         public override void Awake()
         {
             base.Awake();
-            NavMeshAgent = GetComponent<NavMeshAgent>();
+            _navMeshAgent = GetComponent<NavMeshAgent>();
         }
 
         private void Update()
@@ -50,16 +49,17 @@ namespace RTDef.Game.Commands
         public override void StopExecuteCommand()
         {
             IsCommandRunning = false;
-            NavMeshAgent.ResetPath();
+            _navMeshAgent.ResetPath();
         }
 
         public override void TryExecuteCommand(ICommand baseCommand)
         {
             var command = (IMoveCommand)baseCommand;
 
-            NavMeshAgent.SetDestination(command.Target);
+            _navMeshAgent.SetDestination(command.Target);
             _isOnDistance = true;
             IsCommandRunning = true;
+            CommandHolder.CurrentCommand = CommandName.Move;
             CheckCommandFinishAsync();
         }
 
@@ -68,7 +68,7 @@ namespace RTDef.Game.Commands
             await Task.Run(() => { while (IsCommandRunning && _isOnDistance) { }; });
             IsCommandRunning = false;
             _isOnDistance = false;
-            CommandHolder.CurrentCommand = CommandName.Move;
+            CommandHolder.CurrentCommand = CommandName.None;
         }
 
         /// <summary>
@@ -77,9 +77,9 @@ namespace RTDef.Game.Commands
         /// <returns>True if agent on distance. False if path was finished.</returns>
         private bool CalculateOnDistanceState()
         {
-            if (NavMeshAgent.hasPath)
+            if (_navMeshAgent.hasPath)
             {
-                if (Vector3.Magnitude(NavMeshAgent.pathEndPosition - NavMeshAgent.transform.position) > NavMeshAgent.stoppingDistance)
+                if (Vector3.Magnitude(_navMeshAgent.pathEndPosition - _navMeshAgent.transform.position) > _navMeshAgent.stoppingDistance)
                 {
                     return true;
                 }

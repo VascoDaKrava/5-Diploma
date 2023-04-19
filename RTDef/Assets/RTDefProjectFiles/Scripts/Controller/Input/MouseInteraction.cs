@@ -136,7 +136,7 @@ namespace RTDef.Inputsystem
                 if (result != null)
                 {
                     hitPoint = hit.point;
-                    break;
+                    //break;
                 }
             }
 

@@ -29,6 +29,7 @@ namespace RTDef.Abstraction.Commands
                 _currentCommand = value;
             }
         }
+
         public IReadOnlyList<CommandName> AwailableCommands { get; private set; }
         public SortedDictionary<CommandName, CommandExecutorBase> AwailableExecutors { get; private set; }
 

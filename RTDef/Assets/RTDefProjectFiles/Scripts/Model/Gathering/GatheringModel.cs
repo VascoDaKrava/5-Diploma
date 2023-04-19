@@ -5,18 +5,8 @@ using UnityEngine;
 
 namespace RTDef.Game.Model
 {
-    public class GatheringModel : MonoBehaviour
+    public class GatheringModel
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }
