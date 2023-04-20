@@ -15,6 +15,7 @@ namespace RTDef.Abstraction
         [field: SerializeField] public int Attack { get; private set; }
         [field: SerializeField] public int Defence { get; private set; }
         [field: SerializeField] public int Range { get; private set; }
+        [field: SerializeField] public int SecondsToHit { get; private set; }
 
         #endregion
 

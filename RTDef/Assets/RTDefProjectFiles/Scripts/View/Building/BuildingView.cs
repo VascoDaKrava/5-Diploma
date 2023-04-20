@@ -6,10 +6,15 @@ using UnityEngine;
 
 namespace RTDef.Buildings
 {
-    public class BuildingView : CommandHolderBase, IClickableLeft, IClickableRight, IAttackable
+    public sealed class BuildingView : CommandHolderBase, IClickableLeft, IClickableRight, IAttackable
     {
 
         public Transform AttackTarget => transform;
 
+        public bool GetDamage(int damage)
+        {
+            Debug.Log($"{this} get {damage} damage!");
+            return true;
+        }
     }
 }

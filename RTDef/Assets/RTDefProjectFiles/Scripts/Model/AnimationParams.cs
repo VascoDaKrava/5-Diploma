@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace RTDef.Game.Animations
 {
+    /// <summary>
+    /// All Hashs for animation
+    /// </summary>
     public static class AnimationParams
     {
 

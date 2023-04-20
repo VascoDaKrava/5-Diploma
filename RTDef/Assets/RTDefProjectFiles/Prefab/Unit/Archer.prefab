@@ -2914,6 +2914,7 @@ MonoBehaviour:
   <Attack>k__BackingField: 5
   <Defence>k__BackingField: 3
   <Range>k__BackingField: 15
+  <SecondsToHit>k__BackingField: 3
 --- !u!95 &234375273702919979
 Animator:
   serializedVersion: 5
@@ -2949,7 +2950,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

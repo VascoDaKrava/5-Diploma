@@ -9,6 +9,11 @@ namespace RTDef.Game.Commands
     {
         public override CommandName ExecutorCommandName => CommandName.Gathering;
 
+        public override void CommandFinish()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void StopExecuteCommand()
         {
             throw new System.NotImplementedException();

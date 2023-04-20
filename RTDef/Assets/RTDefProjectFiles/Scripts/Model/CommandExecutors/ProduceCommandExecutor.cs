@@ -7,6 +7,11 @@ namespace RTDef.Game.Commands
     {
         public override CommandName ExecutorCommandName => CommandName.Produce;
 
+        public override void CommandFinish()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override void StopExecuteCommand()
         {
         }

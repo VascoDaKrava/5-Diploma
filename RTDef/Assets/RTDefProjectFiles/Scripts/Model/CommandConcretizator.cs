@@ -20,6 +20,7 @@ namespace RTDef.Game.Commands
         private bool _callCancel;
         private CommandName _currentCommand;
         private Transform _target;
+        private IAttackable _attackable;
 
         #endregion
 
@@ -78,7 +79,7 @@ namespace RTDef.Game.Commands
                     break;
 
                 case CommandName.Attack:
-                    OnCommandReady?.Invoke(new AttackCommand { AttackTarget = _target });
+                    OnCommandReady?.Invoke(new AttackCommand { AttackableTarget = _attackable });
                     break;
 
                 case CommandName.Gathering:
@@ -110,7 +111,7 @@ namespace RTDef.Game.Commands
                     if (hit is IAttackable attackable)
                     {
                         _interactionEvents.OnRightDown -= GetTarget;
-                        _target = attackable.AttackTarget;
+                        _attackable = attackable;
                         _dataRecieved = true;
                     }
                     break;

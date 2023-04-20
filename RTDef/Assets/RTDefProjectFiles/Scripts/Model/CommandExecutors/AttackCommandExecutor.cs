@@ -1,6 +1,7 @@
 using RTDef.Abstraction;
 using RTDef.Abstraction.Commands;
 using RTDef.Enum;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,8 +13,18 @@ namespace RTDef.Game.Commands
 
         #region Fields
 
+        /// <summary>
+        /// Get from NavMeshAgent at Awake
+        /// </summary>
+        private float _stopDistancePrimary;
+
+        private bool _isOnDistance;
+        private bool _isAttacking;
+        private float _timeToHit;
         private SelectableObjectBase _attacker;
+        private Animator _animator;
         private NavMeshAgent _navMeshAgent;
+        private IAttackCommand _attackCommand;
 
         #endregion
 
@@ -31,13 +42,42 @@ namespace RTDef.Game.Commands
         {
             base.Awake();
             _attacker = GetComponent<SelectableObjectBase>();
-            _navMeshAgent = GetComponent<NavMeshAgent>();
+            _animator = GetComponent<Animator>();
+
+            if (TryGetComponent(out _navMeshAgent))
+            {
+                _stopDistancePrimary = _navMeshAgent.stoppingDistance;
+            }
+        }
+
+        private void Update()
+        {
+            if (IsCommandRunning)
+            {
+                if (_isOnDistance)
+                {
+                    _isOnDistance = CalculateOnDistanceState();
+                }
+                else
+                {
+                    if (_isAttacking)
+                    {
+                        DoAttack();
+                    }
+                }
+            }
         }
 
         #endregion
 
 
         #region Methods
+
+        public override void CommandFinish()
+        {
+            IsCommandRunning = false;
+            CommandHolder.CurrentCommand = CommandName.None;
+        }
 
         public override void StopExecuteCommand()
         {
@@ -47,7 +87,7 @@ namespace RTDef.Game.Commands
 
         public override void TryExecuteCommand(ICommand baseCommand)
         {
-            var command = (IAttackCommand)baseCommand;
+            _attackCommand = (IAttackCommand)baseCommand;
 
             if (_navMeshAgent != null)
             {
@@ -60,19 +100,80 @@ namespace RTDef.Game.Commands
                 {
                     Debug.Log("We swordsman");
                 }
-                _navMeshAgent.SetDestination(command.AttackTarget.position);
+
+                MoveToTarget();
             }
             else
             {
-                if (Vector3.Distance(_attacker.transform.position, command.AttackTarget.position) <= _attacker.Range)
+                if (Vector3.Distance(_attacker.transform.position, _attackCommand.AttackableTarget.AttackTarget.position) <= _attacker.Range)
                 {
                     Debug.Log("Start attack");
                 }
                 Debug.Log("We tower");
             }
 
+            CommandHolder.CurrentCommand = CommandName.Attack;
+            Debug.Log($"Attack {_attackCommand.AttackableTarget}");
+        }
+
+        private async void CheckMoveFinishAsync()
+        {
+            await Task.Run(() => { while (IsCommandRunning && _isOnDistance) { }; });
+            Debug.Log("Move to target finish");
+            _isOnDistance = false;
+            _isAttacking = true;
+        }
+
+        private void MoveToTarget()
+        {
+            _navMeshAgent.SetDestination(_attackCommand.AttackableTarget.AttackTarget.position);
+            _isAttacking = false;
+            _timeToHit = _attacker.SecondsToHit;
             IsCommandRunning = true;
-            Debug.Log($"Attack {command.AttackTarget}");
+            _isOnDistance = true;
+            Debug.Log("Start move");
+            CheckMoveFinishAsync();
+            Debug.Log("Move to target in progress");
+        }
+
+        /// <summary>
+        /// Calculate agent status
+        /// </summary>
+        /// <returns>True if agent on distance. False if path was finished.</returns>
+        private bool CalculateOnDistanceState()
+        {
+            if (_navMeshAgent.hasPath)
+            {
+                if (Vector3.Magnitude(_navMeshAgent.pathEndPosition - _navMeshAgent.transform.position) > _navMeshAgent.stoppingDistance)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void DoAttack()
+        {
+            if (Vector3.Distance(_navMeshAgent.transform.position, _attackCommand.AttackableTarget.AttackTarget.position) > (_attacker.Range > 0 ? _attacker.Range : _stopDistancePrimary))
+            {
+                MoveToTarget();
+            }
+
+            _timeToHit -= Time.deltaTime;
+
+            if (_timeToHit < 0.0f)
+            {
+                Debug.Log("Make hit");
+
+                if (!_attackCommand.AttackableTarget.GetDamage(_attacker.Attack))
+                {
+                    Debug.Log("Attack CommandFinish");
+                    CommandFinish();
+                }
+
+                _timeToHit = _attacker.SecondsToHit;
+            }
         }
 
         #endregion

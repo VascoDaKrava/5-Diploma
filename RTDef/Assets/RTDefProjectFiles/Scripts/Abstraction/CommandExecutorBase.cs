@@ -63,6 +63,7 @@ namespace RTDef.Abstraction.Commands
 
         public abstract void TryExecuteCommand(ICommand command);
         public abstract void StopExecuteCommand();
+        public abstract void CommandFinish();
 
         #endregion
 

@@ -13,6 +13,12 @@ namespace RTDef.Units
 
         public Transform AttackTarget => transform;
 
+        public bool GetDamage(int damage)
+        {
+            Debug.Log($"{this} get {damage} damage!");
+            return true;
+        }
+
         #endregion
 
     }

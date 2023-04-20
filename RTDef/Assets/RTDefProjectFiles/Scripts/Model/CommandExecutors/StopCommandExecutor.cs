@@ -17,6 +17,11 @@ namespace RTDef.Game.Commands
 
         #region Methods
 
+        public override void CommandFinish()
+        {
+            throw new MissingMethodException("CommandFinish in StopCommandExecutor!");
+        }
+
         public override void StopExecuteCommand()
         {
             throw new MissingMethodException("StopExecuteCommand in StopCommandExecutor!");

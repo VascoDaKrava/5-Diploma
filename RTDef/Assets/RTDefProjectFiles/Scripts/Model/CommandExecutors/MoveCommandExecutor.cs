@@ -46,6 +46,13 @@ namespace RTDef.Game.Commands
 
         #region Methods
 
+        public override void CommandFinish()
+        {
+            IsCommandRunning = false;
+            _isOnDistance = false;
+            CommandHolder.CurrentCommand = CommandName.None;
+        }
+
         public override void StopExecuteCommand()
         {
             IsCommandRunning = false;
@@ -66,9 +73,7 @@ namespace RTDef.Game.Commands
         private async void CheckCommandFinishAsync()
         {
             await Task.Run(() => { while (IsCommandRunning && _isOnDistance) { }; });
-            IsCommandRunning = false;
-            _isOnDistance = false;
-            CommandHolder.CurrentCommand = CommandName.None;
+            CommandFinish();
         }
 
         /// <summary>
