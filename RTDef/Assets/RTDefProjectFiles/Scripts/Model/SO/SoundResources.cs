@@ -48,9 +48,12 @@ namespace RTDef.Data.Audio
 
         [field: SerializeField] public List<AudioClip> BackgroundMusic { get; private set; }
 
-        [field: SerializeField] public AudioClip ButtonSelectClip { get; private set; }
+        [field: SerializeField, Space, Header("Menu")] public AudioClip ButtonSelectClip { get; private set; }
         [field: SerializeField] public AudioClip ButtonClickClip { get; private set; }
         
+        [field: SerializeField, Space, Header("SFX"), Header("Weapon")] public AudioClip ArrowFlyClip { get; private set; }
+        [field: SerializeField] public AudioClip HalbertAttackClip { get; private set; }
+
         #endregion
 
         #endregion

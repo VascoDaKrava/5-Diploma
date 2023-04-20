@@ -2248,7 +2248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8965419200954883406, guid: baac61472e515a947b33de54c0d49de3, type: 3}
       propertyPath: m_Name
-      value: Warrior (1)
+      value: Swordsman (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baac61472e515a947b33de54c0d49de3, type: 3}

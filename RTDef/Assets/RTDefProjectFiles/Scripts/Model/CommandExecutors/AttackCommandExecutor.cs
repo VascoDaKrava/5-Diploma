@@ -1,6 +1,8 @@
 using RTDef.Abstraction;
 using RTDef.Abstraction.Commands;
+using RTDef.Data.Audio;
 using RTDef.Enum;
+using RTDef.Game.Animations;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +15,8 @@ namespace RTDef.Game.Commands
 
         #region Fields
 
+        [SerializeField] private SoundResources _soundResources;
+
         /// <summary>
         /// Get from NavMeshAgent at Awake
         /// </summary>
@@ -20,9 +24,10 @@ namespace RTDef.Game.Commands
 
         private bool _isOnDistance;
         private bool _isAttacking;
-        private float _timeToHit;
+        private float _timeToHit = 0.0f;
         private SelectableObjectBase _attacker;
         private Animator _animator;
+        private AudioSource _audioSource;
         private NavMeshAgent _navMeshAgent;
         private IAttackCommand _attackCommand;
 
@@ -43,6 +48,7 @@ namespace RTDef.Game.Commands
             base.Awake();
             _attacker = GetComponent<SelectableObjectBase>();
             _animator = GetComponent<Animator>();
+            _audioSource = GetComponent<AudioSource>();
 
             if (TryGetComponent(out _navMeshAgent))
             {
@@ -128,7 +134,7 @@ namespace RTDef.Game.Commands
         {
             _navMeshAgent.SetDestination(_attackCommand.AttackableTarget.AttackTarget.position);
             _isAttacking = false;
-            _timeToHit = _attacker.SecondsToHit;
+            //_timeToHit = _attacker.SecondsToHit;
             IsCommandRunning = true;
             _isOnDistance = true;
             Debug.Log("Start move");
@@ -165,6 +171,16 @@ namespace RTDef.Game.Commands
             if (_timeToHit < 0.0f)
             {
                 Debug.Log("Make hit");
+                _animator.SetTrigger(AnimationParams.FIRE);
+
+                if (_attacker.Range > 0)
+                {
+                    _audioSource.PlayOneShot(_soundResources.ArrowFlyClip);
+                }
+                else
+                {
+                    _audioSource.PlayOneShot(_soundResources.HalbertAttackClip);
+                }
 
                 if (!_attackCommand.AttackableTarget.GetDamage(_attacker.Attack))
                 {

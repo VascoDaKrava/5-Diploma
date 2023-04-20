@@ -28,3 +28,5 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f22bf5e6cf3274e4b89e773f4e820b5d, type: 3}
   <ButtonSelectClip>k__BackingField: {fileID: 8300000, guid: 0b49cb9b1450b0b4f8bd6dc1b2c53f70, type: 3}
   <ButtonClickClip>k__BackingField: {fileID: 8300000, guid: 3f292cf441c4c5047bcc3f9c141de6c5, type: 3}
+  <ArrowFlyClip>k__BackingField: {fileID: 8300000, guid: 35420c1a7e72de240b7f3cb9a08c49cc, type: 3}
+  <HalbertAttackClip>k__BackingField: {fileID: 8300000, guid: b91aa664ff16f4142bc4969c9db7367a, type: 3}
