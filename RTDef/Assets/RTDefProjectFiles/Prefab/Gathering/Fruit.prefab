@@ -382,6 +382,8 @@ MonoBehaviour:
   <Attack>k__BackingField: 0
   <Defence>k__BackingField: 0
   <Range>k__BackingField: 0
+  <SecondsToHit>k__BackingField: 0
+  <ResourceType>k__BackingField: 1
 --- !u!114 &3096913588487868532
 MonoBehaviour:
   m_ObjectHideFlags: 0

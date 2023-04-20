@@ -16,18 +16,17 @@ namespace RTDef.Game.Commands
 
         public event Action<ICommand> OnCommandReady;
 
-        private bool _dataRecieved;
-        private bool _callCancel;
-        private CommandName _currentCommand;
-        private Transform _target;
-        private IAttackable _attackable;
-
         #endregion
 
 
         #region Fields
 
         private readonly IInteractionsGet _interactionEvents;
+        private bool _dataRecieved;
+        private bool _callCancel;
+        private CommandName _currentCommand;
+        private IHarvestable _harvestable;
+        private IAttackable _attackable;
 
         #endregion
 
@@ -54,7 +53,8 @@ namespace RTDef.Game.Commands
             _interactionEvents.OnRightDown += GetTarget;
             _dataRecieved = false;
             _callCancel = false;
-            _target = default;
+            _harvestable = default;
+            _attackable = default;
             _currentCommand = command;
 
             WaitForDataAsync();
@@ -83,7 +83,7 @@ namespace RTDef.Game.Commands
                     break;
 
                 case CommandName.Gathering:
-                    OnCommandReady?.Invoke(new GatheringCommand { GatheringTarget = _target });
+                    OnCommandReady?.Invoke(new HarvestCommand { Target = _harvestable });
                     break;
 
                 default:
@@ -117,10 +117,10 @@ namespace RTDef.Game.Commands
                     break;
 
                 case CommandName.Gathering:
-                    if (hit is IGatheringable gatheringable)
+                    if (hit is IHarvestable harvestable)
                     {
                         _interactionEvents.OnRightDown -= GetTarget;
-                        _target = gatheringable.GatheringTarget;
+                        _harvestable = harvestable;
                         _dataRecieved = true;
                     }
                     break;

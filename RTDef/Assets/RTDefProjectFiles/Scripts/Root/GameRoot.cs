@@ -24,8 +24,8 @@ namespace RTDef.Game
         [SerializeField] private Transform _cameraObjective;
         [SerializeField] private CameraRestrictions _cameraRestrictions;
 
-        public int Food => 0;
-        public int Wood => 12345;
+        public int Food => 100;
+        public int Wood => 100;
 
         #endregion
 

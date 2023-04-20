@@ -13,7 +13,9 @@ if (selectableObject?.GetHashCode() == CurrentSelected?.GetHashCode())
 
 5. После смены команды (Идти --\ Атаковать) нужно отдавать её дважды - на первое уточнение не реагирует.
 
-6. Разделить AttackCommandExecutor
+6. Разделить AttackCommandExecutor. +DI
+
+7. Разделить GatherCommandExecutor. +DI
 
 ================================================================================
 
