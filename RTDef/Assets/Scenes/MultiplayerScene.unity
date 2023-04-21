@@ -1038,6 +1038,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9194129428023439865, guid: ddfeb997ac42dbd4f8b9f929fca1d59c, type: 3}
+      propertyPath: _infoView
+      value: 
+      objectReference: {fileID: 1047295454}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddfeb997ac42dbd4f8b9f929fca1d59c, type: 3}
 --- !u!4 &475527506 stripped
@@ -1449,6 +1453,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower
       objectReference: {fileID: 0}
+    - target: {fileID: 6860755683585670726, guid: 78de7387af6f8ac4eac2e88d73b4a352, type: 3}
+      propertyPath: _soundResources
+      value: 
+      objectReference: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 78de7387af6f8ac4eac2e88d73b4a352, type: 3}
 --- !u!4 &695488318 stripped
@@ -2008,6 +2016,10 @@ PrefabInstance:
       propertyPath: _soundResources
       value: 
       objectReference: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
+    - target: {fileID: 6891393717022919422, guid: 456a79f7c3ffa7a4fad06bd9361f92ad, type: 3}
+      propertyPath: _infoView
+      value: 
+      objectReference: {fileID: 1047295454}
     - target: {fileID: 8965419200954883406, guid: 456a79f7c3ffa7a4fad06bd9361f92ad, type: 3}
       propertyPath: m_Name
       value: Worker (1)
@@ -2256,6 +2268,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3774871040753005382, guid: baac61472e515a947b33de54c0d49de3, type: 3}
+      propertyPath: _infoView
+      value: 
+      objectReference: {fileID: 1047295454}
     - target: {fileID: 8965419200954883406, guid: baac61472e515a947b33de54c0d49de3, type: 3}
       propertyPath: m_Name
       value: Swordsman (1)
@@ -2391,6 +2407,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 426778281959471406, guid: 7c8d7f3a1b5c8ac4099e45aaca97affd, type: 3}
   m_PrefabInstance: {fileID: 1046012939}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1047295454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5442102304162621091, guid: cb2caf65a3e9d0e46ae9d25c98a6b2f2, type: 3}
+  m_PrefabInstance: {fileID: 5498836578662889678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbaa28c1e059aa439768390b82ec956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1070972147
 PrefabInstance:
   m_ObjectHideFlags: 0

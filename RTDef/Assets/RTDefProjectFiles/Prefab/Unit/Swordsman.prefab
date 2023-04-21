@@ -3374,6 +3374,8 @@ MonoBehaviour:
   <Defence>k__BackingField: 15
   <Range>k__BackingField: 0
   <SecondsToHit>k__BackingField: 3
+  _infoView: {fileID: 0}
+  _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
 --- !u!95 &8825435931686624871
 Animator:
   serializedVersion: 5

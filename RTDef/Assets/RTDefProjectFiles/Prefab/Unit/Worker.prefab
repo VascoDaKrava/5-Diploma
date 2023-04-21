@@ -2945,6 +2945,8 @@ MonoBehaviour:
   <Defence>k__BackingField: 0
   <Range>k__BackingField: 0
   <SecondsToHit>k__BackingField: 1
+  _infoView: {fileID: 0}
+  _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
   <Basket>k__BackingField: {fileID: 1748333091330505341}
   <WoodLogPack>k__BackingField: {fileID: 149976267135420788}
   <Axe>k__BackingField: {fileID: 8118127619810981835}

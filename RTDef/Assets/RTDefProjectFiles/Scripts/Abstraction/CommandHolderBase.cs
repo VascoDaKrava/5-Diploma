@@ -38,7 +38,7 @@ namespace RTDef.Abstraction.Commands
 
         #region Mono
 
-        private void Awake()
+        private protected virtual void Awake()
         {
             AwailableExecutors = new SortedDictionary<CommandName, CommandExecutorBase>();
 

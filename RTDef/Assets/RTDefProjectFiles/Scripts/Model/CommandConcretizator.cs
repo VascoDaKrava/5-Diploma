@@ -4,7 +4,6 @@ using RTDef.Abstraction.InputSystem;
 using RTDef.Enum;
 using System;
 using System.Threading.Tasks;
-using UnityEngine;
 
 
 namespace RTDef.Game.Commands
@@ -57,6 +56,13 @@ namespace RTDef.Game.Commands
             _attackable = default;
             _currentCommand = command;
 
+            // For commands without target/concretization
+            if (command == CommandName.Kill)
+            {
+                _interactionEvents.OnRightDown -= GetTarget;
+                _dataRecieved = true;
+            }
+
             WaitForDataAsync();
         }
 
@@ -84,6 +90,10 @@ namespace RTDef.Game.Commands
 
                 case CommandName.Harvest:
                     OnCommandReady?.Invoke(new HarvestCommand { Target = _harvestable });
+                    break;
+
+                case CommandName.Kill:
+                    OnCommandReady?.Invoke(new KillCommand { });
                     break;
 
                 default:
