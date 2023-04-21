@@ -1,5 +1,4 @@
 using RTDef.Abstraction;
-using RTDef.Abstraction.InputSystem;
 using RTDef.Data;
 using RTDef.Game.UI;
 using System;
@@ -13,7 +12,7 @@ namespace RTDef.Game
         #region Fields
 
         private readonly SelectedObject _selectedObject;
-        private readonly IGameGathering _gameGathering;
+        private readonly IHarvestingResources _harvestingResources;
         private readonly GameTopPanelView _topPanel;
         private readonly GameBottomPanelView _bottomPanel;
 
@@ -25,7 +24,7 @@ namespace RTDef.Game
         public GameUIController(SelectedObject selectedObject, IGameData gameData)
         {
             _selectedObject = selectedObject;
-            _gameGathering = gameData as IGameGathering;
+            _harvestingResources = gameData as IHarvestingResources;
             var gamePanels = gameData as IInGamePanels;
 
             _topPanel = gamePanels.GameTopPanelView;
@@ -50,6 +49,11 @@ namespace RTDef.Game
 
         #region Methods
 
+        public void UpdateHarvestingResources(IHarvestingResources harvestingResources)
+        {
+            _topPanel.SetResourcesQuantity(harvestingResources);
+        }
+
         private void OnSelectObject(SelectableObjectBase selectedObject)
         {
             _bottomPanel.ShowContent(selectedObject);
@@ -57,7 +61,7 @@ namespace RTDef.Game
 
         private void TopPanelMenuButtonClickEventHandler()
         {
-            _topPanel.SetResourcesQuantity(_gameGathering);
+            _topPanel.SetResourcesQuantity(_harvestingResources);
         }
 
         #endregion

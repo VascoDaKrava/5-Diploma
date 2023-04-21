@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RTDef.Game.Model
 {
-    public class GatheringModel
+    public class HarvestModel
     {
         
     }

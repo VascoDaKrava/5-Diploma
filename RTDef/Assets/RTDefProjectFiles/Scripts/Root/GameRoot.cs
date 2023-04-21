@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace RTDef.Game
 {
-    public sealed class GameRoot : MonoBehaviour, IGameData, IGameResources, IInGamePanels, IGameGathering
+    public sealed class GameRoot : MonoBehaviour, IGameData, IGameResources, IInGamePanels, IHarvestingResources
     {
 
         #region Fields
@@ -24,8 +24,9 @@ namespace RTDef.Game
         [SerializeField] private Transform _cameraObjective;
         [SerializeField] private CameraRestrictions _cameraRestrictions;
 
-        public int Food => 100;
-        public int Wood => 100;
+        [SerializeField] private int _food = 100;
+        [SerializeField] private int _wood = 100;
+        private GameUIController _gameUIcontroller;
 
         #endregion
 
@@ -44,6 +45,34 @@ namespace RTDef.Game
 
         [field: SerializeField] public GameBottomPanelView GameBottomPanelView { get; private set; }
 
+        public int Food
+        {
+            get
+            {
+                return _food;
+            }
+
+            set
+            {
+                _food = value;
+                _gameUIcontroller.UpdateHarvestingResources(this);
+            }
+        }
+
+        public int Wood
+        {
+            get
+            {
+                return _wood;
+            }
+
+            set
+            {
+                _wood = value;
+                _gameUIcontroller.UpdateHarvestingResources(this);
+            }
+        }
+
         #endregion
 
 
@@ -53,7 +82,7 @@ namespace RTDef.Game
         {
             //SetDefaultsForSO();
 
-            new GameUIController(_selectedObject, this);
+            _gameUIcontroller = new GameUIController(_selectedObject, this);
 
             new MenuSoundFXController(UIRootTransform, this);
             new MusicController(this);
@@ -65,6 +94,7 @@ namespace RTDef.Game
             new CameraController(_cameraContainer, _cameraObjective, _cameraRestrictions, _interactionEvents);
 
             SoundResources.ApllySettings();
+            _gameUIcontroller.UpdateHarvestingResources(this);
         }
 
         private void OnEnable()

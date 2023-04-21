@@ -43,5 +43,30 @@ namespace RTDef.Game.Animations
 
         #endregion
 
+
+        #region Worker harvesting
+
+        /// <summary>
+        /// Bool. Harvest fruit
+        /// </summary>
+        public static int HAVE_BASKET => Animator.StringToHash("HaveBasket");
+        
+        /// <summary>
+        /// Bool. Harvest at middle hight
+        /// </summary>
+        public static int HARVEST_MIDDLE => Animator.StringToHash("PickMiddle");
+        
+        /// <summary>
+        /// Bool. Harvest wood
+        /// </summary>
+        public static int HAVE_AXE => Animator.StringToHash("HaveAxe");
+
+        /// <summary>
+        /// Bool. Slash tree
+        /// </summary>
+        public static int AXE_SLASH_TREE => Animator.StringToHash("AxeSlashBottom");
+
+        #endregion
+
     }
 }

@@ -2721,6 +2721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55a92e75732b464da02e26bd68950ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameRoot: {fileID: 0}
 --- !u!114 &2912405784757364150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2776,7 +2777,7 @@ MonoBehaviour:
   <Attack>k__BackingField: 0
   <Defence>k__BackingField: 0
   <Range>k__BackingField: 0
-  <SecondsToHit>k__BackingField: 0
+  <SecondsToHit>k__BackingField: 1
 --- !u!95 &7553833199480447311
 Animator:
   serializedVersion: 5

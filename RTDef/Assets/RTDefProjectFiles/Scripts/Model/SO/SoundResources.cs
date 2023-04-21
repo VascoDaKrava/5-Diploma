@@ -54,6 +54,10 @@ namespace RTDef.Data.Audio
         [field: SerializeField, Space, Header("SFX"), Header("Weapon")] public AudioClip ArrowFlyClip { get; private set; }
         [field: SerializeField] public AudioClip HalbertAttackClip { get; private set; }
 
+        [field: SerializeField, Space, Header("Harvest")] public AudioClip AppleFall { get; private set; }
+        [field: SerializeField] public AudioClip AxeChop { get; private set; }
+        [field: SerializeField] public AudioClip TreeFall { get; private set; }
+
         #endregion
 
         #endregion

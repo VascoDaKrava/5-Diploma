@@ -82,7 +82,7 @@ namespace RTDef.Game.Commands
                     OnCommandReady?.Invoke(new AttackCommand { AttackableTarget = _attackable });
                     break;
 
-                case CommandName.Gathering:
+                case CommandName.Harvest:
                     OnCommandReady?.Invoke(new HarvestCommand { Target = _harvestable });
                     break;
 
@@ -116,7 +116,7 @@ namespace RTDef.Game.Commands
                     }
                     break;
 
-                case CommandName.Gathering:
+                case CommandName.Harvest:
                     if (hit is IHarvestable harvestable)
                     {
                         _interactionEvents.OnRightDown -= GetTarget;

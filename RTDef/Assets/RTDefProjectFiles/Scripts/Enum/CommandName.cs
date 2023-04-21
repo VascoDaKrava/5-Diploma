@@ -6,7 +6,7 @@ namespace RTDef.Enum
         Stop = 1,
         Move = 2,
         Attack = 3,
-        Gathering = 4,
+        Harvest = 4,
         Build = 5,
         Produce = 6,
         ProduceWorker = 7,

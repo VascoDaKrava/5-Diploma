@@ -30,3 +30,6 @@ MonoBehaviour:
   <ButtonClickClip>k__BackingField: {fileID: 8300000, guid: 3f292cf441c4c5047bcc3f9c141de6c5, type: 3}
   <ArrowFlyClip>k__BackingField: {fileID: 8300000, guid: 35420c1a7e72de240b7f3cb9a08c49cc, type: 3}
   <HalbertAttackClip>k__BackingField: {fileID: 8300000, guid: b91aa664ff16f4142bc4969c9db7367a, type: 3}
+  <AppleFall>k__BackingField: {fileID: 8300000, guid: 249c728807439ad4a9a482a203b9483b, type: 3}
+  <AxeChop>k__BackingField: {fileID: 8300000, guid: 78e135a54f3875c49978cf573cc42ba5, type: 3}
+  <TreeFall>k__BackingField: {fileID: 8300000, guid: 3d5c9d7e49e59d6489f224bc6325a653, type: 3}

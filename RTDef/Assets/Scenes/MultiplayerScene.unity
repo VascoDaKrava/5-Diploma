@@ -394,6 +394,8 @@ MonoBehaviour:
   _cameraContainer: {fileID: 569217767}
   _cameraObjective: {fileID: 1872981571}
   _cameraRestrictions: {fileID: 11400000, guid: 80076e0d88756ed4bb43b6fbcdfb85d3, type: 2}
+  _food: 100
+  _wood: 100
   <UIRootTransform>k__BackingField: {fileID: 763764696}
   <SoundResources>k__BackingField: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
   <MenuAuidioSource>k__BackingField: {fileID: 1872981574}
@@ -1998,6 +2000,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5708103240109234157, guid: 456a79f7c3ffa7a4fad06bd9361f92ad, type: 3}
+      propertyPath: _gameRoot
+      value: 
+      objectReference: {fileID: 94686878}
+    - target: {fileID: 5708103240109234157, guid: 456a79f7c3ffa7a4fad06bd9361f92ad, type: 3}
+      propertyPath: _soundResources
+      value: 
+      objectReference: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
     - target: {fileID: 8965419200954883406, guid: 456a79f7c3ffa7a4fad06bd9361f92ad, type: 3}
       propertyPath: m_Name
       value: Worker (1)

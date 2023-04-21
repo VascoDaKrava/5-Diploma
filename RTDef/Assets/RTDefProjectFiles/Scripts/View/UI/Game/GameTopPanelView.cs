@@ -1,7 +1,6 @@
 using RTDef.Abstraction;
 using RTDef.UI;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -27,10 +26,10 @@ namespace RTDef.Game.UI
 
         #region Methods
 
-        public void SetResourcesQuantity(IGameGathering gathering)
+        public void SetResourcesQuantity(IHarvestingResources resources)
         {
-            _foodText.text = gathering.Food < 1000 ? $"{gathering.Food}" : $"{gathering.Food:### ### ###}";
-            _woodText.text = gathering.Wood < 1000 ? $"{gathering.Wood}" : $"{gathering.Wood:### ### ###}";
+            _foodText.text = resources.Food < 1000 ? $"{resources.Food}" : $"{resources.Food:### ### ###}";
+            _woodText.text = resources.Wood < 1000 ? $"{resources.Wood}" : $"{resources.Wood:### ### ###}";
         }
 
         #endregion

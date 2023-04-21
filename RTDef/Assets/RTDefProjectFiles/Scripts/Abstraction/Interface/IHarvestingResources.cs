@@ -1,6 +1,6 @@
 namespace RTDef.Abstraction
 {
-    public interface IGameGathering : IGameData
+    public interface IHarvestingResources : IGameData
     {
         int Food { get; }
         int Wood { get; }

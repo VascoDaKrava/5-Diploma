@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace RTDef.Gathering
 {
-    public class GatheringView : SelectableObjectBase, IClickableRight, IClickableLeft, IHarvestable
+    public class HarvestView : SelectableObjectBase, IClickableRight, IClickableLeft, IHarvestable
     {
         public Transform HarvestTarget => transform;
 
