@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace RTDef.Units
 {
-    public sealed class UnitView : CommandHolderBase, IClickableLeft, IClickableRight, IAttackable
+    public class UnitView : CommandHolderBase, IClickableLeft, IClickableRight, IAttackable
     {
 
         #region Properties

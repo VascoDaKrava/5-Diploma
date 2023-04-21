@@ -2667,12 +2667,12 @@ GameObject:
   - component: {fileID: 2912405784757364150}
   - component: {fileID: 544416724273172419}
   - component: {fileID: 3138335048409294603}
-  - component: {fileID: 2639613303108805264}
   - component: {fileID: 7553833199480447311}
   - component: {fileID: 7920182711663919102}
   - component: {fileID: 6554785591133800293}
   - component: {fileID: 7040625584180470871}
   - component: {fileID: 6565915595309953477}
+  - component: {fileID: 6891393717022919422}
   m_Layer: 0
   m_Name: Worker
   m_TagString: Untagged
@@ -2722,6 +2722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameRoot: {fileID: 0}
+  _soundResources: {fileID: 0}
 --- !u!114 &2912405784757364150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2758,26 +2759,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c715ddaa95db0241b41048f32eca205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2639613303108805264
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8965419200954883406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: 4bf62f22ef66e4b4cbe2c66ef2642b46, type: 3}
-  <Name>k__BackingField: Worker
-  <Health>k__BackingField: 45
-  <HealthMax>k__BackingField: 45
-  <Attack>k__BackingField: 0
-  <Defence>k__BackingField: 0
-  <Range>k__BackingField: 0
-  <SecondsToHit>k__BackingField: 1
 --- !u!95 &7553833199480447311
 Animator:
   serializedVersion: 5
@@ -2944,6 +2925,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6891393717022919422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965419200954883406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8fff0944a7038c4682b8e5dbd112cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 21300000, guid: 4bf62f22ef66e4b4cbe2c66ef2642b46, type: 3}
+  <Name>k__BackingField: Worker
+  <Health>k__BackingField: 45
+  <HealthMax>k__BackingField: 45
+  <Attack>k__BackingField: 0
+  <Defence>k__BackingField: 0
+  <Range>k__BackingField: 0
+  <SecondsToHit>k__BackingField: 1
+  <Basket>k__BackingField: {fileID: 1748333091330505341}
+  <WoodLogPack>k__BackingField: {fileID: 149976267135420788}
+  <Axe>k__BackingField: {fileID: 8118127619810981835}
+  <Apple>k__BackingField: {fileID: 4442818800845020922}
 --- !u!1 &9195027107237453495
 GameObject:
   m_ObjectHideFlags: 0

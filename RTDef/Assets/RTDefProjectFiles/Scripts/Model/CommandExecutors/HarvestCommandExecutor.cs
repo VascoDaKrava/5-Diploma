@@ -3,6 +3,7 @@ using RTDef.Abstraction.Commands;
 using RTDef.Data.Audio;
 using RTDef.Enum;
 using RTDef.Game.Animations;
+using RTDef.Units;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -21,7 +22,7 @@ namespace RTDef.Game.Commands
         private Animator _animator;
         private AudioSource _audioSource;
         private NavMeshAgent _navMeshAgent;
-        private SelectableObjectBase _harvester;
+        private WorkerView _harvester;
         private IHarvestable _target;
         private bool _isOnDistance;
         private bool _isHarvesting;
@@ -46,7 +47,7 @@ namespace RTDef.Game.Commands
             _audioSource = GetComponent<AudioSource>();
             _navMeshAgent = GetComponent<NavMeshAgent>();
 
-            _harvester = GetComponent<SelectableObjectBase>();
+            _harvester = GetComponent<WorkerView>();
         }
 
         private void Update()
@@ -105,6 +106,8 @@ namespace RTDef.Game.Commands
 
             _animator.SetBool(AnimationParams.HAVE_AXE, false);
             _animator.SetBool(AnimationParams.AXE_SLASH_TREE, false);
+
+            _harvester.HideAllProps();
         }
 
         private void MoveToTarget()
@@ -124,10 +127,12 @@ namespace RTDef.Game.Commands
 
                 case ResourceType.Food:
                     _animator.SetBool(AnimationParams.HAVE_BASKET, true);
+                    _harvester.Basket.gameObject.SetActive(true);
                     break;
 
                 case ResourceType.Wood:
                     _animator.SetBool(AnimationParams.HAVE_AXE, true);
+                    _harvester.Axe.gameObject.SetActive(true);
                     break;
 
                 default:
@@ -166,6 +171,7 @@ namespace RTDef.Game.Commands
 
                 case ResourceType.Food:
                     _animator.SetBool(AnimationParams.HARVEST_MIDDLE, true);
+                    _harvester.Apple.gameObject.SetActive(true);
                     break;
 
                 case ResourceType.Wood:
