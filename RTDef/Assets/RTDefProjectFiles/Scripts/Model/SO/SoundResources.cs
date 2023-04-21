@@ -58,6 +58,8 @@ namespace RTDef.Data.Audio
         [field: SerializeField] public AudioClip AxeChop { get; private set; }
         [field: SerializeField] public AudioClip TreeFall { get; private set; }
 
+        [field: SerializeField, Space, Header("Character")] public AudioClip Death { get; private set; }
+
         #endregion
 
         #endregion

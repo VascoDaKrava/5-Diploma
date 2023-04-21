@@ -33,3 +33,4 @@ MonoBehaviour:
   <AppleFall>k__BackingField: {fileID: 8300000, guid: 249c728807439ad4a9a482a203b9483b, type: 3}
   <AxeChop>k__BackingField: {fileID: 8300000, guid: 78e135a54f3875c49978cf573cc42ba5, type: 3}
   <TreeFall>k__BackingField: {fileID: 8300000, guid: 3d5c9d7e49e59d6489f224bc6325a653, type: 3}
+  <Death>k__BackingField: {fileID: 8300000, guid: c97032d8a5220344a9ded0bcce051643, type: 3}

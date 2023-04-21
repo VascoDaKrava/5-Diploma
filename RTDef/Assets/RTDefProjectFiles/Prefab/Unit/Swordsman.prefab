@@ -3376,6 +3376,7 @@ MonoBehaviour:
   <SecondsToHit>k__BackingField: 3
   _infoView: {fileID: 0}
   _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
+  _soundResources: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
 --- !u!95 &8825435931686624871
 Animator:
   serializedVersion: 5

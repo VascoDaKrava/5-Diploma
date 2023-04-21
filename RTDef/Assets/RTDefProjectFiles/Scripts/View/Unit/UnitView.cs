@@ -2,6 +2,7 @@ using RTDef.Abstraction;
 using RTDef.Abstraction.Commands;
 using RTDef.Abstraction.InputSystem;
 using RTDef.Data;
+using RTDef.Data.Audio;
 using RTDef.Enum;
 using RTDef.Game.Animations;
 using RTDef.Game.UI;
@@ -16,8 +17,10 @@ namespace RTDef.Units
         #region Fields
 
         private Animator _animator;
+        private AudioSource _audioSource;
         [SerializeField, Header("Units data")] private GameBottomInfoView _infoView;
         [SerializeField] private SelectedObject _selectedObject;
+        [SerializeField] private SoundResources _soundResources;
 
         #endregion
 
@@ -51,6 +54,7 @@ namespace RTDef.Units
         {
             base.Awake();
             _animator = GetComponent<Animator>();
+            _audioSource = GetComponent<AudioSource>();
         }
 
         #endregion
@@ -65,6 +69,12 @@ namespace RTDef.Units
             _animator.SetTrigger(AnimationParams.DIE);
             Destroy(this, Time.deltaTime * 2);
 
+            if (_audioSource.isPlaying)
+            {
+                _audioSource.Stop();
+            }
+
+            _audioSource.PlayOneShot(_soundResources.Death);
             _selectedObject.SelectedChange(default);
         }
 
