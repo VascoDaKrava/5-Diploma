@@ -3374,6 +3374,7 @@ MonoBehaviour:
   <Defence>k__BackingField: 15
   <Range>k__BackingField: 0
   <SecondsToHit>k__BackingField: 3
+  <FactionID>k__BackingField: 0
   _infoView: {fileID: 0}
   _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
   _soundResources: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
@@ -3434,6 +3435,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 1251449634620599088}
   _animator: {fileID: 8825435931686624871}
+  _ratio: 1
 --- !u!114 &2948248140847033231
 MonoBehaviour:
   m_ObjectHideFlags: 0

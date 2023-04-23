@@ -1,4 +1,5 @@
 using RTDef.Abstraction;
+using RTDef.Abstraction.Commands;
 using UnityEngine;
 
 
@@ -11,6 +12,8 @@ namespace RTDef.Game.UI
 
         [SerializeField] private GameBottomInfoView _infoView;
         [SerializeField] private GameBottomCommandView _commandsView;
+
+        [SerializeField] private GameRoot _gameRoot;
 
         #endregion
 
@@ -31,6 +34,8 @@ namespace RTDef.Game.UI
             }
 
             if (content is ICommandHolder commandHolder)
+            //if (content is CommandHolderBase commandHolder &&
+            //    commandHolder.FactionID == _gameRoot.FactionID)
             {
                 _commandsView.ShowCommands(commandHolder.AwailableCommands);
                 _commandsView.gameObject.SetActive(true);

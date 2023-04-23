@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace RTDef.Abstraction
 {
-    public abstract class SelectableObjectBase : MonoBehaviour, IInfoForPanel
+    public abstract class SelectableObjectBase : MonoBehaviour, IInfoForPanel, IFaction
     {
 
         #region Properties
@@ -16,6 +16,8 @@ namespace RTDef.Abstraction
         [field: SerializeField] public int Defence { get; private set; }
         [field: SerializeField] public int Range { get; private set; }
         [field: SerializeField] public int SecondsToHit { get; private set; }
+
+        [field: SerializeField] public int FactionID { get; private set; }
 
         #endregion
 

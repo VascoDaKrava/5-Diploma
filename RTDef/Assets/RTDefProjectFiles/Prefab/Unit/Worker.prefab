@@ -2816,6 +2816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 7920182711663919102}
   _animator: {fileID: 7553833199480447311}
+  _ratio: 1
 --- !u!114 &7040625584180470871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2945,6 +2946,7 @@ MonoBehaviour:
   <Defence>k__BackingField: 0
   <Range>k__BackingField: 0
   <SecondsToHit>k__BackingField: 1
+  <FactionID>k__BackingField: 0
   _infoView: {fileID: 0}
   _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
   _soundResources: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}

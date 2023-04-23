@@ -11,7 +11,7 @@ using UnityEngine;
 
 namespace RTDef.Game
 {
-    public sealed class GameRoot : MonoBehaviour, IGameData, IGameResources, IInGamePanels, IHarvestingResources
+    public sealed class GameRoot : MonoBehaviour, IGameData, IGameResources, IInGamePanels, IHarvestingResources, IFaction
     {
 
         #region Fields
@@ -44,6 +44,8 @@ namespace RTDef.Game
         [field: SerializeField, Header("UI")] public GameTopPanelView GameTopPanelView { get; private set; }
 
         [field: SerializeField] public GameBottomPanelView GameBottomPanelView { get; private set; }
+
+        [field: SerializeField] public int FactionID { get; private set; }
 
         public int Food
         {

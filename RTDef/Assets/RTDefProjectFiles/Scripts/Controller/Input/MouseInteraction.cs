@@ -131,12 +131,13 @@ namespace RTDef.Inputsystem
 
             foreach (var hit in hits)
             {
-                result = hit.collider.GetComponentInParent<T>();
+                var tempResult = hit.collider.GetComponentInParent<T>();
 
-                if (result != null)
+                if (tempResult != null &&
+                    Vector3.Distance(_camera.transform.position, hit.point) < Vector3.Distance(_camera.transform.position, hitPoint))
                 {
                     hitPoint = hit.point;
-                    //break;
+                    result = tempResult;
                 }
             }
 
