@@ -33,9 +33,8 @@ namespace RTDef.Game.UI
                 _infoView.gameObject.SetActive(false);
             }
 
-            if (content is ICommandHolder commandHolder)
-            //if (content is CommandHolderBase commandHolder &&
-            //    commandHolder.FactionID == _gameRoot.FactionID)
+            if (content is CommandHolderBase commandHolder &&
+                commandHolder.FactionID == _gameRoot.FactionID)
             {
                 _commandsView.ShowCommands(commandHolder.AwailableCommands);
                 _commandsView.gameObject.SetActive(true);
