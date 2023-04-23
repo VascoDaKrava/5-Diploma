@@ -18,9 +18,11 @@ namespace RTDef.Units
 
         private Animator _animator;
         private AudioSource _audioSource;
-        [SerializeField, Header("Units data")] private GameBottomInfoView _infoView;
+        [SerializeField, Header("Units data")] public GameBottomInfoView _infoView; // DI
         [SerializeField] private SelectedObject _selectedObject;
         [SerializeField] private SoundResources _soundResources;
+        [SerializeField] private Collider _collider;
+        private bool _startDie;
 
         #endregion
 
@@ -28,6 +30,8 @@ namespace RTDef.Units
         #region Properties
 
         public Transform AttackTarget => transform;
+
+        public bool isDie => _startDie;
 
         public bool GetDamage(int damage)
         {
@@ -67,7 +71,10 @@ namespace RTDef.Units
             CurrentCommand = CommandName.None;
 
             _animator.SetTrigger(AnimationParams.DIE);
-            Destroy(this, Time.deltaTime * 2);
+            Destroy(_collider.gameObject);// Destroy collider for stop usage by selector, attacker etc.
+            FactionID = 0;// Enemy canm`t attack, friendly-fire
+            Destroy(this, Time.deltaTime * 2);// 2 frame pause
+            _startDie = true;
 
             if (_audioSource.isPlaying)
             {

@@ -21,6 +21,8 @@ if (selectableObject?.GetHashCode() == CurrentSelected?.GetHashCode())
 
 9. GameBottomPanelView +DI
 
+10. AItargetSelector +DI
+
 ================================================================================
 
 * GUI

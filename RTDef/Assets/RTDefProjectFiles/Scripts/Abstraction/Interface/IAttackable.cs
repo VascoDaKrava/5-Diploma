@@ -10,5 +10,6 @@ namespace RTDef.Abstraction
         /// </summary>
         Transform AttackTarget { get; }
         bool GetDamage(int damage);
+        bool isDie { get; }
     }
 }

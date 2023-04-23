@@ -2323,7 +2323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6899421593741888187}
   - component: {fileID: 6165685981945170829}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2525,13 +2525,13 @@ GameObject:
   m_Component:
   - component: {fileID: 426778281959471406}
   - component: {fileID: 242060927386199613}
-  - component: {fileID: 3774871040753005382}
   - component: {fileID: 8825435931686624871}
   - component: {fileID: 1251449634620599088}
   - component: {fileID: 4285762497441590792}
   - component: {fileID: 2948248140847033231}
   - component: {fileID: 1394004397351748276}
-  m_Layer: 0
+  - component: {fileID: 144415214088128076}
+  m_Layer: 6
   m_Name: EnemyMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2567,29 +2567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a165b5149959b114b80611589435210e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _soundResources: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
---- !u!114 &3774871040753005382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8965419200954883406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95f1eb21a44a1d64b8f97fb62fa17b42, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Image>k__BackingField: {fileID: 21300000, guid: 9659b5d78b70f464b80297aaf92467f0, type: 3}
-  <Name>k__BackingField: Enemy giant
-  <Health>k__BackingField: 100
-  <HealthMax>k__BackingField: 100
-  <Attack>k__BackingField: 25
-  <Defence>k__BackingField: 0
-  <Range>k__BackingField: 0
-  <SecondsToHit>k__BackingField: 3
-  _infoView: {fileID: 0}
-  _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
   _soundResources: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
 --- !u!95 &8825435931686624871
 Animator:
@@ -2758,6 +2735,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &144415214088128076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8965419200954883406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557d51b4920cf484a8e71f849dfca32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Image>k__BackingField: {fileID: 21300000, guid: 9659b5d78b70f464b80297aaf92467f0, type: 3}
+  <Name>k__BackingField: Enemy giant
+  <Health>k__BackingField: 100
+  <HealthMax>k__BackingField: 100
+  <Attack>k__BackingField: 25
+  <Defence>k__BackingField: 0
+  <Range>k__BackingField: 0
+  <SecondsToHit>k__BackingField: 3
+  <FactionID>k__BackingField: 0
+  _infoView: {fileID: 0}
+  _selectedObject: {fileID: 11400000, guid: 112ce4214645f6644a8f0e801af35243, type: 2}
+  _soundResources: {fileID: 11400000, guid: 26c0b3e6dc60d9e439ddb05c219fec6c, type: 2}
+  _collider: {fileID: 6165685981945170829}
+  _searchRadius: 45
+  _timeToSearch: 5
+  _layerForUnits: 6
 --- !u!1 &9084849044341103021
 GameObject:
   m_ObjectHideFlags: 0

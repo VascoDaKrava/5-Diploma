@@ -11,6 +11,8 @@ namespace RTDef.Buildings
 
         public Transform AttackTarget => transform;
 
+        public bool isDie => false;
+
         public bool GetDamage(int damage)
         {
             Debug.Log($"{this} get {damage} damage!");

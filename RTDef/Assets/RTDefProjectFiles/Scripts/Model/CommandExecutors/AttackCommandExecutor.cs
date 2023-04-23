@@ -161,9 +161,18 @@ namespace RTDef.Game.Commands
 
         private void DoAttack()
         {
+            //if (_attackCommand.AttackableTarget == null)
+            if (_attackCommand.AttackableTarget.isDie)
+            {
+                Debug.Log("Target die");
+                CommandFinish();
+                return;
+            }
+
             if (Vector3.Distance(_navMeshAgent.transform.position, _attackCommand.AttackableTarget.AttackTarget.position) > (_attacker.Range > 0 ? _attacker.Range : _stopDistancePrimary))
             {
                 MoveToTarget();
+                return;
             }
 
             _timeToHit -= Time.deltaTime;
