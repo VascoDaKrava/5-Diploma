@@ -1,3 +1,5 @@
+using RTDef.Units;
+using System;
 using UnityEngine;
 
 
@@ -11,5 +13,6 @@ namespace RTDef.Abstraction
         Transform AttackTarget { get; }
         bool GetDamage(int damage);
         bool isDie { get; }
+        event Action<UnitView> OnDie;//Change to IAttackable
     }
 }

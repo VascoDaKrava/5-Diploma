@@ -19,6 +19,7 @@ namespace RTDef.Game
         [SerializeField, Space, Header("Data")] private InteractionEvents _interactionEvents;
         [SerializeField] private SelectedObject _selectedObject;
         [SerializeField] private CommandEvents _commandEvents;
+        [SerializeField] private FactionData _factionData;
 
         [SerializeField, Space, Header("Camera")] private Transform _cameraContainer;
         [SerializeField] private Transform _cameraObjective;
@@ -45,7 +46,7 @@ namespace RTDef.Game
 
         [field: SerializeField] public GameBottomPanelView GameBottomPanelView { get; private set; }
 
-        [field: SerializeField] public int FactionID { get; private set; }
+        public int FactionID => _factionData.FactionID;
 
         public int Food
         {
@@ -83,6 +84,8 @@ namespace RTDef.Game
         private void Start()
         {
             //SetDefaultsForSO();
+
+            GetComponent<GameStateController>().FactionData = _factionData;
 
             _gameUIcontroller = new GameUIController(_selectedObject, this);
 

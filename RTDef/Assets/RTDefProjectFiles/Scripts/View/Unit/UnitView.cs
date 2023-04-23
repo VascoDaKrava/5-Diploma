@@ -6,6 +6,7 @@ using RTDef.Data.Audio;
 using RTDef.Enum;
 using RTDef.Game.Animations;
 using RTDef.Game.UI;
+using System;
 using UnityEngine;
 
 
@@ -13,6 +14,13 @@ namespace RTDef.Units
 {
     public class UnitView : CommandHolderBase, IClickableLeft, IClickableRight, IAttackable
     {
+
+        #region Events
+
+        public event Action<UnitView> OnDie;
+
+        #endregion
+
 
         #region Fields
 
@@ -83,6 +91,8 @@ namespace RTDef.Units
 
             _audioSource.PlayOneShot(_soundResources.Death);
             _selectedObject.SelectedChange(default);
+
+            OnDie?.Invoke(this);
         }
 
         #endregion
